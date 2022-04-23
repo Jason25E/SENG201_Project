@@ -21,11 +21,13 @@ public class Item {
 		return quantity;
 	}
 	
-	public void gainQuantity(int amountGain) {
-		quantity += amountGain;
+	public void gainQuantity() {
+		quantity += 1;
 	}
 	
 	public void reduceQuantity() {
-		quantity -= 1;
+		if (quantity > 0) {
+			quantity -= 1;
+		}
 	}
 }
