@@ -1,4 +1,3 @@
-
 public class Monster {
 	private String monsterID;
 	private int level;
