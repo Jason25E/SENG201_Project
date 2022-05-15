@@ -12,6 +12,7 @@ public class GameManager {
 		player = players;
 		dayRemain = dayRemains;
 		difficulty = difficultys;
+		currentDay = 1;
 	}
 	
 	public void setBackgroundVolume(int volume)
@@ -34,7 +35,7 @@ public class GameManager {
 	
 	public void launchStartScreen()
 	{
-		
+		StartScreen startScreen = new StartScreen(this);
 	}
 	
 	public void closeStartScreen(StartScreen)
@@ -74,7 +75,7 @@ public class GameManager {
 	
 	public void launchMainScreen()
 	{
-		
+		MainScreen mainScreen = new MainScreen(this);
 	}
 	
 	public void closeMainScreen(MainScreen)

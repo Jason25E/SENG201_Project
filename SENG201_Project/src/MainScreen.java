@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 public class MainScreen {
 
 	private JFrame frame;
+	private GameManager manager;
 
 	/**
 	 * Launch the application.
@@ -25,7 +26,8 @@ public class MainScreen {
 	/**
 	 * Create the application.
 	 */
-	public MainScreen() {
+	public MainScreen(GameManager manager) {
+		this.manager = manager;
 		initialize();
 	}
 
@@ -34,8 +36,9 @@ public class MainScreen {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 665, 433);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
 	}
 
 }

@@ -33,6 +33,10 @@ public class Player {
 		return ItemList;
 	}
 	
+	public void setPlayerID(String name) {
+		PlayerID = name;
+	}
+	
 	public void gainGold(int amountGain) {
 		goldAmount += amountGain;
 	}
