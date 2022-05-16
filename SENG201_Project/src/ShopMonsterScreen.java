@@ -10,7 +10,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class ShopScreen {
+public class ShopMonsterScreen {
 
 	private JFrame frame;
 
@@ -21,7 +21,7 @@ public class ShopScreen {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ShopScreen window = new ShopScreen();
+					ShopMonsterScreen window = new ShopMonsterScreen();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -33,7 +33,7 @@ public class ShopScreen {
 	/**
 	 * Create the application.
 	 */
-	public ShopScreen() {
+	public ShopMonsterScreen() {
 		initialize();
 	}
 
