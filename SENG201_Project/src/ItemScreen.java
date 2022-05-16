@@ -7,6 +7,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 
 public class ItemScreen {
 
@@ -44,8 +46,8 @@ public class ItemScreen {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JRadioButton rdbtnNameOfItem = new JRadioButton("Name of item");
-		rdbtnNameOfItem.setBounds(8, 8, 252, 60);
+		JRadioButton rdbtnNameOfItem = new JRadioButton("Watermelon");
+		rdbtnNameOfItem.setBounds(8, 8, 177, 56);
 		frame.getContentPane().add(rdbtnNameOfItem);
 		
 		JButton btnExit = new JButton("Exit");
@@ -58,16 +60,36 @@ public class ItemScreen {
 		btnUse.setBounds(12, 281, 80, 30);
 		frame.getContentPane().add(btnUse);
 		
-		JRadioButton rdbtnNameOfItem_1 = new JRadioButton("Name of item");
-		rdbtnNameOfItem_1.setBounds(8, 72, 252, 60);
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(ItemScreen.class.getResource("/Images/Watermelons.png")));
+		lblNewLabel.setBounds(199, 8, 61, 56);
+		frame.getContentPane().add(lblNewLabel);
+		
+		JRadioButton rdbtnNameOfItem_1 = new JRadioButton("Sandwich");
+		rdbtnNameOfItem_1.setBounds(8, 72, 177, 56);
 		frame.getContentPane().add(rdbtnNameOfItem_1);
 		
-		JRadioButton rdbtnNameOfItem_2 = new JRadioButton("Name of item");
-		rdbtnNameOfItem_2.setBounds(8, 136, 252, 60);
+		JLabel lblNewLabel_4 = new JLabel("");
+		lblNewLabel_4.setIcon(new ImageIcon(ItemScreen.class.getResource("/Images/Sandwich.png")));
+		lblNewLabel_4.setBounds(199, 72, 61, 56);
+		frame.getContentPane().add(lblNewLabel_4);
+		
+		JRadioButton rdbtnNameOfItem_2 = new JRadioButton("Steak");
+		rdbtnNameOfItem_2.setBounds(8, 136, 177, 56);
 		frame.getContentPane().add(rdbtnNameOfItem_2);
 		
-		JRadioButton rdbtnNameOfItem_3 = new JRadioButton("Name of item");
-		rdbtnNameOfItem_3.setBounds(8, 200, 252, 60);
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon(ItemScreen.class.getResource("/Images/Steaks.png")));
+		lblNewLabel_1.setBounds(199, 136, 61, 56);
+		frame.getContentPane().add(lblNewLabel_1);
+		
+		JRadioButton rdbtnNameOfItem_3 = new JRadioButton("Coffee");
+		rdbtnNameOfItem_3.setBounds(8, 200, 177, 56);
 		frame.getContentPane().add(rdbtnNameOfItem_3);
+		
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setIcon(new ImageIcon(ItemScreen.class.getResource("/Images/Coffee.png")));
+		lblNewLabel_2.setBounds(199, 200, 61, 56);
+		frame.getContentPane().add(lblNewLabel_2);
 	}
 }
