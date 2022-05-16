@@ -5,7 +5,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JButton;
 import java.awt.Font;
 
-public class InventoryEquipmentScreen {
+public class EquipmentScreen {
 
 	private JFrame frame;
 
@@ -16,7 +16,7 @@ public class InventoryEquipmentScreen {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					InventoryEquipmentScreen window = new InventoryEquipmentScreen();
+					EquipmentScreen window = new EquipmentScreen();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -28,7 +28,7 @@ public class InventoryEquipmentScreen {
 	/**
 	 * Create the application.
 	 */
-	public InventoryEquipmentScreen() {
+	public EquipmentScreen() {
 		initialize();
 	}
 

@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 
-public class InventoryItemScreen {
+public class ItemScreen {
 
 	private JFrame frame;
 
@@ -19,7 +19,7 @@ public class InventoryItemScreen {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					InventoryItemScreen window = new InventoryItemScreen();
+					ItemScreen window = new ItemScreen();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -31,7 +31,7 @@ public class InventoryItemScreen {
 	/**
 	 * Create the application.
 	 */
-	public InventoryItemScreen() {
+	public ItemScreen() {
 		initialize();
 	}
 
