@@ -48,9 +48,9 @@ public class GameManager {
 		}
 	}
 	
-	public void sleep(ArrayList MonsterList)
+	public void sleep()
 	{
-
+		reduceDayRemain();
 	}
 	
 	
@@ -100,14 +100,25 @@ public class GameManager {
 		mainScreen.closeWindow();
 	}
 	
-	public void launchShopScreen()
+	public void launchShopMonsterScreen()
 	{
-		ShopScreen shopScreen = new ShopScreen(this);
+		ShopMonsterScreen shopScreen = new ShopMonsterScreen(this);
 	}
 	
-	public void closeShopScreen(ShopScreen shopScreen)
+	public void closeShopScreen(ShopMonsterScreen shopMonsterScreen)
 	{
-		shopScreen.closeWindow();
+		shopMonsterScreen.closeWindow();
+		launchMainScreen();
+	}
+	
+	public void launchShopItemScreen()
+	{
+		ShopItemScreen shopScreen = new ShopItemScreen(this);
+	}
+	
+	public void closeShopScreen(ShopItemScreen shopItemScreen)
+	{
+		shopItemScreen.closeWindow();
 		launchMainScreen();
 	}
 	
@@ -146,7 +157,7 @@ public class GameManager {
 	
 	public void launchSelectBattleScreen()
 	{
-		
+		SelectBattleScreen selectBattleScreen = new SelectBattleScreen(this);
 	}
 	
 	public void closeSelectBattleScreen(SelectBattleScreen)
