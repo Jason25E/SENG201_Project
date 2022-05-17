@@ -2,18 +2,28 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JSlider;
 import java.awt.Color;
+import javax.swing.JRadioButton;
+import javax.swing.ButtonGroup;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class SetupScreen {
 
 	private JFrame frame;
 	private JTextField textField;
-
+	private final ButtonGroup buttonGroup = new ButtonGroup();
+	
+	private GameManager manager;
+	private int numberOfDays;
+	private String difficulty = "Null";
+	
 	/**
 	 * Launch the application.
 	 */
@@ -34,8 +44,20 @@ public class SetupScreen {
 	 * Create the application.
 	 */
 	public SetupScreen() {
-		
 		initialize();
+	}
+	
+	public SetupScreen(GameManager manager) {
+		this.manager = manager;
+		initialize();
+		frame.setVisible(true);
+	}
+	
+	/**
+	 * Close the application.
+	 */
+	public void closeWindow() {
+		frame.dispose();
 	}
 
 	/**
@@ -43,7 +65,7 @@ public class SetupScreen {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 450, 282);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -57,6 +79,10 @@ public class SetupScreen {
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		
+		JLabel lblNewLabel_1 = new JLabel("5");
+		lblNewLabel_1.setBounds(346, 120, 25, 25);
+		frame.getContentPane().add(lblNewLabel_1);
+		
 		JLabel lblNewLabel = new JLabel("How many days would you like to last for?");
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 16));
 		lblNewLabel.setBounds(24, 76, 400, 20);
@@ -67,19 +93,14 @@ public class SetupScreen {
 		lblChooseADifficulty.setBounds(125, 156, 200, 20);
 		frame.getContentPane().add(lblChooseADifficulty);
 		
-		JButton btnEasy = new JButton("Easy");
-		btnEasy.setBounds(24, 198, 117, 25);
-		frame.getContentPane().add(btnEasy);
-		
-		JButton btnNormal = new JButton("Normal");
-		btnNormal.setBounds(169, 198, 117, 25);
-		frame.getContentPane().add(btnNormal);
-		
-		JButton btnHard = new JButton("Hard");
-		btnHard.setBounds(307, 198, 117, 25);
-		frame.getContentPane().add(btnHard);
-		
 		JSlider slider = new JSlider();
+		slider.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				numberOfDays = slider.getValue();
+				lblNewLabel_1.setText(Integer.toString(numberOfDays));
+			}
+		});
 		slider.setMinimum(5);
 		slider.setMaximum(15);
 		slider.setBounds(115, 120, 200, 25);
@@ -88,7 +109,83 @@ public class SetupScreen {
 		JButton btnNewButton = new JButton("Next");
 		btnNewButton.setForeground(new Color(255, 255, 255));
 		btnNewButton.setBackground(new Color(0, 204, 102));
-		btnNewButton.setBounds(319, 235, 117, 25);
+		btnNewButton.setBounds(319, 215, 117, 25);
 		frame.getContentPane().add(btnNewButton);
+		
+		JRadioButton rdbtnEasy = new JRadioButton("Easy");
+		rdbtnEasy.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				difficulty = "Easy";
+			}
+		});
+		buttonGroup.add(rdbtnEasy);
+		rdbtnEasy.setFont(new Font("Dialog", Font.BOLD, 14));
+		rdbtnEasy.setBounds(68, 184, 67, 23);
+		frame.getContentPane().add(rdbtnEasy);
+		
+		JRadioButton rdbtnNormal = new JRadioButton("Normal");
+		rdbtnNormal.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				difficulty = "Normal";
+			}
+		});
+		buttonGroup.add(rdbtnNormal);
+		rdbtnNormal.setFont(new Font("Dialog", Font.BOLD, 14));
+		rdbtnNormal.setBounds(176, 184, 91, 23);
+		frame.getContentPane().add(rdbtnNormal);
+		
+		JRadioButton rdbtnHard = new JRadioButton("Hard");
+		rdbtnHard.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				difficulty = "Hard";
+			}
+		});
+		buttonGroup.add(rdbtnHard);
+		rdbtnHard.setFont(new Font("Dialog", Font.BOLD, 14));
+		rdbtnHard.setBounds(303, 184, 76, 23);
+		frame.getContentPane().add(rdbtnHard);
+		
+		JLabel lblDays = new JLabel("Days");
+		lblDays.setBounds(370, 125, 70, 15);
+		frame.getContentPane().add(lblDays);
+		
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setForeground(Color.RED);
+		lblNewLabel_2.setBounds(23, 220, 302, 15);
+		frame.getContentPane().add(lblNewLabel_2);
+		
+		/**
+		 * If the input player name is valid and a difficulty is selected, then open up choose starter screen.
+		 */
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				/**
+				 * Check if the player name is between 3 to 15 letter, including space.
+				 */
+				String playerName = textField.getText();
+				if (playerName.matches("^[ A-Za-z]+$") == true && playerName.length() >= 3) {
+					/**
+					* Create a new player using the name as the one in the text field
+					*/
+					if (playerName.length() <= 15) {
+						if (difficulty != "Null") {
+							Player player = new Player(playerName);
+							manager.Setup(player, numberOfDays, difficulty);
+							manager.closeSetupScreen(SetupScreen.this);
+						} else {
+							lblNewLabel_2.setText("Please select a difficulty");
+						}
+					} else {
+						lblNewLabel_2.setText("Name must be between 3 to 15 letters");
+					}
+				} else {
+					/**
+					 * Display a message if player name is not valid.
+					 */
+					lblNewLabel_2.setText("Name must be between 3 to 15 letters");
+				}
+			}
+		});
 	}
 }

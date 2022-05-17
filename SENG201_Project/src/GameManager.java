@@ -2,22 +2,42 @@ import java.util.ArrayList;
 
 public class GameManager {
 	private Player player;
-	private int backgroundVolume;
 	private int dayRemain;
 	private int currentDay;
-	private int difficulty;
+	private String difficulty;
+	private int startGold = 10;
 	
-	public GameManager(Player players,  int dayRemains, int difficultys)
+	public GameManager()
 	{
-		player = players;
-		dayRemain = dayRemains;
-		difficulty = difficultys;
 		currentDay = 1;
 	}
 	
-	public void setBackgroundVolume(int volume)
+	public void Setup(Player player,  int dayRemain, String difficulty)
 	{
-		backgroundVolume = volume;
+		this.player = player;
+		this.dayRemain = dayRemain;
+		this.difficulty = difficulty;
+		player.setGoldAmount(startGold);
+	}
+	
+	public Player getPlayer() 
+	{
+		return player;
+	}
+	
+	public int getDayRemain() 
+	{
+		return dayRemain;
+	}
+	
+	public int getCurrentDay()
+	{
+		return currentDay;
+	}
+	
+	public String getDifficulty()
+	{
+		return difficulty;
 	}
 	
 	public void reduceDayRemain()
@@ -33,44 +53,41 @@ public class GameManager {
 
 	}
 	
+	
+	/**
+	 * Control the launch and close of all screens
+	 */
 	public void launchStartScreen()
 	{
 		StartScreen startScreen = new StartScreen(this);
 	}
 	
-	public void closeStartScreen(StartScreen)
+	public void closeStartScreen(StartScreen startScreen)
 	{
-		
+		startScreen.closeWindow();
+		launchSetupScreen();
 	}
 	
 	public void launchSetupScreen()
 	{
-		
+		SetupScreen setupScreen = new SetupScreen(this);
 	}
 	
-	public void closeSetupScreen(SetupScreen)
+	public void closeSetupScreen(SetupScreen setupScreen)
 	{
-		
+		setupScreen.closeWindow();
+		launchChooseStarterScreen();
 	}
 	
 	public void launchChooseStarterScreen()
 	{
-		
+		ChooseStarterScreen chooseStarterScreen = new ChooseStarterScreen(this);
 	}
 	
-	public void closeChooseStarterScreen(ChooseStarterScreen)
+	public void closeChooseStarterScreen(ChooseStarterScreen chooseStarterScreen)
 	{
-		
-	}
-	
-	public void launchSettingScreen()
-	{
-		
-	}
-	
-	public void closeSettingScreen(SettingScreen)
-	{
-		
+		chooseStarterScreen.closeWindow();
+		launchMainScreen();
 	}
 	
 	public void launchMainScreen()
@@ -78,39 +95,53 @@ public class GameManager {
 		MainScreen mainScreen = new MainScreen(this);
 	}
 	
-	public void closeMainScreen(MainScreen)
+	public void closeMainScreen(MainScreen mainScreen)
 	{
-		
+		mainScreen.closeWindow();
 	}
 	
 	public void launchShopScreen()
 	{
-		
+		ShopScreen shopScreen = new ShopScreen(this);
 	}
 	
-	public void closeShopScreen(ShopScreen)
+	public void closeShopScreen(ShopScreen shopScreen)
 	{
-		
+		shopScreen.closeWindow();
+		launchMainScreen();
 	}
 	
-	public void launchInventoryScreen()
+	public void launchItemScreen()
 	{
-		
+		ItemScreen itemScreen = new ItemScreen(this);
 	}
 	
-	public void closeInventoryScreen(InventoryScreen)
+	public void closeItemScreen(ItemScreen itemScreen)
 	{
-		
+		itemScreen.closeWindow();
+		launchMainScreen();
+	}
+	
+	public void launchEquipmentScreen()
+	{
+		EquipmentScreen equipmentScreen = new EquipmentScreen(this);
+	}
+	
+	public void closeEquipmentScreen(EquipmentScreen equipmentScreen)
+	{
+		equipmentScreen.closeWindow();
+		launchMainScreen();
 	}
 	
 	public void launchMonsterScreen()
 	{
-		
+		MonsterScreen monsterScreen = new MonsterScreen(this);
 	}
 	
-	public void closeMonsterScreen(MonsterScreen)
+	public void closeMonsterScreen(MonsterScreen monsterScreen)
 	{
-		
+		monsterScreen.closeWindow();
+		launchMainScreen();
 	}
 	
 	public void launchSelectBattleScreen()
@@ -131,5 +162,10 @@ public class GameManager {
 	public void closeBattleScreen(BattleScreen)
 	{
 		
+	}
+	
+	public static void main(String[] argv) {
+		GameManager manager = new GameManager();
+		manager.launchStartScreen();
 	}
 }

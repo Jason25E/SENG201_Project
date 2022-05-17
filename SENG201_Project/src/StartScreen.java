@@ -1,19 +1,22 @@
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.Color;
+import java.awt.EventQueue;
+
 import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import javax.swing.Action;
 
+
 public class StartScreen {
 
 	private JFrame frame;
-	private GameManager manager;
 	private final Action action = new SwingAction();
+	private final Action action_1 = new SwingAction_1();
+	
+	private GameManager manager;
 
 	/**
 	 * Launch the application.
@@ -34,11 +37,21 @@ public class StartScreen {
 	/**
 	 * Create the application.
 	 */
+	public StartScreen()
+	{
+		initialize();
+	}
+	
 	public StartScreen(GameManager manager) {
 		this.manager = manager;
 		initialize();
+		frame.setVisible(true);
 	}
-
+	
+	public void closeWindow() {
+		frame.dispose();
+	}
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -54,30 +67,45 @@ public class StartScreen {
 		frame.getContentPane().add(lblMonsterFighter);
 		
 		JButton btnNewGame = new JButton("New Game");
+		btnNewGame.setFont(new Font("Dialog", Font.BOLD, 14));
 		btnNewGame.setAction(action);
 		btnNewGame.setForeground(Color.WHITE);
 		btnNewGame.setBackground(new Color(0, 204, 102));
-		btnNewGame.setBounds(200, 173, 136, 40);
+		btnNewGame.setBounds(200, 173, 136, 56);
 		frame.getContentPane().add(btnNewGame);
 		
-		JButton btnNewButton = new JButton("Setting");
-		btnNewButton.setBounds(200, 225, 136, 40);
-		frame.getContentPane().add(btnNewButton);
-		
 		JButton btnNewButton_1 = new JButton("Quit");
+		btnNewButton_1.setFont(new Font("Dialog", Font.BOLD, 14));
+		btnNewButton_1.setAction(action_1);
 		btnNewButton_1.setForeground(Color.WHITE);
 		btnNewButton_1.setBackground(new Color(255, 51, 102));
-		btnNewButton_1.setBounds(200, 277, 136, 40);
+		btnNewButton_1.setBounds(200, 250, 136, 56);
 		frame.getContentPane().add(btnNewButton_1);
 	}
 	private class SwingAction extends AbstractAction {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
 		public SwingAction() {
 			putValue(NAME, "New Game");
 			putValue(SHORT_DESCRIPTION, "Some short description");
 		}
 		public void actionPerformed(ActionEvent e) {
-			manager.launchMainScreen(this.manager);
-			manager.closeStartScreen();
+			manager.closeStartScreen(StartScreen.this);
+		}
+	}
+	private class SwingAction_1 extends AbstractAction {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+		public SwingAction_1() {
+			putValue(NAME, "Quit");
+			putValue(SHORT_DESCRIPTION, "Some short description");
+		}
+		public void actionPerformed(ActionEvent e) {
+			closeWindow();
 		}
 	}
 }
