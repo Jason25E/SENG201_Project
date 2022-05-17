@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
+import javax.swing.ImageIcon;
 
 public class ShopItemScreen {
 
@@ -37,7 +38,7 @@ public class ShopItemScreen {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 569, 306);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -46,36 +47,63 @@ public class ShopItemScreen {
 		frame.getContentPane().add(lblGold);
 		
 		JLabel lblItemsForSale = new JLabel("Items for sale");
-		lblItemsForSale.setBounds(164, 12, 150, 20);
+		lblItemsForSale.setBounds(228, 9, 150, 20);
 		frame.getContentPane().add(lblItemsForSale);
 		
 		JRadioButton rdbtnItem = new JRadioButton("item1");
-		rdbtnItem.setBounds(8, 68, 100, 100);
+		rdbtnItem.setBounds(38, 35, 100, 41);
 		frame.getContentPane().add(rdbtnItem);
 		
 		JRadioButton rdbtnItem_1 = new JRadioButton("item1");
-		rdbtnItem_1.setBounds(112, 68, 100, 100);
+		rdbtnItem_1.setBounds(171, 35, 100, 41);
 		frame.getContentPane().add(rdbtnItem_1);
 		
-		JRadioButton rdbtnItem_2 = new JRadioButton("item1");
-		rdbtnItem_2.setBounds(216, 68, 100, 100);
-		frame.getContentPane().add(rdbtnItem_2);
-		
-		JRadioButton rdbtnItem_3 = new JRadioButton("item1");
-		rdbtnItem_3.setBounds(320, 68, 100, 100);
-		frame.getContentPane().add(rdbtnItem_3);
-		
 		JButton btnBuy = new JButton("buy");
-		btnBuy.setBounds(303, 233, 130, 30);
+		btnBuy.setBounds(425, 233, 130, 30);
 		frame.getContentPane().add(btnBuy);
 		
-		JButton btnMonster = new JButton("Monster");
-		btnMonster.setBounds(174, 233, 117, 30);
+		JButton btnMonster = new JButton("Sale");
+		btnMonster.setBounds(296, 233, 117, 30);
 		frame.getContentPane().add(btnMonster);
 		
-		JButton btnExit = new JButton("Exit");
-		btnExit.setBounds(45, 233, 117, 30);
+		JButton btnExit = new JButton("Monster");
+		btnExit.setBounds(167, 233, 117, 30);
 		frame.getContentPane().add(btnExit);
+		
+		JButton btnExit_1 = new JButton("Exit");
+		btnExit_1.setBounds(25, 233, 130, 30);
+		frame.getContentPane().add(btnExit_1);
+		
+		JRadioButton rdbtnItem_1_1 = new JRadioButton("item1");
+		rdbtnItem_1_1.setBounds(437, 35, 100, 41);
+		frame.getContentPane().add(rdbtnItem_1_1);
+		
+		JRadioButton rdbtnItem_2 = new JRadioButton("item1");
+		rdbtnItem_2.setBounds(304, 35, 100, 41);
+		frame.getContentPane().add(rdbtnItem_2);
+		
+		JLabel label = new JLabel("");
+		label.setIcon(new ImageIcon(ShopItemScreen.class.getResource("/Images/Watermelons.png")));
+		label.setBounds(56, 84, 65, 65);
+		frame.getContentPane().add(label);
+		
+		JLabel label_1 = new JLabel("");
+		label_1.setIcon(new ImageIcon(ShopItemScreen.class.getResource("/Images/Steaks.png")));
+		label_1.setBounds(189, 84, 65, 65);
+		frame.getContentPane().add(label_1);
+		
+		JLabel label_2 = new JLabel("");
+		label_2.setIcon(new ImageIcon(ShopItemScreen.class.getResource("/Images/Axe.png")));
+		label_2.setBounds(322, 84, 65, 65);
+		frame.getContentPane().add(label_2);
+		
+		JLabel label_3 = new JLabel("");
+		label_3.setIcon(new ImageIcon(ShopItemScreen.class.getResource("/Images/Helmet.png")));
+		label_3.setBounds(455, 84, 65, 65);
+		frame.getContentPane().add(label_3);
+		
+		JLabel lblAttack = new JLabel("attack +10");
+		lblAttack.setBounds(228, 189, 207, 15);
+		frame.getContentPane().add(lblAttack);
 	}
-
 }

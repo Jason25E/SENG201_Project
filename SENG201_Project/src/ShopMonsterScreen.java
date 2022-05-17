@@ -42,7 +42,7 @@ public class ShopMonsterScreen {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 570, 303);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -51,39 +51,48 @@ public class ShopMonsterScreen {
 		frame.getContentPane().add(lblGold);
 		
 		JLabel lblMonstersForSale = new JLabel("Monsters for sale");
-		lblMonstersForSale.setBounds(143, 9, 150, 20);
+		lblMonstersForSale.setBounds(207, 9, 150, 20);
 		frame.getContentPane().add(lblMonstersForSale);
 		
 		JRadioButton rdbtnMonster = new JRadioButton("monster");
 		rdbtnMonster.setForeground(Color.BLACK);
-		rdbtnMonster.setBounds(8, 65, 100, 150);
+		rdbtnMonster.setBounds(27, 35, 100, 150);
 		frame.getContentPane().add(rdbtnMonster);
 		
 		JRadioButton rdbtnMonster_1 = new JRadioButton("monster");
 		rdbtnMonster_1.setForeground(Color.BLACK);
-		rdbtnMonster_1.setBounds(112, 65, 100, 150);
+		rdbtnMonster_1.setBounds(131, 35, 100, 150);
 		frame.getContentPane().add(rdbtnMonster_1);
 		
 		JRadioButton rdbtnMonster_2 = new JRadioButton("monster");
 		rdbtnMonster_2.setForeground(Color.BLACK);
-		rdbtnMonster_2.setBounds(216, 65, 100, 150);
+		rdbtnMonster_2.setBounds(235, 35, 100, 150);
 		frame.getContentPane().add(rdbtnMonster_2);
 		
 		JRadioButton rdbtnMonster_3 = new JRadioButton("monster");
 		rdbtnMonster_3.setForeground(Color.BLACK);
-		rdbtnMonster_3.setBounds(319, 65, 100, 150);
+		rdbtnMonster_3.setBounds(338, 35, 100, 150);
 		frame.getContentPane().add(rdbtnMonster_3);
 		
-		JButton btnBuy = new JButton("buy");
-		btnBuy.setBounds(306, 227, 130, 30);
-		frame.getContentPane().add(btnBuy);
+		JButton btnExit_1 = new JButton("Exit");
+		btnExit_1.setBounds(26, 230, 130, 30);
+		frame.getContentPane().add(btnExit_1);
 		
 		JButton btnItem = new JButton("Item");
-		btnItem.setBounds(177, 227, 117, 30);
+		btnItem.setBounds(168, 230, 117, 30);
 		frame.getContentPane().add(btnItem);
 		
-		JButton btnExit = new JButton("Exit");
-		btnExit.setBounds(48, 227, 117, 30);
-		frame.getContentPane().add(btnExit);
+		JButton btnMonster = new JButton("Sale");
+		btnMonster.setBounds(297, 230, 117, 30);
+		frame.getContentPane().add(btnMonster);
+		
+		JButton btnBuy = new JButton("buy");
+		btnBuy.setBounds(426, 230, 130, 30);
+		frame.getContentPane().add(btnBuy);
+		
+		JRadioButton rdbtnMonster_4 = new JRadioButton("monster");
+		rdbtnMonster_4.setForeground(Color.BLACK);
+		rdbtnMonster_4.setBounds(442, 35, 100, 150);
+		frame.getContentPane().add(rdbtnMonster_4);
 	}
 }
