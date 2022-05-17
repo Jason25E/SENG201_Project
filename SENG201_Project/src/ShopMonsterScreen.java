@@ -9,6 +9,7 @@ import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class ShopMonsterScreen {
 
@@ -42,7 +43,7 @@ public class ShopMonsterScreen {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 570, 303);
+		frame.setBounds(100, 100, 590, 302);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -56,23 +57,8 @@ public class ShopMonsterScreen {
 		
 		JRadioButton rdbtnMonster = new JRadioButton("monster");
 		rdbtnMonster.setForeground(Color.BLACK);
-		rdbtnMonster.setBounds(27, 35, 100, 150);
+		rdbtnMonster.setBounds(12, 35, 130, 38);
 		frame.getContentPane().add(rdbtnMonster);
-		
-		JRadioButton rdbtnMonster_1 = new JRadioButton("monster");
-		rdbtnMonster_1.setForeground(Color.BLACK);
-		rdbtnMonster_1.setBounds(131, 35, 100, 150);
-		frame.getContentPane().add(rdbtnMonster_1);
-		
-		JRadioButton rdbtnMonster_2 = new JRadioButton("monster");
-		rdbtnMonster_2.setForeground(Color.BLACK);
-		rdbtnMonster_2.setBounds(235, 35, 100, 150);
-		frame.getContentPane().add(rdbtnMonster_2);
-		
-		JRadioButton rdbtnMonster_3 = new JRadioButton("monster");
-		rdbtnMonster_3.setForeground(Color.BLACK);
-		rdbtnMonster_3.setBounds(338, 35, 100, 150);
-		frame.getContentPane().add(rdbtnMonster_3);
 		
 		JButton btnExit_1 = new JButton("Exit");
 		btnExit_1.setBounds(26, 230, 130, 30);
@@ -90,9 +76,39 @@ public class ShopMonsterScreen {
 		btnBuy.setBounds(426, 230, 130, 30);
 		frame.getContentPane().add(btnBuy);
 		
-		JRadioButton rdbtnMonster_4 = new JRadioButton("monster");
-		rdbtnMonster_4.setForeground(Color.BLACK);
-		rdbtnMonster_4.setBounds(442, 35, 100, 150);
-		frame.getContentPane().add(rdbtnMonster_4);
+		JLabel label = new JLabel("");
+		label.setIcon(new ImageIcon(ShopMonsterScreen.class.getResource("/Images/ShopDemon.png")));
+		label.setBounds(12, 81, 130, 120);
+		frame.getContentPane().add(label);
+		
+		JLabel label_1 = new JLabel("");
+		label_1.setIcon(new ImageIcon(ShopMonsterScreen.class.getResource("/Images/ShopSlime.png")));
+		label_1.setBounds(156, 81, 130, 120);
+		frame.getContentPane().add(label_1);
+		
+		JRadioButton rdbtnMonster_1 = new JRadioButton("monster");
+		rdbtnMonster_1.setForeground(Color.BLACK);
+		rdbtnMonster_1.setBounds(156, 35, 130, 38);
+		frame.getContentPane().add(rdbtnMonster_1);
+		
+		JLabel label_2 = new JLabel("");
+		label_2.setIcon(new ImageIcon(ShopMonsterScreen.class.getResource("/Images/ShopGhost.png")));
+		label_2.setBounds(297, 81, 130, 120);
+		frame.getContentPane().add(label_2);
+		
+		JRadioButton rdbtnMonster_2 = new JRadioButton("monster");
+		rdbtnMonster_2.setForeground(Color.BLACK);
+		rdbtnMonster_2.setBounds(297, 35, 130, 38);
+		frame.getContentPane().add(rdbtnMonster_2);
+		
+		JLabel label_3 = new JLabel("");
+		label_3.setIcon(new ImageIcon(ShopMonsterScreen.class.getResource("/Images/ShopWitch.png")));
+		label_3.setBounds(441, 81, 130, 120);
+		frame.getContentPane().add(label_3);
+		
+		JRadioButton rdbtnMonster_3 = new JRadioButton("monster");
+		rdbtnMonster_3.setForeground(Color.BLACK);
+		rdbtnMonster_3.setBounds(441, 35, 130, 38);
+		frame.getContentPane().add(rdbtnMonster_3);
 	}
 }

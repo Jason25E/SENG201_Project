@@ -50,7 +50,7 @@ public class ShopItemScreen {
 		lblItemsForSale.setBounds(228, 9, 150, 20);
 		frame.getContentPane().add(lblItemsForSale);
 		
-		JRadioButton rdbtnItem = new JRadioButton("item1");
+		JRadioButton rdbtnItem = new JRadioButton("Watermelon");
 		rdbtnItem.setBounds(38, 35, 100, 41);
 		frame.getContentPane().add(rdbtnItem);
 		
