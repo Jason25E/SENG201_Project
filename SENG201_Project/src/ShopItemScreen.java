@@ -59,19 +59,15 @@ public class ShopItemScreen {
 		frame.getContentPane().add(rdbtnItem_1);
 		
 		JButton btnBuy = new JButton("buy");
-		btnBuy.setBounds(425, 233, 130, 30);
+		btnBuy.setBounds(360, 233, 130, 30);
 		frame.getContentPane().add(btnBuy);
 		
-		JButton btnMonster = new JButton("Sale");
-		btnMonster.setBounds(296, 233, 117, 30);
-		frame.getContentPane().add(btnMonster);
-		
 		JButton btnExit = new JButton("Monster");
-		btnExit.setBounds(167, 233, 117, 30);
+		btnExit.setBounds(231, 233, 117, 30);
 		frame.getContentPane().add(btnExit);
 		
 		JButton btnExit_1 = new JButton("Exit");
-		btnExit_1.setBounds(25, 233, 130, 30);
+		btnExit_1.setBounds(89, 233, 130, 30);
 		frame.getContentPane().add(btnExit_1);
 		
 		JRadioButton rdbtnItem_1_1 = new JRadioButton("item1");

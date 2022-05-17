@@ -61,19 +61,15 @@ public class ShopMonsterScreen {
 		frame.getContentPane().add(rdbtnMonster);
 		
 		JButton btnExit_1 = new JButton("Exit");
-		btnExit_1.setBounds(26, 230, 130, 30);
+		btnExit_1.setBounds(93, 229, 130, 30);
 		frame.getContentPane().add(btnExit_1);
 		
 		JButton btnItem = new JButton("Item");
-		btnItem.setBounds(168, 230, 117, 30);
+		btnItem.setBounds(235, 229, 117, 30);
 		frame.getContentPane().add(btnItem);
 		
-		JButton btnMonster = new JButton("Sale");
-		btnMonster.setBounds(297, 230, 117, 30);
-		frame.getContentPane().add(btnMonster);
-		
 		JButton btnBuy = new JButton("buy");
-		btnBuy.setBounds(426, 230, 130, 30);
+		btnBuy.setBounds(364, 229, 130, 30);
 		frame.getContentPane().add(btnBuy);
 		
 		JLabel label = new JLabel("");

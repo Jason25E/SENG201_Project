@@ -1,13 +1,13 @@
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JRadioButton;
-import javax.swing.JLabel;
-import javax.swing.JButton;
 import java.awt.Font;
-import javax.swing.ImageIcon;
 
-public class MonsterScreen {
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JRadioButton;
+
+public class SaleMonsterScreen {
 
 	private JFrame frame;
 
@@ -18,7 +18,7 @@ public class MonsterScreen {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MonsterScreen window = new MonsterScreen();
+					SaleMonsterScreen window = new SaleMonsterScreen();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -30,7 +30,7 @@ public class MonsterScreen {
 	/**
 	 * Create the application.
 	 */
-	public MonsterScreen() {
+	public SaleMonsterScreen() {
 		initialize();
 	}
 
@@ -39,7 +39,7 @@ public class MonsterScreen {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 301, 417);
+		frame.setBounds(100, 100, 301, 386);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -91,19 +91,6 @@ public class MonsterScreen {
 		btnEquipment_4.setBounds(178, 279, 109, 25);
 		frame.getContentPane().add(btnEquipment_4);
 		
-		JLabel lblShowInfoAbout = new JLabel("Show info about the skill/equipment");
-		lblShowInfoAbout.setBounds(35, 316, 224, 15);
-		frame.getContentPane().add(lblShowInfoAbout);
-		
-		JButton btnEquipment_1_3_1 = new JButton("Swap Order");
-		btnEquipment_1_3_1.setFont(new Font("Dialog", Font.BOLD, 12));
-		btnEquipment_1_3_1.setBounds(12, 351, 130, 25);
-		frame.getContentPane().add(btnEquipment_1_3_1);
-		
-		JButton btnEquipment_4_1 = new JButton("Exit");
-		btnEquipment_4_1.setBounds(157, 351, 130, 25);
-		frame.getContentPane().add(btnEquipment_4_1);
-		
 		JLabel label_1 = new JLabel("2");
 		label_1.setFont(new Font("Dialog", Font.BOLD, 20));
 		label_1.setBounds(25, 94, 50, 50);
@@ -143,6 +130,20 @@ public class MonsterScreen {
 		lblNewLabel_2_1.setIcon(new ImageIcon(MonsterScreen.class.getResource("/Images/Skeleton.png")));
 		lblNewLabel_2_1.setBounds(171, 239, 116, 65);
 		frame.getContentPane().add(lblNewLabel_2_1);
+		
+		JButton btnExit = new JButton("Exit");
+		btnExit.setFont(new Font("Dialog", Font.BOLD, 12));
+		btnExit.setBounds(207, 316, 80, 30);
+		frame.getContentPane().add(btnExit);
+		
+		JButton btnItem = new JButton("Item");
+		btnItem.setFont(new Font("Dialog", Font.BOLD, 12));
+		btnItem.setBounds(110, 316, 80, 30);
+		frame.getContentPane().add(btnItem);
+		
+		JButton btnUse = new JButton("Sale");
+		btnUse.setFont(new Font("Dialog", Font.BOLD, 12));
+		btnUse.setBounds(12, 316, 80, 30);
+		frame.getContentPane().add(btnUse);
 	}
-
 }
