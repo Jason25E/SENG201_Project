@@ -21,8 +21,7 @@ public class ChooseStarterScreen {
 	private JTextField textField;
 	
 	private GameManager manager;
-	private String selectedMonster = "Null";
-	
+	private Monster selectedMonster = null;
 
 	/**
 	 * Launch the application.
@@ -56,11 +55,29 @@ public class ChooseStarterScreen {
 	public void closeWindow() {
 		frame.dispose();
 	}
-
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		/**
+		 * initialize the four monster that allow the player to choose
+		 */
+		Skill batSkill = new Skill("Bit", "Has a base power of 12", 12);
+		Monster bat = new Monster("Bats", "Bat", "Common", 20, 10, 100, 20, batSkill);
+		
+		Skill slimeSkill = new Skill("Absorb", "Has a base power of 12", 12);
+		Monster slime = new Monster("Slime", "Slime", "Common", 10, 10, 100, 40, slimeSkill);
+		
+		Skill ghostSkill = new Skill("Dive", "Has a base power of 12", 12);
+		Monster ghost = new Monster("Ghost", "Ghost", "Common", 10, 20, 100, 20, ghostSkill);
+		
+		Skill skeletonSkill = new Skill("Slash", "Has a base power of 12", 12);
+		Monster skeleton = new Monster("Skeleton", "Skeleton", "Common", 20, 20, 100, 10, skeletonSkill);
+		
+		/**
+		 * initialize the frame
+		 */
 		frame = new JFrame();
 		frame.setBounds(100, 100, 657, 346);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -102,15 +119,16 @@ public class ChooseStarterScreen {
 		
 		JLabel lblNewLabel_5 = new JLabel("");
 		lblNewLabel_5.setForeground(Color.RED);
-		lblNewLabel_5.setBounds(29, 255, 278, 15);
+		lblNewLabel_5.setBounds(29, 255, 497, 15);
 		frame.getContentPane().add(lblNewLabel_5);
 		
 		JRadioButton rdbtnNewRadioButton = new JRadioButton("Bat");
 		rdbtnNewRadioButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				selectedMonster = "Bats";
-				textField.setText(selectedMonster);
+				selectedMonster = bat;
+				lblNewLabel_5.setText(bat.getMonsterInfo());
+				textField.setText(selectedMonster.getMonsterName());
 			}
 		});
 		buttonGroup.add(rdbtnNewRadioButton);
@@ -121,8 +139,9 @@ public class ChooseStarterScreen {
 		rdbtnNewRadioButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				selectedMonster = "Slime";
-				textField.setText(selectedMonster);
+				selectedMonster = slime;
+				lblNewLabel_5.setText(slime.getMonsterInfo());
+				textField.setText(selectedMonster.getMonsterName());
 			}
 		});
 		buttonGroup.add(rdbtnNewRadioButton_1);
@@ -133,8 +152,9 @@ public class ChooseStarterScreen {
 		rdbtnNewRadioButton_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				selectedMonster = "Ghost";
-				textField.setText(selectedMonster);
+				selectedMonster = ghost;
+				lblNewLabel_5.setText(ghost.getMonsterInfo());
+				textField.setText(selectedMonster.getMonsterName());
 			}
 		});
 		buttonGroup.add(rdbtnNewRadioButton_2);
@@ -145,8 +165,9 @@ public class ChooseStarterScreen {
 		rdbtnNewRadioButton_3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				selectedMonster = "Skeleton";
-				textField.setText(selectedMonster);
+				selectedMonster = skeleton;
+				lblNewLabel_5.setText(skeleton.getMonsterInfo());
+				textField.setText(selectedMonster.getMonsterName());
 			}
 		});
 		buttonGroup.add(rdbtnNewRadioButton_3);
@@ -157,24 +178,10 @@ public class ChooseStarterScreen {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String monsterName = textField.getText();
-				if (selectedMonster != "Null") {
+				if (selectedMonster != null) {
 					if (monsterName.length() > 0 && monsterName.length() < 9) {
-						int attack = 10;
-						int defence = 10;	
-						int healingAmount = 20;
-						if (selectedMonster == "Bats") {
-							attack = 20;
-						} else if (selectedMonster == "Slime") {
-							healingAmount = 40;
-						} else if (selectedMonster == "Ghost") {
-							defence = 20;
-						} else {
-							attack = 20;
-							defence = 20;
-							healingAmount = 10;
-						}
-						Monster newMonster = new Monster(selectedMonster, monsterName, "Common", attack, defence, 100, healingAmount, null);
-						manager.getPlayer().addMonster(newMonster);
+						selectedMonster.setMonsterName(monsterName);
+						manager.getPlayer().addMonster(selectedMonster);
 						manager.closeChooseStarterScreen(ChooseStarterScreen.this);
 					} else {
 						lblNewLabel_5.setText("Name must be between 1 to 8 letters");
@@ -186,7 +193,7 @@ public class ChooseStarterScreen {
 		});
 		btnNewButton.setForeground(Color.WHITE);
 		btnNewButton.setBackground(new Color(0, 204, 102));
-		btnNewButton.setBounds(507, 265, 117, 38);
+		btnNewButton.setBounds(515, 265, 117, 38);
 		frame.getContentPane().add(btnNewButton);
 		
 
