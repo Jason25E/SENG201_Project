@@ -17,7 +17,7 @@ public class GameManager {
 		this.player = player;
 		this.dayRemain = dayRemain;
 		this.difficulty = difficulty;
-		player.setGoldAmount(startGold);
+		this.player.setGoldAmount(startGold);
 	}
 	
 	public Player getPlayer() 

@@ -7,9 +7,8 @@ public class Player {
 	private ArrayList<Monster> MonsterList = new ArrayList<Monster>();
 	private ArrayList<Item> ItemList = new ArrayList<Item>();
 	
-	public Player(String playerName, int startGold) {
+	public Player(String playerName) {
 		PlayerID = playerName;
-		goldAmount = startGold;
 		score = 0;
 	}
 	
@@ -35,6 +34,10 @@ public class Player {
 	
 	public void setPlayerID(String name) {
 		PlayerID = name;
+	}
+	
+	public void setGoldAmount(int startGold) {
+		goldAmount = startGold;
 	}
 	
 	public void gainGold(int amountGain) {

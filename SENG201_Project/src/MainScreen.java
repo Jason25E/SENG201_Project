@@ -7,6 +7,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import javax.swing.ImageIcon;
+import java.awt.Font;
 
 public class MainScreen {
 
@@ -58,12 +60,9 @@ public class MainScreen {
 		lblNewLabel.setBounds(257, 24, 142, 15);
 		frame.getContentPane().add(lblNewLabel);
 		
-		JLabel lblGold = new JLabel("gold");
-		lblGold.setBounds(33, 24, 70, 15);
-		frame.getContentPane().add(lblGold);
-		
-		JLabel lblDays = new JLabel("number of days");
-		lblDays.setBounds(487, 24, 100, 15);
+		JLabel lblDays = new JLabel("Day");
+		lblDays.setFont(new Font("Dialog", Font.BOLD, 18));
+		lblDays.setBounds(547, 16, 47, 29);
 		frame.getContentPane().add(lblDays);
 		
 		JButton btnShop_1 = new JButton("Battle!");
@@ -82,5 +81,23 @@ public class MainScreen {
 		JButton btnEquipment = new JButton("Equipment");
 		btnEquipment.setBounds(472, 325, 130, 40);
 		frame.getContentPane().add(btnEquipment);
+		
+		JLabel lblNewLabel_1 = new JLabel("100");
+		lblNewLabel_1.setIcon(new ImageIcon(MainScreen.class.getResource("/Images/Coin.png")));
+		lblNewLabel_1.setBounds(12, 11, 100, 40);
+		frame.getContentPane().add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("12");
+		lblNewLabel_2.setFont(new Font("Dialog", Font.BOLD, 15));
+		lblNewLabel_2.setBounds(599, 24, 35, 15);
+		frame.getContentPane().add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("day(s) remains");
+		lblNewLabel_3.setBounds(529, 51, 105, 15);
+		frame.getContentPane().add(lblNewLabel_3);
+		
+		JLabel lblNewLabel_4 = new JLabel("3");
+		lblNewLabel_4.setBounds(505, 51, 35, 15);
+		frame.getContentPane().add(lblNewLabel_4);
 	}
 }
