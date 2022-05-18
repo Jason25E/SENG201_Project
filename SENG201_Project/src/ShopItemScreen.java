@@ -13,7 +13,7 @@ import java.awt.event.ActionEvent;
 
 public class ShopItemScreen {
 
-	private JFrame frame;
+	private JFrame frmShopItem;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 
 	private GameManager manager;
@@ -27,7 +27,7 @@ public class ShopItemScreen {
 			public void run() {
 				try {
 					ShopItemScreen window = new ShopItemScreen();
-					window.frame.setVisible(true);
+					window.frmShopItem.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -45,17 +45,20 @@ public class ShopItemScreen {
 	public ShopItemScreen(GameManager manager) {
 		this.manager = manager;
 		initialize();
-		frame.setVisible(true);
+		frmShopItem.setVisible(true);
 	}
 	
 	public void closeWindow() {
-		frame.dispose();
+		frmShopItem.dispose();
 	}
 	
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		/**
+		 * Initialize the Foods and Equipments that appears in shop.
+		 */
 		ArrayList<Item> FoodList = new ArrayList<Item>();
 		/* Food(String foodName, String foodEffect, int purchasePrice, int sellingPrice, int heal, int attack, int defence) */
 		Food smallHeal = new Food("Watermelons", "Recover 20 HP", 5, 2, 20, 0, 0);
@@ -78,56 +81,65 @@ public class ShopItemScreen {
 		EquipmentList.add(gainSmallDefence);
 		EquipmentList.add(gainBigDefence);
 		
-		frame = new JFrame();
-		frame.getContentPane().setForeground(Color.RED);
-		frame.setBounds(100, 100, 569, 321);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		/**
+		 * Initialize the frame itself.
+		 */
+		frmShopItem = new JFrame();
+		frmShopItem.setTitle("Shop - Item");
+		frmShopItem.getContentPane().setForeground(Color.RED);
+		frmShopItem.setBounds(100, 100, 569, 321);
+		frmShopItem.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmShopItem.getContentPane().setLayout(null);
 		
 		int goldAmount = manager.getPlayer().getGoldAmount();
 		JLabel lblGold = new JLabel(Integer.toString(goldAmount));
 		lblGold.setIcon(new ImageIcon(ShopItemScreen.class.getResource("/Images/Coin.png")));
 		lblGold.setBounds(12, 11, 100, 40);
-		frame.getContentPane().add(lblGold);
+		frmShopItem.getContentPane().add(lblGold);
 		
 		JLabel lblItemsForSale = new JLabel("Items for sale");
 		lblItemsForSale.setBounds(228, 9, 150, 20);
-		frame.getContentPane().add(lblItemsForSale);
+		frmShopItem.getContentPane().add(lblItemsForSale);
 		
 		JLabel lblEffect = new JLabel("");
 		lblEffect.setBounds(228, 215, 207, 15);
-		frame.getContentPane().add(lblEffect);
+		frmShopItem.getContentPane().add(lblEffect);
 		
 		JLabel lblMessage = new JLabel("");
 		lblMessage.setForeground(Color.RED);
 		lblMessage.setBounds(42, 215, 144, 15);
-		frame.getContentPane().add(lblMessage);
+		frmShopItem.getContentPane().add(lblMessage);
 		
 		JButton btnBuy = new JButton("Buy");
 		btnBuy.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				int price = selectedItem.getPurchasePrice();
-				if (manager.getPlayer().getGoldAmount() >= price) {
-					manager.getPlayer().buyItem(selectedItem, price);
-					lblMessage.setText("Success");
-					lblGold.setText(Integer.toString(manager.getPlayer().getGoldAmount()));
+				if (selectedItem != null) {
+					int price = selectedItem.getPurchasePrice();
+					if (manager.getPlayer().getGoldAmount() >= price) {
+						manager.getPlayer().buyItem(selectedItem, price);
+						lblMessage.setText("Success");
+						lblGold.setText(Integer.toString(manager.getPlayer().getGoldAmount()));
+					} else {
+						lblMessage.setText("Not enough gold");
+					}
 				} else {
-					lblMessage.setText("Not enough Money");
+					lblMessage.setText("No item is selected");
 				}
+
 			}
 		});
 		btnBuy.setBounds(39, 243, 130, 30);
-		frame.getContentPane().add(btnBuy);
+		frmShopItem.getContentPane().add(btnBuy);
 		
 		JButton btnExit = new JButton("Check out Monsters");
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				/* manager.launchShopMonsterScreen(); */
+				manager.launchShopMonsterScreen();
 				closeWindow();
 			}
 		});
 		btnExit.setBounds(202, 243, 175, 30);
-		frame.getContentPane().add(btnExit);
+		frmShopItem.getContentPane().add(btnExit);
 		
 		JButton btnExit_1 = new JButton("Exit");
 		btnExit_1.addActionListener(new ActionListener() {
@@ -139,7 +151,7 @@ public class ShopItemScreen {
 		btnExit_1.setBackground(new Color(255, 51, 102));
 		btnExit_1.setForeground(new Color(255, 255, 255));
 		btnExit_1.setBounds(408, 243, 130, 30);
-		frame.getContentPane().add(btnExit_1);
+		frmShopItem.getContentPane().add(btnExit_1);
 		
 		/**
 		 * Item one for sale in shop
@@ -154,18 +166,18 @@ public class ShopItemScreen {
 		});
 		buttonGroup.add(rdbtnItem);
 		rdbtnItem.setBounds(30, 52, 121, 41);
-		frame.getContentPane().add(rdbtnItem);
+		frmShopItem.getContentPane().add(rdbtnItem);
 		
 		String ImageSourceOne = "/Images/Food/" + ItemNameOne + ".png";
 		JLabel label = new JLabel("");
 		label.setIcon(new ImageIcon(ShopItemScreen.class.getResource(ImageSourceOne)));
 		label.setBounds(57, 101, 65, 65);
-		frame.getContentPane().add(label);
+		frmShopItem.getContentPane().add(label);
 		
 		int ItemPriceOne = FoodList.get(0).getPurchasePrice();
 		JLabel label_4 = new JLabel("$ " + ItemPriceOne);
 		label_4.setBounds(66, 178, 56, 15);
-		frame.getContentPane().add(label_4);
+		frmShopItem.getContentPane().add(label_4);
 		
 		/**
 		 * Item two for sale in shop
@@ -180,18 +192,18 @@ public class ShopItemScreen {
 		});
 		buttonGroup.add(rdbtnItem_1);
 		rdbtnItem_1.setBounds(172, 52, 100, 41);
-		frame.getContentPane().add(rdbtnItem_1);
+		frmShopItem.getContentPane().add(rdbtnItem_1);
 		
 		String ImageSourceTwo = "/Images/Food/" + ItemNameTwo + ".png";
 		JLabel label_1 = new JLabel("");
 		label_1.setIcon(new ImageIcon(ShopItemScreen.class.getResource(ImageSourceTwo)));
 		label_1.setBounds(190, 101, 65, 65);
-		frame.getContentPane().add(label_1);
+		frmShopItem.getContentPane().add(label_1);
 		
 		int ItemPriceTwo = FoodList.get(manager.RandomFoodInShop).getPurchasePrice();
 		JLabel lblNewLabel = new JLabel("$ " + ItemPriceTwo);
 		lblNewLabel.setBounds(190, 178, 70, 15);
-		frame.getContentPane().add(lblNewLabel);
+		frmShopItem.getContentPane().add(lblNewLabel);
 		
 		/**
 		 * Item three for sale in shop
@@ -206,19 +218,19 @@ public class ShopItemScreen {
 		});
 		buttonGroup.add(rdbtnItem_2);
 		rdbtnItem_2.setBounds(305, 52, 100, 41);
-		frame.getContentPane().add(rdbtnItem_2);
+		frmShopItem.getContentPane().add(rdbtnItem_2);
 
 		
 		String ImageSourceThree = "/Images/Equipment/" + ItemNameThree + ".png";
 		JLabel label_2 = new JLabel("");
 		label_2.setIcon(new ImageIcon(ShopItemScreen.class.getResource(ImageSourceThree)));
 		label_2.setBounds(323, 101, 65, 65);
-		frame.getContentPane().add(label_2);
+		frmShopItem.getContentPane().add(label_2);
 		
-		int ItemPriceThree = FoodList.get(manager.RandomEquipmentInShop).getPurchasePrice();
+		int ItemPriceThree = EquipmentList.get(manager.RandomEquipmentInShop).getPurchasePrice();
 		JLabel lblNewLabel_1 = new JLabel("$ " + ItemPriceThree);
 		lblNewLabel_1.setBounds(323, 178, 70, 15);
-		frame.getContentPane().add(lblNewLabel_1);
+		frmShopItem.getContentPane().add(lblNewLabel_1);
 		
 		/**
 		 * Item four for sale in shop
@@ -233,17 +245,17 @@ public class ShopItemScreen {
 		});
 		buttonGroup.add(rdbtnItem_1_1);
 		rdbtnItem_1_1.setBounds(438, 52, 100, 41);
-		frame.getContentPane().add(rdbtnItem_1_1);
+		frmShopItem.getContentPane().add(rdbtnItem_1_1);
 		
 		String ImageSourceFour = "/Images/Equipment/" + ItemNameFour + ".png";
 		JLabel label_3 = new JLabel("");
 		label_3.setIcon(new ImageIcon(ShopItemScreen.class.getResource(ImageSourceFour)));
 		label_3.setBounds(456, 101, 65, 65);
-		frame.getContentPane().add(label_3);
+		frmShopItem.getContentPane().add(label_3);
 		
-		int ItemPriceFour = FoodList.get(manager.RandomEquipmentInShopTwo).getPurchasePrice();
+		int ItemPriceFour = EquipmentList.get(manager.RandomEquipmentInShopTwo).getPurchasePrice();
 		JLabel lblNewLabel_2 = new JLabel("$ " + ItemPriceFour);
 		lblNewLabel_2.setBounds(468, 178, 70, 15);
-		frame.getContentPane().add(lblNewLabel_2);
+		frmShopItem.getContentPane().add(lblNewLabel_2);
 	}
 }

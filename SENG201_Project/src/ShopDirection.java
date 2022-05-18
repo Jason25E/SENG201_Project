@@ -9,7 +9,9 @@ import java.awt.event.ActionEvent;
 
 public class ShopDirection {
 
-	private JFrame frame;
+	private JFrame frmShop;
+	
+	private GameManager manager;
 
 	/**
 	 * Launch the application.
@@ -19,7 +21,7 @@ public class ShopDirection {
 			public void run() {
 				try {
 					ShopDirection window = new ShopDirection();
-					window.frame.setVisible(true);
+					window.frmShop.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -33,28 +35,41 @@ public class ShopDirection {
 	public ShopDirection() {
 		initialize();
 	}
+	
+	public ShopDirection(GameManager manager) {
+		this.manager = manager;
+		initialize();
+		frmShop.setVisible(true);
+	}
+	
+	public void closeWindow() {
+		frmShop.dispose();
+	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 245, 204);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmShop = new JFrame();
+		frmShop.setTitle("Shop");
+		frmShop.setBounds(100, 100, 245, 204);
+		frmShop.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmShop.getContentPane().setLayout(null);
 		
 		JButton btnBuy = new JButton("Buy");
 		btnBuy.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				manager.launchShopMonsterScreen();
+				closeWindow();
 			}
 		});
 		btnBuy.setFont(new Font("Dialog", Font.BOLD, 12));
 		btnBuy.setBounds(37, 12, 168, 70);
-		frame.getContentPane().add(btnBuy);
+		frmShop.getContentPane().add(btnBuy);
 		
 		JButton btnSale = new JButton("Sale");
 		btnSale.setFont(new Font("Dialog", Font.BOLD, 12));
 		btnSale.setBounds(37, 94, 168, 70);
-		frame.getContentPane().add(btnSale);
+		frmShop.getContentPane().add(btnSale);
 	}
 }

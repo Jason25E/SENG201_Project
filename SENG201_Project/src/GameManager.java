@@ -57,12 +57,12 @@ public class GameManager {
 	}
 	
 	public void generateRandomValueInShop() {
-		RandomFoodInShop = (int)((Math.random() * (4 - 2)) + 2);
-		RandomEquipmentInShop = (int)((Math.random() * (2 - 1)) + 1);
-		RandomEquipmentInShopTwo = (int)((Math.random() * (4 - 3)) + 3);
-		RandomMonsterInShop = (int)((Math.random() * (2 - 1)) + 1);
-		RandomMonsterInShopTwo = (int)((Math.random() * (4 - 3)) + 3);
-		RandomMonsterInShopThree = (int)((Math.random() * (6 - 5)) + 5);
+		RandomFoodInShop = (int)((Math.random() * (4 - 1)) + 1);
+		RandomEquipmentInShop = (int)((Math.random() * (4 - 0)) + 0);
+		RandomEquipmentInShopTwo = (int)((Math.random() * (4 - 0)) + 0);
+		RandomMonsterInShop = (int)((Math.random() * (6 - 0)) + 0);
+		RandomMonsterInShopTwo = (int)((Math.random() * (6 - 0)) + 0);
+		RandomMonsterInShopThree = (int)((Math.random() * (6 - 0)) + 0);
 	}
 	
 	public void sleep()
@@ -117,10 +117,10 @@ public class GameManager {
 		mainScreen.closeWindow();
 	}
 	
-	/*
+
 	public void launchShopMonsterScreen()
 	{
-		ShopMonsterScreen shopScreen = new ShopMonsterScreen(this);
+		ShopMonsterScreen shopMonsterScreen = new ShopMonsterScreen(this);
 	}
 	
 	public void closeShopMonsterScreen(ShopMonsterScreen shopMonsterScreen)
@@ -128,11 +128,11 @@ public class GameManager {
 		shopMonsterScreen.closeWindow();
 		launchMainScreen();
 	}
-	*/
+
 	
 	public void launchShopItemScreen()
 	{
-		ShopItemScreen shopScreen = new ShopItemScreen(this);
+		ShopItemScreen shopItemScreen = new ShopItemScreen(this);
 	}
 	
 	public void closeShopScreen(ShopItemScreen shopItemScreen)

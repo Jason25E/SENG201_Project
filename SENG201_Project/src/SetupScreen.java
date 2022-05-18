@@ -21,7 +21,7 @@ public class SetupScreen {
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	
 	private GameManager manager;
-	private int numberOfDays;
+	private int numberOfDays = 15;
 	private String difficulty = "Null";
 	
 	/**
@@ -79,7 +79,7 @@ public class SetupScreen {
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		
-		JLabel lblNewLabel_1 = new JLabel("5");
+		JLabel lblNewLabel_1 = new JLabel(Integer.toString(numberOfDays));
 		lblNewLabel_1.setBounds(346, 120, 25, 25);
 		frame.getContentPane().add(lblNewLabel_1);
 		
