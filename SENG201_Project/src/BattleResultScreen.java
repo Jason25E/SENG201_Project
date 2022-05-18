@@ -39,12 +39,13 @@ public class BattleResultScreen {
 	private void initialize() {
 		String Vitory = "Vitory!";
 		String Defeated = "Defeated";
+		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 285, 209);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblBattleResult = new JLabel("Defeated");
+		JLabel lblBattleResult = new JLabel(Vitory);
 		lblBattleResult.setFont(new Font("Dialog", Font.BOLD, 15));
 		lblBattleResult.setBounds(94, 12, 93, 15);
 		frame.getContentPane().add(lblBattleResult);
