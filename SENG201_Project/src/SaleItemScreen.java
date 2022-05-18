@@ -13,6 +13,7 @@ import java.awt.Color;
 public class SaleItemScreen {
 
 	private JFrame frame;
+	private GameManager manager;
 
 	/**
 	 * Launch the application.
@@ -36,6 +37,16 @@ public class SaleItemScreen {
 	public SaleItemScreen() {
 		initialize();
 	}
+	
+	public SaleItemScreen(GameManager manager) {
+		this.manager = manager;
+		initialize();
+		frame.setVisible(true);
+	}
+	
+	public void closeWindow() {
+		frame.dispose();
+	}
 
 	/**
 	 * Initialize the contents of the frame.
@@ -47,6 +58,11 @@ public class SaleItemScreen {
 		frame.getContentPane().setLayout(null);
 		
 		JButton btnExit = new JButton("Exit");
+		btnExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				manager.launchMainScreen();
+			}
+		});
 		btnExit.setFont(new Font("Dialog", Font.BOLD, 12));
 		btnExit.setBounds(195, 518, 80, 30);
 		frame.getContentPane().add(btnExit);
@@ -121,6 +137,11 @@ public class SaleItemScreen {
 		frame.getContentPane().add(lblNewLabel_2);
 		
 		JButton btnMonster = new JButton("Monster");
+		btnMonster.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				manager.launchSaleMonsterScreen();
+			}
+		});
 		btnMonster.setFont(new Font("Dialog", Font.BOLD, 10));
 		btnMonster.setBounds(101, 518, 80, 30);
 		frame.getContentPane().add(btnMonster);

@@ -12,7 +12,8 @@ import javax.swing.JRadioButton;
 public class SelectBattleScreen {
 
 	private JFrame frame;
-
+	
+	private GameManager manager;
 	/**
 	 * Launch the application.
 	 */
@@ -35,6 +36,16 @@ public class SelectBattleScreen {
 	public SelectBattleScreen() {
 		initialize();
 	}
+	
+	public SelectBattleScreen(GameManager manager) {
+		this.manager = manager;
+		initialize();
+		frame.setVisible(true);
+	}
+	
+	public void closeWindow() {
+		frame.dispose();
+	}
 
 	/**
 	 * Initialize the contents of the frame.
@@ -51,10 +62,20 @@ public class SelectBattleScreen {
 		frame.getContentPane().add(rdbtnMonster);
 		
 		JButton btnExit_1 = new JButton("Battle!");
+		btnExit_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				manager.launchBattleScreen();
+			}
+		});
 		btnExit_1.setBounds(27, 229, 130, 30);
 		frame.getContentPane().add(btnExit_1);
 		
 		JButton btnBuy = new JButton("Exit");
+		btnBuy.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				manager.launchMainScreen();
+			}
+		});
 		btnBuy.setBounds(446, 229, 130, 30);
 		frame.getContentPane().add(btnBuy);
 		

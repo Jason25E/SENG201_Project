@@ -4,10 +4,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class SummaryScreen {
 
 	private JFrame frame;
+	
+	private GameManager manager;
 
 	/**
 	 * Launch the application.
@@ -32,6 +36,16 @@ public class SummaryScreen {
 		initialize();
 	}
 
+	public SummaryScreen(GameManager manager) {
+		this.manager = manager;
+		initialize();
+		frame.setVisible(true);
+	}
+	
+	public void closeWindow() {
+		frame.dispose();
+	}
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -57,6 +71,11 @@ public class SummaryScreen {
 		frame.getContentPane().add(lblNewLabel);
 		
 		JButton btnFinish = new JButton("Finish");
+		btnFinish.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				manager.launchMainScreen();
+			}
+		});
 		btnFinish.setBounds(84, 119, 117, 35);
 		frame.getContentPane().add(btnFinish);
 	}

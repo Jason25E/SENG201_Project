@@ -4,10 +4,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class BattleResultScreen {
 
 	private JFrame frame;
+	
+	private GameManager manager;
 
 	/**
 	 * Launch the application.
@@ -32,6 +36,17 @@ public class BattleResultScreen {
 		initialize();
 		
 	}
+	
+	public BattleResultScreen(GameManager manager) {
+		this.manager = manager;
+		initialize();
+		frame.setVisible(true);
+	}
+	
+	public void closeWindow() {
+		frame.dispose();
+	}
+	
 
 	/**
 	 * Initialize the contents of the frame.
@@ -71,6 +86,11 @@ public class BattleResultScreen {
 		frame.getContentPane().add(label_1);
 		
 		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				manager.launchMainScreen();
+			}
+		});
 		btnBack.setBounds(84, 129, 117, 35);
 		frame.getContentPane().add(btnBack);
 	}

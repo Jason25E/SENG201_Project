@@ -14,7 +14,8 @@ import java.awt.Color;
 public class ItemScreen {
 
 	private JFrame frame;
-
+	
+	private GameManager manager;
 	/**
 	 * Launch the application.
 	 */
@@ -37,6 +38,17 @@ public class ItemScreen {
 	public ItemScreen() {
 		initialize();
 	}
+	
+	public ItemScreen(GameManager manager) {
+		this.manager = manager;
+		initialize();
+		frame.setVisible(true);
+	}
+	
+	public void closeWindow() {
+		frame.dispose();
+	}
+	
 
 	/**
 	 * Initialize the contents of the frame.
@@ -48,6 +60,11 @@ public class ItemScreen {
 		frame.getContentPane().setLayout(null);
 		
 		JButton btnExit = new JButton("Exit");
+		btnExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				manager.launchMainScreen();
+			}
+		});
 		btnExit.setFont(new Font("Dialog", Font.BOLD, 12));
 		btnExit.setBounds(180, 281, 80, 30);
 		frame.getContentPane().add(btnExit);

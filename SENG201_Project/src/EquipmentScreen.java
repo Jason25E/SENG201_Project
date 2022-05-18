@@ -7,11 +7,14 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class EquipmentScreen {
 
 	private JFrame frame;
-
+	
+	private GameManager manager;
 	/**
 	 * Launch the application.
 	 */
@@ -34,6 +37,17 @@ public class EquipmentScreen {
 	public EquipmentScreen() {
 		initialize();
 	}
+	
+	public EquipmentScreen(GameManager manager) {
+		this.manager = manager;
+		initialize();
+		frame.setVisible(true);
+	}
+	
+	public void closeWindow() {
+		frame.dispose();
+	}
+	
 
 	/**
 	 * Initialize the contents of the frame.
@@ -50,6 +64,11 @@ public class EquipmentScreen {
 		frame.getContentPane().add(btnUse);
 		
 		JButton btnExit = new JButton("Exit");
+		btnExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				manager.launchMainScreen();
+			}
+		});
 		btnExit.setFont(new Font("Dialog", Font.BOLD, 12));
 		btnExit.setBounds(173, 268, 80, 30);
 		frame.getContentPane().add(btnExit);

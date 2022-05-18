@@ -6,10 +6,15 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class SaleMonsterScreen {
 
 	private JFrame frame;
+	
+	private GameManager manager;
+
 
 	/**
 	 * Launch the application.
@@ -32,6 +37,16 @@ public class SaleMonsterScreen {
 	 */
 	public SaleMonsterScreen() {
 		initialize();
+	}
+	
+	public SaleMonsterScreen(GameManager manager) {
+		this.manager = manager;
+		initialize();
+		frame.setVisible(true);
+	}
+	
+	public void closeWindow() {
+		frame.dispose();
 	}
 
 	/**
@@ -132,11 +147,21 @@ public class SaleMonsterScreen {
 		frame.getContentPane().add(lblNewLabel_2_1);
 		
 		JButton btnExit = new JButton("Exit");
+		btnExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				manager.launchMainScreen();
+			}
+		});
 		btnExit.setFont(new Font("Dialog", Font.BOLD, 12));
 		btnExit.setBounds(207, 316, 80, 30);
 		frame.getContentPane().add(btnExit);
 		
 		JButton btnItem = new JButton("Item");
+		btnItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				manager.launchSaleItemScreen();
+			}
+		});
 		btnItem.setFont(new Font("Dialog", Font.BOLD, 12));
 		btnItem.setBounds(110, 316, 80, 30);
 		frame.getContentPane().add(btnItem);

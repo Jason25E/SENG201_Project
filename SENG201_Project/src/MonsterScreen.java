@@ -6,10 +6,14 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MonsterScreen {
 
 	private JFrame frame;
+	
+	private GameManager manager;
 
 	/**
 	 * Launch the application.
@@ -32,6 +36,16 @@ public class MonsterScreen {
 	 */
 	public MonsterScreen() {
 		initialize();
+	}
+	
+	public MonsterScreen(GameManager manager) {
+		this.manager = manager;
+		initialize();
+		frame.setVisible(true);
+	}
+	
+	public void closeWindow() {
+		frame.dispose();
 	}
 
 	/**
@@ -101,6 +115,11 @@ public class MonsterScreen {
 		frame.getContentPane().add(btnEquipment_1_3_1);
 		
 		JButton btnEquipment_4_1 = new JButton("Exit");
+		btnEquipment_4_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				manager.launchMainScreen();
+			}
+		});
 		btnEquipment_4_1.setBounds(157, 351, 130, 25);
 		frame.getContentPane().add(btnEquipment_4_1);
 		
