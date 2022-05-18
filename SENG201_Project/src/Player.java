@@ -76,12 +76,21 @@ public class Player {
 	}
 	
 	public void buyItem(Item item, int goldUsed) {
-		item.gainQuantity();
+		boolean inList = false;
+		for (Item i: ItemList) {
+			if (i.getItemID() == item.getItemID()) {
+				i.gainQuantity();
+				i.setSellingPrice(item.getSellingPrice());
+				inList = true;
+			}
+		}
+		if (inList ==  false) {
+			addItem(item);
+		}
 		useGold(goldUsed);
 	}
 	
 	public void useItem(Item item, Monster monster) {
 		item.reduceQuantity();
-
 	}
 }

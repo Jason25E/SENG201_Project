@@ -1,16 +1,20 @@
 public class Item {
-	private String ItemID;
+	private String ItemName;
 	private String ItemEffect;
 	private int quantity;
+	private int purchasePrice;
+	private int sellingPrice;
 	
-	public Item(String ItemName, String effectDescription) {
-		ItemID = ItemName;
+	public Item(String ItemName, String effectDescription, int purchasePrice, int sellingPrice) {
+		this.ItemName = ItemName;
 		ItemEffect = effectDescription;
-		quantity = 0;
+		quantity = 1;
+		this.purchasePrice = purchasePrice;
+		this.sellingPrice = sellingPrice;
 	}
 	
 	public String getItemID() {
-		return ItemID;
+		return ItemName;
 	}
 	
 	public String getItemEffect() {
@@ -19,6 +23,18 @@ public class Item {
 	
 	public int getQuantity() {
 		return quantity;
+	}
+	
+	public int getPurchasePrice() {
+		return purchasePrice;
+	}
+	
+	public int getSellingPrice() {
+		return sellingPrice;
+	}
+	
+	public void setSellingPrice(int price) {
+		sellingPrice = price;
 	}
 	
 	public void gainQuantity() {

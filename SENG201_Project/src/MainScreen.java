@@ -63,7 +63,7 @@ public class MainScreen {
 		btnShop.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				manager.launchShopMonsterScreen();
+				manager.launchShopItemScreen();
 				closeWindow();
 			}
 		});

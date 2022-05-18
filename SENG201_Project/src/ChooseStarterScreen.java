@@ -89,22 +89,22 @@ public class ChooseStarterScreen {
 		frame.getContentPane().add(lblChooseAStarting);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(ChooseStarterScreen.class.getResource("/Images/Bats.png")));
+		lblNewLabel.setIcon(new ImageIcon(ChooseStarterScreen.class.getResource("/Images/Monster/Bat.png")));
 		lblNewLabel.setBounds(29, 128, 149, 121);
 		frame.getContentPane().add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(ChooseStarterScreen.class.getResource("/Images/Slime.png")));
+		lblNewLabel_1.setIcon(new ImageIcon(ChooseStarterScreen.class.getResource("/Images/Monster/Slime.png")));
 		lblNewLabel_1.setBounds(218, 114, 108, 119);
 		frame.getContentPane().add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setIcon(new ImageIcon(ChooseStarterScreen.class.getResource("/Images/Skeleton.png")));
+		lblNewLabel_2.setIcon(new ImageIcon(ChooseStarterScreen.class.getResource("/Images/Monster/Skeleton.png")));
 		lblNewLabel_2.setBounds(483, 101, 141, 132);
 		frame.getContentPane().add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("");
-		lblNewLabel_3.setIcon(new ImageIcon(ChooseStarterScreen.class.getResource("/Images/Ghost.png")));
+		lblNewLabel_3.setIcon(new ImageIcon(ChooseStarterScreen.class.getResource("/Images/Monster/Ghost.png")));
 		lblNewLabel_3.setBounds(344, 105, 128, 144);
 		frame.getContentPane().add(lblNewLabel_3);
 		

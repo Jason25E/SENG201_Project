@@ -7,6 +7,14 @@ public class GameManager {
 	private String difficulty;
 	private int startGold = 10;
 	
+	public int RandomFoodInShop = 1;
+	public int RandomEquipmentInShop = 0 ;
+	public int RandomEquipmentInShopTwo = 2;
+	public int RandomMonsterInShop = 0;
+	public int RandomMonsterInShopTwo = 2;
+	public int RandomMonsterInShopThree = 4;
+	
+	
 	public GameManager()
 	{
 		currentDay = 1;
@@ -48,11 +56,20 @@ public class GameManager {
 		}
 	}
 	
+	public void generateRandomValueInShop() {
+		RandomFoodInShop = (int)((Math.random() * (4 - 2)) + 2);
+		RandomEquipmentInShop = (int)((Math.random() * (2 - 1)) + 1);
+		RandomEquipmentInShopTwo = (int)((Math.random() * (4 - 3)) + 3);
+		RandomMonsterInShop = (int)((Math.random() * (2 - 1)) + 1);
+		RandomMonsterInShopTwo = (int)((Math.random() * (4 - 3)) + 3);
+		RandomMonsterInShopThree = (int)((Math.random() * (6 - 5)) + 5);
+	}
+	
 	public void sleep()
 	{
 		reduceDayRemain();
+		generateRandomValueInShop();
 	}
-	
 	
 	/**
 	 * Control the launch and close of all screens
@@ -100,16 +117,18 @@ public class GameManager {
 		mainScreen.closeWindow();
 	}
 	
+	/*
 	public void launchShopMonsterScreen()
 	{
 		ShopMonsterScreen shopScreen = new ShopMonsterScreen(this);
 	}
 	
-	public void closeShopScreen(ShopMonsterScreen shopMonsterScreen)
+	public void closeShopMonsterScreen(ShopMonsterScreen shopMonsterScreen)
 	{
 		shopMonsterScreen.closeWindow();
 		launchMainScreen();
 	}
+	*/
 	
 	public void launchShopItemScreen()
 	{
@@ -122,6 +141,7 @@ public class GameManager {
 		launchMainScreen();
 	}
 	
+	/*
 	public void launchItemScreen()
 	{
 		ItemScreen itemScreen = new ItemScreen(this);
@@ -174,6 +194,7 @@ public class GameManager {
 	{
 		
 	}
+	*/
 	
 	public static void main(String[] argv) {
 		GameManager manager = new GameManager();
