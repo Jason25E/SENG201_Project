@@ -61,15 +61,19 @@ public class ShopMonsterScreen {
 		frame.getContentPane().add(rdbtnMonster);
 		
 		JButton btnExit_1 = new JButton("Exit");
-		btnExit_1.setBounds(93, 229, 130, 30);
+		btnExit_1.setBounds(27, 229, 130, 30);
 		frame.getContentPane().add(btnExit_1);
 		
 		JButton btnItem = new JButton("Item");
-		btnItem.setBounds(235, 229, 117, 30);
+		btnItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnItem.setBounds(240, 229, 117, 30);
 		frame.getContentPane().add(btnItem);
 		
 		JButton btnBuy = new JButton("buy");
-		btnBuy.setBounds(364, 229, 130, 30);
+		btnBuy.setBounds(446, 229, 130, 30);
 		frame.getContentPane().add(btnBuy);
 		
 		JLabel label = new JLabel("");
@@ -79,32 +83,22 @@ public class ShopMonsterScreen {
 		
 		JLabel label_1 = new JLabel("");
 		label_1.setIcon(new ImageIcon(ShopMonsterScreen.class.getResource("/Images/ShopSlime.png")));
-		label_1.setBounds(156, 81, 130, 120);
+		label_1.setBounds(235, 81, 130, 120);
 		frame.getContentPane().add(label_1);
 		
 		JRadioButton rdbtnMonster_1 = new JRadioButton("monster");
 		rdbtnMonster_1.setForeground(Color.BLACK);
-		rdbtnMonster_1.setBounds(156, 35, 130, 38);
+		rdbtnMonster_1.setBounds(235, 35, 130, 38);
 		frame.getContentPane().add(rdbtnMonster_1);
 		
 		JLabel label_2 = new JLabel("");
 		label_2.setIcon(new ImageIcon(ShopMonsterScreen.class.getResource("/Images/ShopGhost.png")));
-		label_2.setBounds(297, 81, 130, 120);
+		label_2.setBounds(450, 81, 130, 120);
 		frame.getContentPane().add(label_2);
 		
 		JRadioButton rdbtnMonster_2 = new JRadioButton("monster");
 		rdbtnMonster_2.setForeground(Color.BLACK);
-		rdbtnMonster_2.setBounds(297, 35, 130, 38);
+		rdbtnMonster_2.setBounds(450, 35, 130, 38);
 		frame.getContentPane().add(rdbtnMonster_2);
-		
-		JLabel label_3 = new JLabel("");
-		label_3.setIcon(new ImageIcon(ShopMonsterScreen.class.getResource("/Images/ShopWitch.png")));
-		label_3.setBounds(441, 81, 130, 120);
-		frame.getContentPane().add(label_3);
-		
-		JRadioButton rdbtnMonster_3 = new JRadioButton("monster");
-		rdbtnMonster_3.setForeground(Color.BLACK);
-		rdbtnMonster_3.setBounds(441, 35, 130, 38);
-		frame.getContentPane().add(rdbtnMonster_3);
 	}
 }
