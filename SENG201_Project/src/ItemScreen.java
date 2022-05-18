@@ -68,7 +68,7 @@ public class ItemScreen {
 		frame.getContentPane().add(lblX);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(ItemScreen.class.getResource("/Images/Watermelons.png")));
+		lblNewLabel.setIcon(new ImageIcon(ItemScreen.class.getResource("/Images/Food/Watermelons.png")));
 		lblNewLabel.setBounds(199, 8, 61, 56);
 		frame.getContentPane().add(lblNewLabel);
 		
@@ -83,7 +83,7 @@ public class ItemScreen {
 		frame.getContentPane().add(lblX_1);
 		
 		JLabel lblNewLabel_4 = new JLabel("");
-		lblNewLabel_4.setIcon(new ImageIcon(ItemScreen.class.getResource("/Images/Sandwich.png")));
+		lblNewLabel_4.setIcon(new ImageIcon(ItemScreen.class.getResource("/Images/Food/Sandwich.png")));
 		lblNewLabel_4.setBounds(199, 72, 61, 56);
 		frame.getContentPane().add(lblNewLabel_4);
 		
@@ -98,7 +98,7 @@ public class ItemScreen {
 		frame.getContentPane().add(lblX_2);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(ItemScreen.class.getResource("/Images/Steaks.png")));
+		lblNewLabel_1.setIcon(new ImageIcon(ItemScreen.class.getResource("/Images/Food/Steaks.png")));
 		lblNewLabel_1.setBounds(199, 136, 61, 56);
 		frame.getContentPane().add(lblNewLabel_1);
 		
@@ -113,7 +113,7 @@ public class ItemScreen {
 		frame.getContentPane().add(lblX_3);
 		
 		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setIcon(new ImageIcon(ItemScreen.class.getResource("/Images/Coffee.png")));
+		lblNewLabel_2.setIcon(new ImageIcon(ItemScreen.class.getResource("/Images/Food/Coffee.png")));
 		lblNewLabel_2.setBounds(199, 200, 61, 56);
 		frame.getContentPane().add(lblNewLabel_2);
 	}

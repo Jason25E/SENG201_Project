@@ -125,22 +125,22 @@ public class MonsterScreen {
 		frame.getContentPane().add(label_3);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon(MonsterScreen.class.getResource("/Images/Witch.png")));
+		lblNewLabel.setIcon(new ImageIcon(MonsterScreen.class.getResource("/Images/Monster/Bat.png")));
 		lblNewLabel.setBounds(171, 8, 116, 65);
 		frame.getContentPane().add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("New label");
-		lblNewLabel_1.setIcon(new ImageIcon(MonsterScreen.class.getResource("/Images/Bats.png")));
+		lblNewLabel_1.setIcon(new ImageIcon(MonsterScreen.class.getResource("/Images/Monster/Demon.png")));
 		lblNewLabel_1.setBounds(178, 85, 116, 65);
 		frame.getContentPane().add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("New label");
-		lblNewLabel_2.setIcon(new ImageIcon(MonsterScreen.class.getResource("/Images/Demon.png")));
+		lblNewLabel_2.setIcon(new ImageIcon(MonsterScreen.class.getResource("/Images/Monster/Slime.png")));
 		lblNewLabel_2.setBounds(171, 162, 116, 65);
 		frame.getContentPane().add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_2_1 = new JLabel("New label");
-		lblNewLabel_2_1.setIcon(new ImageIcon(MonsterScreen.class.getResource("/Images/Skeleton.png")));
+		lblNewLabel_2_1.setIcon(new ImageIcon(MonsterScreen.class.getResource("/Images/Monster/Witch.png")));
 		lblNewLabel_2_1.setBounds(171, 239, 116, 65);
 		frame.getContentPane().add(lblNewLabel_2_1);
 	}

@@ -65,7 +65,7 @@ public class EquipmentScreen {
 		frame.getContentPane().add(lblX);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(EquipmentScreen.class.getResource("/Images/Sword.png")));
+		lblNewLabel.setIcon(new ImageIcon(EquipmentScreen.class.getResource("/Images/Equipment/Sword.png")));
 		lblNewLabel.setBounds(199, 12, 61, 56);
 		frame.getContentPane().add(lblNewLabel);
 		
@@ -80,7 +80,7 @@ public class EquipmentScreen {
 		frame.getContentPane().add(lblX_1);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(EquipmentScreen.class.getResource("/Images/Axe.png")));
+		lblNewLabel_1.setIcon(new ImageIcon(EquipmentScreen.class.getResource("/Images/Equipment/Axe.png")));
 		lblNewLabel_1.setBounds(199, 76, 61, 56);
 		frame.getContentPane().add(lblNewLabel_1);
 		
@@ -95,7 +95,7 @@ public class EquipmentScreen {
 		frame.getContentPane().add(lblX_1_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setIcon(new ImageIcon(EquipmentScreen.class.getResource("/Images/Helmet.png")));
+		lblNewLabel_2.setIcon(new ImageIcon(EquipmentScreen.class.getResource("/Images/Equipment/Helmet.png")));
 		lblNewLabel_2.setBounds(199, 140, 61, 56);
 		frame.getContentPane().add(lblNewLabel_2);
 		
@@ -110,7 +110,7 @@ public class EquipmentScreen {
 		frame.getContentPane().add(lblX_1_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("");
-		lblNewLabel_3.setIcon(new ImageIcon(EquipmentScreen.class.getResource("/Images/Shield.png")));
+		lblNewLabel_3.setIcon(new ImageIcon(EquipmentScreen.class.getResource("/Images/Equipment/Shield.png")));
 		lblNewLabel_3.setBounds(199, 204, 61, 56);
 		frame.getContentPane().add(lblNewLabel_3);
 	}

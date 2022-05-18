@@ -71,7 +71,7 @@ public class SaleItemScreen {
 		frame.getContentPane().add(lblX);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(ItemScreen.class.getResource("/Images/Watermelons.png")));
+		lblNewLabel.setIcon(new ImageIcon(SaleItemScreen.class.getResource("/Images/Food/Watermelons.png")));
 		lblNewLabel.setBounds(199, 8, 61, 56);
 		frame.getContentPane().add(lblNewLabel);
 		
@@ -86,7 +86,7 @@ public class SaleItemScreen {
 		frame.getContentPane().add(lblX_1);
 		
 		JLabel lblNewLabel_4 = new JLabel("");
-		lblNewLabel_4.setIcon(new ImageIcon(ItemScreen.class.getResource("/Images/Sandwich.png")));
+		lblNewLabel_4.setIcon(new ImageIcon(SaleItemScreen.class.getResource("/Images/Food/Sandwich.png")));
 		lblNewLabel_4.setBounds(199, 72, 61, 56);
 		frame.getContentPane().add(lblNewLabel_4);
 		
@@ -101,7 +101,7 @@ public class SaleItemScreen {
 		frame.getContentPane().add(lblX_2);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(ItemScreen.class.getResource("/Images/Steaks.png")));
+		lblNewLabel_1.setIcon(new ImageIcon(SaleItemScreen.class.getResource("/Images/Food/Steaks.png")));
 		lblNewLabel_1.setBounds(199, 136, 61, 56);
 		frame.getContentPane().add(lblNewLabel_1);
 		
@@ -116,7 +116,7 @@ public class SaleItemScreen {
 		frame.getContentPane().add(lblX_3);
 		
 		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setIcon(new ImageIcon(ItemScreen.class.getResource("/Images/Coffee.png")));
+		lblNewLabel_2.setIcon(new ImageIcon(SaleItemScreen.class.getResource("/Images/Food/Coffee.png")));
 		lblNewLabel_2.setBounds(199, 200, 61, 56);
 		frame.getContentPane().add(lblNewLabel_2);
 		
@@ -136,7 +136,7 @@ public class SaleItemScreen {
 		frame.getContentPane().add(lblX_4);
 		
 		JLabel lblNewLabel_3 = new JLabel("");
-		lblNewLabel_3.setIcon(new ImageIcon(SaleItemScreen.class.getResource("/Images/Sword.png")));
+		lblNewLabel_3.setIcon(new ImageIcon(SaleItemScreen.class.getResource("/Images/Equipment/Sword.png")));
 		lblNewLabel_3.setBounds(199, 262, 61, 56);
 		frame.getContentPane().add(lblNewLabel_3);
 		
@@ -151,7 +151,7 @@ public class SaleItemScreen {
 		frame.getContentPane().add(lblX_5);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("");
-		lblNewLabel_1_1.setIcon(new ImageIcon(SaleItemScreen.class.getResource("/Images/Axe.png")));
+		lblNewLabel_1_1.setIcon(new ImageIcon(SaleItemScreen.class.getResource("/Images/Equipment/Axe.png")));
 		lblNewLabel_1_1.setBounds(199, 326, 61, 56);
 		frame.getContentPane().add(lblNewLabel_1_1);
 		
@@ -166,7 +166,7 @@ public class SaleItemScreen {
 		frame.getContentPane().add(lblX_6);
 		
 		JLabel lblNewLabel_2_1 = new JLabel("");
-		lblNewLabel_2_1.setIcon(new ImageIcon(SaleItemScreen.class.getResource("/Images/Helmet.png")));
+		lblNewLabel_2_1.setIcon(new ImageIcon(SaleItemScreen.class.getResource("/Images/Equipment/Helmet.png")));
 		lblNewLabel_2_1.setBounds(199, 390, 61, 56);
 		frame.getContentPane().add(lblNewLabel_2_1);
 		
@@ -181,7 +181,7 @@ public class SaleItemScreen {
 		frame.getContentPane().add(lblX_7);
 		
 		JLabel lblNewLabel_3_1 = new JLabel("");
-		lblNewLabel_3_1.setIcon(new ImageIcon(SaleItemScreen.class.getResource("/Images/Shield.png")));
+		lblNewLabel_3_1.setIcon(new ImageIcon(SaleItemScreen.class.getResource("/Images/Equipment/Shield.png")));
 		lblNewLabel_3_1.setBounds(199, 454, 61, 56);
 		frame.getContentPane().add(lblNewLabel_3_1);
 	}
