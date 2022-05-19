@@ -60,15 +60,20 @@ public class ItemScreen {
 	 */
 	private void initialize() {
 		
-		int ItemListSize = manager.getPlayer().getItemList().size();
-		ArrayList<Item> ItemList = manager.getPlayer().getItemList();
+		int ItemListSize = manager.getPlayer().getFoodList().size();
+		ArrayList<Item> ItemList = manager.getPlayer().getFoodList();
+		
+		frame = new JFrame();
+		frame.setBounds(100, 100, 274, 371);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
 		
 		JLabel lblEffect = new JLabel("New label");
 		lblEffect.setBounds(12, 264, 248, 22);
 		frame.getContentPane().add(lblEffect);
 		
 		if (ItemListSize >= 1) {
-			Item FirstItem = manager.getPlayer().getItemList().get(0);
+			Item FirstItem = manager.getPlayer().getFoodList().get(0);
 			
 			int FirstItemQuanitty = FirstItem.getQuantity();
 			String FirstItemQuanittyString = "x0";
@@ -84,7 +89,8 @@ public class ItemScreen {
 			lblX.setBounds(218, 40, 42, 24);
 			frame.getContentPane().add(lblX);
 			
-			JRadioButton rdbtnNameOfItem = new JRadioButton("Watermelon");
+			String FirstItemName = FirstItem.getItemID();
+			JRadioButton rdbtnNameOfItem = new JRadioButton(FirstItemName);
 			rdbtnNameOfItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					selectedFood = ItemList.get(0);
@@ -95,12 +101,15 @@ public class ItemScreen {
 			rdbtnNameOfItem.setBounds(8, 8, 177, 56);
 			frame.getContentPane().add(rdbtnNameOfItem);
 			
-			
+			JLabel lblNewLabel = new JLabel("");
+			lblNewLabel.setIcon(new ImageIcon(ItemScreen.class.getResource("/Images/Food/" + FirstItemName + ".png")));
+			lblNewLabel.setBounds(199, 8, 61, 56);
+			frame.getContentPane().add(lblNewLabel);
 			
 		} 
 		
 		if (ItemListSize >= 2) {
-			Item SecondItem = manager.getPlayer().getItemList().get(1);
+			Item SecondItem = manager.getPlayer().getFoodList().get(1);
 			
 			int SecondItemQuanitty = SecondItem.getQuantity();
 			String SecondItemQuanittyString = "";
@@ -116,7 +125,8 @@ public class ItemScreen {
 			lblX_1.setBounds(218, 104, 42, 24);
 			frame.getContentPane().add(lblX_1);
 			
-			JRadioButton rdbtnNameOfItem_1 = new JRadioButton("Sandwich");
+			String SecondItemName = SecondItem.getItemID();
+			JRadioButton rdbtnNameOfItem_1 = new JRadioButton(SecondItemName);
 			rdbtnNameOfItem_1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					selectedFood = ItemList.get(1);
@@ -127,11 +137,15 @@ public class ItemScreen {
 			rdbtnNameOfItem_1.setBounds(8, 72, 177, 56);
 			frame.getContentPane().add(rdbtnNameOfItem_1);
 			
+			JLabel lblNewLabel_4 = new JLabel("");
+			lblNewLabel_4.setIcon(new ImageIcon(ItemScreen.class.getResource("/Images/Food/" + SecondItemName + ".png")));
+			lblNewLabel_4.setBounds(199, 72, 61, 56);
+			frame.getContentPane().add(lblNewLabel_4);
 			
 		} 
 		
 		if (ItemListSize >= 3) {
-			Item ThirdItem = manager.getPlayer().getItemList().get(2);
+			Item ThirdItem = manager.getPlayer().getFoodList().get(2);
 			
 			int ThirdItemQuanitty = ThirdItem.getQuantity();
 			String ThirdItemQuanittyString = "";
@@ -147,7 +161,8 @@ public class ItemScreen {
 			lblX_2.setBounds(218, 168, 42, 24);
 			frame.getContentPane().add(lblX_2);
 			
-			JRadioButton rdbtnNameOfItem_2 = new JRadioButton("Steak");
+			String ThirdItemName = ThirdItem.getItemID();
+			JRadioButton rdbtnNameOfItem_2 = new JRadioButton(ThirdItemName);
 			rdbtnNameOfItem_2.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					selectedFood = ItemList.get(2);
@@ -158,13 +173,16 @@ public class ItemScreen {
 			rdbtnNameOfItem_2.setBounds(8, 136, 177, 56);
 			frame.getContentPane().add(rdbtnNameOfItem_2);
 
-			
+			JLabel lblNewLabel_1 = new JLabel("");
+			lblNewLabel_1.setIcon(new ImageIcon(ItemScreen.class.getResource("/Images/Food/" + ThirdItemName + ".png")));
+			lblNewLabel_1.setBounds(199, 136, 61, 56);
+			frame.getContentPane().add(lblNewLabel_1);
 			
 			
 		} 
 		
 		if (ItemListSize == 4){
-			Item FourthItem = manager.getPlayer().getItemList().get(3);
+			Item FourthItem = manager.getPlayer().getFoodList().get(3);
 			
 			int FourthItemQuanitty = FourthItem.getQuantity();
 			String FourthItemQuanittyString = "";
@@ -180,7 +198,8 @@ public class ItemScreen {
 			lblX_3.setBounds(218, 245, 42, 24);
 			frame.getContentPane().add(lblX_3);
 			
-			JRadioButton rdbtnNameOfItem_3 = new JRadioButton("Coffee");
+			String FourthItemName = FourthItem.getItemID();
+			JRadioButton rdbtnNameOfItem_3 = new JRadioButton(FourthItemName);
 			rdbtnNameOfItem_3.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					selectedFood = ItemList.get(3);
@@ -191,19 +210,18 @@ public class ItemScreen {
 			rdbtnNameOfItem_3.setBounds(8, 200, 177, 56);
 			frame.getContentPane().add(rdbtnNameOfItem_3);
 			
-			
+			JLabel lblNewLabel_2 = new JLabel("");
+			lblNewLabel_2.setIcon(new ImageIcon(ItemScreen.class.getResource("/Images/Food/" + FourthItemName + ".png")));
+			lblNewLabel_2.setBounds(199, 200, 61, 56);
+			frame.getContentPane().add(lblNewLabel_2);
 			
 		}
-		
-		frame = new JFrame();
-		frame.setBounds(100, 100, 274, 371);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
 		
 		JButton btnExit = new JButton("Exit");
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				manager.launchMainScreen();
+				closeWindow();
 			}
 		});
 		btnExit.setFont(new Font("Dialog", Font.BOLD, 12));
@@ -214,28 +232,6 @@ public class ItemScreen {
 		btnUse.setFont(new Font("Dialog", Font.BOLD, 12));
 		btnUse.setBounds(12, 298, 80, 30);
 		frame.getContentPane().add(btnUse);
-		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(ItemScreen.class.getResource("/Images/Food/Watermelons.png")));
-		lblNewLabel.setBounds(199, 8, 61, 56);
-		frame.getContentPane().add(lblNewLabel);
-		
-		JLabel lblNewLabel_4 = new JLabel("");
-		lblNewLabel_4.setIcon(new ImageIcon(ItemScreen.class.getResource("/Images/Food/Sandwich.png")));
-		lblNewLabel_4.setBounds(199, 72, 61, 56);
-		frame.getContentPane().add(lblNewLabel_4);
-		
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(ItemScreen.class.getResource("/Images/Food/Steaks.png")));
-		lblNewLabel_1.setBounds(199, 136, 61, 56);
-		frame.getContentPane().add(lblNewLabel_1);
-		
-		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setIcon(new ImageIcon(ItemScreen.class.getResource("/Images/Food/Coffee.png")));
-		lblNewLabel_2.setBounds(199, 200, 61, 56);
-		frame.getContentPane().add(lblNewLabel_2);
-		
-		
 
 	}
 }
