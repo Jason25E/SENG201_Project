@@ -68,7 +68,7 @@ public class ItemScreen {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblEffect = new JLabel("New label");
+		JLabel lblEffect = new JLabel("");
 		lblEffect.setBounds(12, 264, 248, 22);
 		frame.getContentPane().add(lblEffect);
 		

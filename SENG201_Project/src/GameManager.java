@@ -173,7 +173,7 @@ public class GameManager {
 		launchMainScreen();
 	}
 	
-	/*
+	
 	public void launchEquipmentScreen()
 	{
 		EquipmentScreen equipmentScreen = new EquipmentScreen(this);
@@ -185,6 +185,7 @@ public class GameManager {
 		launchMainScreen();
 	}
 	
+	/*
 	public void launchSelectBattleScreen()
 	{
 		SelectBattleScreen selectBattleScreen = new SelectBattleScreen(this);
