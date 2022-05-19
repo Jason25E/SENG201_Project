@@ -5,6 +5,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.JLabel;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import java.awt.Color;
 import java.awt.event.ActionListener;
@@ -13,8 +14,10 @@ import java.awt.event.ActionEvent;
 public class EquipmentScreen {
 
 	private JFrame frame;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
 	
 	private GameManager manager;
+	private Item selectedEquipment = null;
 	/**
 	 * Launch the application.
 	 */

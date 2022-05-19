@@ -5,17 +5,22 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollBar;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.JLabel;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import java.awt.Color;
 
 public class ItemScreen {
 
 	private JFrame frame;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
 	
 	private GameManager manager;
+	private Item selectedFood = null;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -54,8 +59,144 @@ public class ItemScreen {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
+		int ItemListSize = manager.getPlayer().getItemList().size();
+		ArrayList<Item> ItemList = manager.getPlayer().getItemList();
+		
+		JLabel lblEffect = new JLabel("New label");
+		lblEffect.setBounds(12, 264, 248, 22);
+		frame.getContentPane().add(lblEffect);
+		
+		if (ItemListSize >= 1) {
+			Item FirstItem = manager.getPlayer().getItemList().get(0);
+			
+			int FirstItemQuanitty = FirstItem.getQuantity();
+			String FirstItemQuanittyString = "x0";
+			if (FirstItemQuanitty >= 10) {
+				FirstItemQuanittyString = "x" + FirstItemQuanitty;
+			} else {
+				FirstItemQuanittyString = "x0" + FirstItemQuanitty;
+			}
+			
+			JLabel lblX = new JLabel(FirstItemQuanittyString);
+			lblX.setForeground(Color.BLACK);
+			lblX.setFont(new Font("Dialog", Font.BOLD, 20));
+			lblX.setBounds(218, 40, 42, 24);
+			frame.getContentPane().add(lblX);
+			
+			JRadioButton rdbtnNameOfItem = new JRadioButton("Watermelon");
+			rdbtnNameOfItem.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					selectedFood = ItemList.get(0);
+					lblEffect.setText(selectedFood.getItemEffect());
+				}
+			});
+			buttonGroup.add(rdbtnNameOfItem);
+			rdbtnNameOfItem.setBounds(8, 8, 177, 56);
+			frame.getContentPane().add(rdbtnNameOfItem);
+			
+			
+			
+		} 
+		
+		if (ItemListSize >= 2) {
+			Item SecondItem = manager.getPlayer().getItemList().get(1);
+			
+			int SecondItemQuanitty = SecondItem.getQuantity();
+			String SecondItemQuanittyString = "";
+			if (SecondItemQuanitty >= 10) {
+				SecondItemQuanittyString = "x" + SecondItemQuanitty;
+			} else {
+				SecondItemQuanittyString = "x0" + SecondItemQuanitty;
+			}
+			
+			JLabel lblX_1 = new JLabel(SecondItemQuanittyString);
+			lblX_1.setForeground(Color.BLACK);
+			lblX_1.setFont(new Font("Dialog", Font.BOLD, 20));
+			lblX_1.setBounds(218, 104, 42, 24);
+			frame.getContentPane().add(lblX_1);
+			
+			JRadioButton rdbtnNameOfItem_1 = new JRadioButton("Sandwich");
+			rdbtnNameOfItem_1.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					selectedFood = ItemList.get(1);
+					lblEffect.setText(selectedFood.getItemEffect());
+				}
+			});
+			buttonGroup.add(rdbtnNameOfItem_1);
+			rdbtnNameOfItem_1.setBounds(8, 72, 177, 56);
+			frame.getContentPane().add(rdbtnNameOfItem_1);
+			
+			
+		} 
+		
+		if (ItemListSize >= 3) {
+			Item ThirdItem = manager.getPlayer().getItemList().get(2);
+			
+			int ThirdItemQuanitty = ThirdItem.getQuantity();
+			String ThirdItemQuanittyString = "";
+			if (ThirdItemQuanitty >= 10) {
+				ThirdItemQuanittyString = "x" + ThirdItemQuanitty;
+			} else {
+				ThirdItemQuanittyString = "x0" + ThirdItemQuanitty;
+			}
+			
+			JLabel lblX_2 = new JLabel(ThirdItemQuanittyString);
+			lblX_2.setForeground(Color.BLACK);
+			lblX_2.setFont(new Font("Dialog", Font.BOLD, 20));
+			lblX_2.setBounds(218, 168, 42, 24);
+			frame.getContentPane().add(lblX_2);
+			
+			JRadioButton rdbtnNameOfItem_2 = new JRadioButton("Steak");
+			rdbtnNameOfItem_2.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					selectedFood = ItemList.get(2);
+					lblEffect.setText(selectedFood.getItemEffect());
+				}
+			});
+			buttonGroup.add(rdbtnNameOfItem_2);
+			rdbtnNameOfItem_2.setBounds(8, 136, 177, 56);
+			frame.getContentPane().add(rdbtnNameOfItem_2);
+
+			
+			
+			
+		} 
+		
+		if (ItemListSize == 4){
+			Item FourthItem = manager.getPlayer().getItemList().get(3);
+			
+			int FourthItemQuanitty = FourthItem.getQuantity();
+			String FourthItemQuanittyString = "";
+			if (FourthItemQuanitty >= 10) {
+				FourthItemQuanittyString = "x" + FourthItemQuanitty;
+			} else {
+				FourthItemQuanittyString = "x0" + FourthItemQuanitty;
+			}
+			
+			JLabel lblX_3 = new JLabel(FourthItemQuanittyString);
+			lblX_3.setForeground(Color.BLACK);
+			lblX_3.setFont(new Font("Dialog", Font.BOLD, 20));
+			lblX_3.setBounds(218, 245, 42, 24);
+			frame.getContentPane().add(lblX_3);
+			
+			JRadioButton rdbtnNameOfItem_3 = new JRadioButton("Coffee");
+			rdbtnNameOfItem_3.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					selectedFood = ItemList.get(3);
+					lblEffect.setText(selectedFood.getItemEffect());
+				}
+			});
+			buttonGroup.add(rdbtnNameOfItem_3);
+			rdbtnNameOfItem_3.setBounds(8, 200, 177, 56);
+			frame.getContentPane().add(rdbtnNameOfItem_3);
+			
+			
+			
+		}
+		
 		frame = new JFrame();
-		frame.setBounds(100, 100, 274, 354);
+		frame.setBounds(100, 100, 274, 371);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -66,72 +207,35 @@ public class ItemScreen {
 			}
 		});
 		btnExit.setFont(new Font("Dialog", Font.BOLD, 12));
-		btnExit.setBounds(180, 281, 80, 30);
+		btnExit.setBounds(180, 298, 80, 30);
 		frame.getContentPane().add(btnExit);
 		
 		JButton btnUse = new JButton("Use");
 		btnUse.setFont(new Font("Dialog", Font.BOLD, 12));
-		btnUse.setBounds(12, 281, 80, 30);
+		btnUse.setBounds(12, 298, 80, 30);
 		frame.getContentPane().add(btnUse);
-		
-		JRadioButton rdbtnNameOfItem = new JRadioButton("Watermelon");
-		rdbtnNameOfItem.setBounds(8, 8, 177, 56);
-		frame.getContentPane().add(rdbtnNameOfItem);
-		
-		JLabel lblX = new JLabel("x01");
-		lblX.setForeground(Color.BLACK);
-		lblX.setFont(new Font("Dialog", Font.BOLD, 20));
-		lblX.setBounds(218, 40, 42, 24);
-		frame.getContentPane().add(lblX);
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(ItemScreen.class.getResource("/Images/Food/Watermelons.png")));
 		lblNewLabel.setBounds(199, 8, 61, 56);
 		frame.getContentPane().add(lblNewLabel);
 		
-		JRadioButton rdbtnNameOfItem_1 = new JRadioButton("Sandwich");
-		rdbtnNameOfItem_1.setBounds(8, 72, 177, 56);
-		frame.getContentPane().add(rdbtnNameOfItem_1);
-		
-		JLabel lblX_1 = new JLabel("x01");
-		lblX_1.setForeground(Color.BLACK);
-		lblX_1.setFont(new Font("Dialog", Font.BOLD, 20));
-		lblX_1.setBounds(218, 104, 42, 24);
-		frame.getContentPane().add(lblX_1);
-		
 		JLabel lblNewLabel_4 = new JLabel("");
 		lblNewLabel_4.setIcon(new ImageIcon(ItemScreen.class.getResource("/Images/Food/Sandwich.png")));
 		lblNewLabel_4.setBounds(199, 72, 61, 56);
 		frame.getContentPane().add(lblNewLabel_4);
-		
-		JRadioButton rdbtnNameOfItem_2 = new JRadioButton("Steak");
-		rdbtnNameOfItem_2.setBounds(8, 136, 177, 56);
-		frame.getContentPane().add(rdbtnNameOfItem_2);
-		
-		JLabel lblX_2 = new JLabel("x01");
-		lblX_2.setForeground(Color.BLACK);
-		lblX_2.setFont(new Font("Dialog", Font.BOLD, 20));
-		lblX_2.setBounds(218, 168, 42, 24);
-		frame.getContentPane().add(lblX_2);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(ItemScreen.class.getResource("/Images/Food/Steaks.png")));
 		lblNewLabel_1.setBounds(199, 136, 61, 56);
 		frame.getContentPane().add(lblNewLabel_1);
 		
-		JRadioButton rdbtnNameOfItem_3 = new JRadioButton("Coffee");
-		rdbtnNameOfItem_3.setBounds(8, 200, 177, 56);
-		frame.getContentPane().add(rdbtnNameOfItem_3);
-		
-		JLabel lblX_3 = new JLabel("x01");
-		lblX_3.setForeground(Color.BLACK);
-		lblX_3.setFont(new Font("Dialog", Font.BOLD, 20));
-		lblX_3.setBounds(218, 245, 42, 24);
-		frame.getContentPane().add(lblX_3);
-		
 		JLabel lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setIcon(new ImageIcon(ItemScreen.class.getResource("/Images/Food/Coffee.png")));
 		lblNewLabel_2.setBounds(199, 200, 61, 56);
 		frame.getContentPane().add(lblNewLabel_2);
+		
+		
+
 	}
 }

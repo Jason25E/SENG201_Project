@@ -141,7 +141,7 @@ public class GameManager {
 		launchMainScreen();
 	}
 	
-	/*
+	
 	public void launchItemScreen()
 	{
 		ItemScreen itemScreen = new ItemScreen(this);
@@ -153,6 +153,7 @@ public class GameManager {
 		launchMainScreen();
 	}
 	
+	/*c
 	public void launchEquipmentScreen()
 	{
 		EquipmentScreen equipmentScreen = new EquipmentScreen(this);

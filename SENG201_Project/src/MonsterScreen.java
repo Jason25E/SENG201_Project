@@ -143,8 +143,8 @@ public class MonsterScreen {
 		label_3.setBounds(25, 248, 50, 50);
 		frame.getContentPane().add(label_3);
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon(MonsterScreen.class.getResource("/Images/Monster/Bat.png")));
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(MonsterScreen.class.getResource("/Images/Monster/Unknowns.png")));
 		lblNewLabel.setBounds(171, 8, 116, 65);
 		frame.getContentPane().add(lblNewLabel);
 		
