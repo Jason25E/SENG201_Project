@@ -5,7 +5,9 @@ public class Player {
 	private int goldAmount;
 	private int score;
 	private ArrayList<Monster> MonsterList = new ArrayList<Monster>();
-	private ArrayList<Item> ItemList = new ArrayList<Item>();
+	private ArrayList<Item> FoodList = new ArrayList<Item>();
+	private ArrayList<Item> EquipmentList = new ArrayList<Item>();
+	private int maxMonstersCanHave = 4;
 	
 	public Player(String playerName) {
 		PlayerID = playerName;
@@ -28,8 +30,12 @@ public class Player {
 		return MonsterList;
 	}
 	
-	public ArrayList<Item> getItemList() {
-		return ItemList;
+	public ArrayList<Item> getFoodList() {
+		return FoodList;
+	}
+	
+	public ArrayList<Item> getEquipmentList() {
+		return EquipmentList;
 	}
 	
 	public void setPlayerID(String name) {
@@ -45,15 +51,21 @@ public class Player {
 	}
 	
 	public void useGold(int amountUsed) {
-		goldAmount -= amountUsed;
+		if (goldAmount >= amountUsed) {
+			goldAmount -= amountUsed;
+		}
 	}
 	
 	public void addMonster(Monster newMonster) {
-		MonsterList.add(newMonster);
+		if (MonsterList.size() <= maxMonstersCanHave - 1) {
+			MonsterList.add(newMonster);
+		}
 	}
 	
 	public void removeMonster(Monster monster) {
-		MonsterList.remove(monster);
+		if (MonsterList.size() > 1) {
+			MonsterList.remove(monster);
+		}
 	}
 	
 	public void buyMonster(Monster newMonster, int goldUsed) {
@@ -66,8 +78,12 @@ public class Player {
 		gainGold(goldGain);
 	}
 	
-	public void addItem(Item newItem) {
-		ItemList.add(newItem);
+	public void addFood(Item newItem) {
+		FoodList.add(newItem);
+	}
+	
+	public void addEquipment(Item newItem) {
+		EquipmentList.add(newItem);
 	}
 	
 	public void soldItem(Item item, int goldGain) {
@@ -75,9 +91,9 @@ public class Player {
 		gainGold(goldGain);
 	}
 	
-	public void buyItem(Item item, int goldUsed) {
+	public void buyFood(Item item, int goldUsed) {
 		boolean inList = false;
-		for (Item i: ItemList) {
+		for (Item i: FoodList) {
 			if (i.getItemID() == item.getItemID()) {
 				i.gainQuantity();
 				i.setSellingPrice(item.getSellingPrice());
@@ -85,12 +101,27 @@ public class Player {
 			}
 		}
 		if (inList ==  false) {
-			addItem(item);
+			addFood(item);
 		}
 		useGold(goldUsed);
 	}
 	
-	public void useItem(Item item, Monster monster) {
+	public void buyEquipment(Item item, int goldUsed) {
+		boolean inList = false;
+		for (Item i: EquipmentList) {
+			if (i.getItemID() == item.getItemID()) {
+				i.gainQuantity();
+				i.setSellingPrice(item.getSellingPrice());
+				inList = true;
+			}
+		}
+		if (inList ==  false) {
+			addEquipment(item);
+		}
+		useGold(goldUsed);
+	}
+	
+	public void useItem(Item item) {
 		item.reduceQuantity();
 	}
 }

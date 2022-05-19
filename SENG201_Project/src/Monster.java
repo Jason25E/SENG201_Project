@@ -9,7 +9,7 @@ public class Monster {
 	private int healingAmount;
 	private boolean faintedToday;
 	private int battleAmountToday;
-	private Equipment equipment;
+	private Equipment equipment = null;
 	private Skill skill;
 	
 	public Monster(String monsterID, String monsterName, String rarity, int attack, int defence, int healthPoint, int healingAmount, Skill newSkill) 

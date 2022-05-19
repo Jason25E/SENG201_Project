@@ -116,7 +116,11 @@ public class ShopItemScreen {
 				if (selectedItem != null) {
 					int price = selectedItem.getPurchasePrice();
 					if (manager.getPlayer().getGoldAmount() >= price) {
-						manager.getPlayer().buyItem(selectedItem, price);
+						if (selectedItem instanceof Food) {
+							manager.getPlayer().buyFood(selectedItem, price);
+						} else {
+							manager.getPlayer().buyEquipment(selectedItem, price);
+						}
 						lblMessage.setText("Success");
 						lblGold.setText(Integer.toString(manager.getPlayer().getGoldAmount()));
 					} else {

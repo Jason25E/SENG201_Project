@@ -64,7 +64,7 @@ public class ChooseStarterScreen {
 		 * initialize the four monster that allow the player to choose
 		 */
 		Skill batSkill = new Skill("Bit", "Has a base power of 12", 12);
-		Monster bat = new Monster("Bats", "Bat", "Common", 20, 10, 100, 20, batSkill);
+		Monster bat = new Monster("Bat", "Bat", "Common", 20, 10, 100, 20, batSkill);
 		
 		Skill slimeSkill = new Skill("Absorb", "Has a base power of 12", 12);
 		Monster slime = new Monster("Slime", "Slime", "Common", 10, 10, 100, 40, slimeSkill);

@@ -68,6 +68,12 @@ public class ShopDirection {
 		frmShop.getContentPane().add(btnBuy);
 		
 		JButton btnSale = new JButton("Sale");
+		btnSale.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				manager.launchSaleItemScreen();
+				closeWindow();
+			}
+		});
 		btnSale.setFont(new Font("Dialog", Font.BOLD, 12));
 		btnSale.setBounds(37, 94, 168, 70);
 		frmShop.getContentPane().add(btnSale);
