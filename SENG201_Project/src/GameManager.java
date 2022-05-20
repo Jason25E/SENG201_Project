@@ -185,6 +185,29 @@ public class GameManager {
 		launchMainScreen();
 	}
 	
+	public void launchSaleItemScreen()
+	{
+		SaleItemScreen SaleItemScreen = new SaleItemScreen(this);
+	}
+	
+	public void closeSaleItemScreen(SaleItemScreen SaleItemScreen)
+	{
+		SaleItemScreen.closeWindow();
+		launchMainScreen();
+	}
+	
+	public void launchSaleEquipmentScreen()
+	{
+		SaleEquipmentScreen saleEquipmentScreen = new SaleEquipmentScreen(this);
+	}
+	
+	public void closeSaleEquipmentScreen(SaleEquipmentScreen saleEquipmentScreen)
+	{
+		saleEquipmentScreen.closeWindow();
+		launchMainScreen();
+	}
+	
+	
 	/*
 	public void launchSelectBattleScreen()
 	{

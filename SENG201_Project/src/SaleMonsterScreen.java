@@ -150,21 +150,12 @@ public class SaleMonsterScreen {
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				manager.launchMainScreen();
+				closeWindow();
 			}
 		});
 		btnExit.setFont(new Font("Dialog", Font.BOLD, 12));
 		btnExit.setBounds(207, 316, 80, 30);
 		frame.getContentPane().add(btnExit);
-		
-		JButton btnItem = new JButton("Item");
-		btnItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				manager.launchSaleItemScreen();
-			}
-		});
-		btnItem.setFont(new Font("Dialog", Font.BOLD, 12));
-		btnItem.setBounds(110, 316, 80, 30);
-		frame.getContentPane().add(btnItem);
 		
 		JButton btnUse = new JButton("Sale");
 		btnUse.setFont(new Font("Dialog", Font.BOLD, 12));
