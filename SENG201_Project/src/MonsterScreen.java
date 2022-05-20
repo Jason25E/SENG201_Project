@@ -249,7 +249,7 @@ public class MonsterScreen {
 		frmMyMonsters.getContentPane().add(label_3);
 		JCheckBox cbMonster_4 = new JCheckBox("Null");
 		
-		if (manager.getPlayer().getMonsterList().size() >= 3) {
+		if (manager.getPlayer().getMonsterList().size() >= 4) {
 			/**
 			 * Try to get and set the info for fourth Monster only if it the player have the fourth Monster in the Monster Array
 			 */

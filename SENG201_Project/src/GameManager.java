@@ -207,6 +207,16 @@ public class GameManager {
 		launchMainScreen();
 	}
 	
+	public void launchSaleMonsterScreen()
+	{
+		SaleMonsterScreen SaleMonsterScreen = new SaleMonsterScreen(this);
+	}
+	
+	public void closelaunchSaleMonsterScreen(SaleMonsterScreen SaleMonsterScreen)
+	{
+		SaleMonsterScreen.closeWindow();
+		launchMainScreen();
+	}
 	
 	/*
 	public void launchSelectBattleScreen()
