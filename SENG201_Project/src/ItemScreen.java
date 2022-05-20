@@ -5,6 +5,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.JLabel;
@@ -64,7 +65,7 @@ public class ItemScreen {
 		ArrayList<Item> ItemList = manager.getPlayer().getFoodList();
 		
 		frmMyItems = new JFrame();
-		frmMyItems.setTitle("My Item");
+		frmMyItems.setTitle("My Food");
 		frmMyItems.setBounds(100, 100, 274, 401);
 		frmMyItems.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMyItems.getContentPane().setLayout(null);
@@ -73,12 +74,14 @@ public class ItemScreen {
 		lblEffect.setBounds(22, 270, 248, 22);
 		frmMyItems.getContentPane().add(lblEffect);
 		
+
 		String[] monsterName = new String[4];
 		int index = 0;
 		for (Monster i: manager.getPlayer().getMonsterList()) {
 			monsterName[index] = i.getMonsterName();
 			index += 1;
 		}
+		
 		JComboBox<String> comboBox = new JComboBox<>(monsterName);
 		comboBox.setMaximumRowCount(4);
 		comboBox.setBounds(146, 298, 114, 24);
@@ -88,7 +91,7 @@ public class ItemScreen {
 			Item FirstItem = manager.getPlayer().getFoodList().get(0);
 			
 			int FirstItemQuanitty = FirstItem.getQuantity();
-			String FirstItemQuanittyString = "";
+			String FirstItemQuanittyString = "x0";
 			if (FirstItemQuanitty >= 10) {
 				FirstItemQuanittyString = "x" + FirstItemQuanitty;
 			} else {
@@ -234,6 +237,8 @@ public class ItemScreen {
 		}
 		
 		JButton btnExit = new JButton("Exit");
+		btnExit.setBackground(new Color(255, 51, 102));
+		btnExit.setForeground(new Color(255, 255, 255));
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				manager.launchMainScreen();
@@ -252,6 +257,8 @@ public class ItemScreen {
 				if (selectedFood != null) {
 					manager.getPlayer().getMonsterList().get(index).useFood((Food)selectedFood);
 					lblEffect.setText("Success");
+					manager.launchItemScreen();
+					closeWindow();
 				} else {
 					lblEffect.setText("Please select a food to use");
 				}

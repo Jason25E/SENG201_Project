@@ -98,12 +98,14 @@ public class Monster {
 	public void setMonsterEquipment(Equipment newEquipment) 
 	{
 		if (equipment != null) {
+			equipment.gainQuantity();
 			attack -= equipment.getEquipmentAttack();
 			defence -= equipment.getEquipmentDefence();
 		}
 		equipment = newEquipment;
 		attack += newEquipment.getEquipmentAttack();
 		defence += newEquipment.getEquipmentDefence();
+		newEquipment.reduceQuantity();
 	}
 	
 	public void useFood(Food food) {
@@ -113,5 +115,6 @@ public class Monster {
 		if (currentHealthPoint > maxHealthPoint) {
 			currentHealthPoint = maxHealthPoint;
 		}
+		food.reduceQuantity();
 	}
 }

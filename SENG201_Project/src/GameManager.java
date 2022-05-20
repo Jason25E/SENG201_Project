@@ -14,6 +14,9 @@ public class GameManager {
 	public int RandomMonsterInShopTwo = 2;
 	public int RandomMonsterInShopThree = 4;
 	
+	public int RandomEnemy = 0;
+	public int RandomEnemyTwo = 1;
+	public int RandomEnemyThree = 2;
 	
 	public GameManager()
 	{
@@ -65,10 +68,17 @@ public class GameManager {
 		RandomMonsterInShopThree = (int)((Math.random() * (6 - 0)) + 0);
 	}
 	
+	public void generateRandomEnemy() {
+		RandomEnemy = (int)((Math.random() * (9 - 0)) + 0);
+		RandomEnemyTwo = (int)((Math.random() * (9 - 0)) + 0);
+		RandomEnemyThree = (int)((Math.random() * (9 - 0)) + 0);
+	}
+	
 	public void sleep()
 	{
 		reduceDayRemain();
 		generateRandomValueInShop();
+		generateRandomEnemy();
 	}
 	
 	/**
@@ -135,7 +145,7 @@ public class GameManager {
 	public void closeShopMonsterScreen(ShopMonsterScreen shopMonsterScreen)
 	{
 		shopMonsterScreen.closeWindow();
-		launchMainScreen();
+		launchShopDirectionScreen();
 	}
 
 	
@@ -144,10 +154,10 @@ public class GameManager {
 		ShopItemScreen shopItemScreen = new ShopItemScreen(this);
 	}
 	
-	public void closeShopScreen(ShopItemScreen shopItemScreen)
+	public void closeShopItemScreen(ShopItemScreen shopItemScreen)
 	{
 		shopItemScreen.closeWindow();
-		launchMainScreen();
+		launchShopDirectionScreen();
 	}
 	
 	public void launchMonsterScreen()
@@ -184,7 +194,7 @@ public class GameManager {
 		equipmentScreen.closeWindow();
 		launchMainScreen();
 	}
-	
+	/*
 	public void launchSaleItemScreen()
 	{
 		SaleItemScreen SaleItemScreen = new SaleItemScreen(this);
@@ -206,29 +216,19 @@ public class GameManager {
 		saleEquipmentScreen.closeWindow();
 		launchMainScreen();
 	}
+	*/
 	
-	public void launchSaleMonsterScreen()
-	{
-		SaleMonsterScreen SaleMonsterScreen = new SaleMonsterScreen(this);
-	}
-	
-	public void closelaunchSaleMonsterScreen(SaleMonsterScreen SaleMonsterScreen)
-	{
-		SaleMonsterScreen.closeWindow();
-		launchMainScreen();
-	}
-	
-	/*
 	public void launchSelectBattleScreen()
 	{
 		SelectBattleScreen selectBattleScreen = new SelectBattleScreen(this);
 	}
 	
-	public void closeSelectBattleScreen(SelectBattleScreen)
+	public void closeSelectBattleScreen(SelectBattleScreen selectBattleScreen)
 	{
-		
+		selectBattleScreen.closeWindow();
 	}
 	
+	/*
 	public void launchBattleScreen()
 	{
 		
