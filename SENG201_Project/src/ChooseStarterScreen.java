@@ -16,7 +16,7 @@ import javax.swing.JTextField;
 
 public class ChooseStarterScreen {
 
-	private JFrame frame;
+	private JFrame frmChooseAStarter;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JTextField textField;
 	
@@ -31,7 +31,7 @@ public class ChooseStarterScreen {
 			public void run() {
 				try {
 					ChooseStarterScreen window = new ChooseStarterScreen();
-					window.frame.setVisible(true);
+					window.frmChooseAStarter.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -49,11 +49,11 @@ public class ChooseStarterScreen {
 	public ChooseStarterScreen(GameManager manager) {
 		this.manager = manager;
 		initialize();
-		frame.setVisible(true);
+		frmChooseAStarter.setVisible(true);
 	}
 	
 	public void closeWindow() {
-		frame.dispose();
+		frmChooseAStarter.dispose();
 	}
 	
 	/**
@@ -78,101 +78,102 @@ public class ChooseStarterScreen {
 		/**
 		 * initialize the frame
 		 */
-		frame = new JFrame();
-		frame.setBounds(100, 100, 657, 346);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmChooseAStarter = new JFrame();
+		frmChooseAStarter.setTitle("Choose a starter");
+		frmChooseAStarter.setBounds(100, 100, 657, 346);
+		frmChooseAStarter.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmChooseAStarter.getContentPane().setLayout(null);
 		
 		JLabel lblChooseAStarting = new JLabel("Choose a starting monster for your team");
 		lblChooseAStarting.setFont(new Font("Dialog", Font.BOLD, 16));
 		lblChooseAStarting.setBounds(140, 22, 386, 23);
-		frame.getContentPane().add(lblChooseAStarting);
+		frmChooseAStarter.getContentPane().add(lblChooseAStarting);
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(ChooseStarterScreen.class.getResource("/Images/Monster/Bat.png")));
-		lblNewLabel.setBounds(29, 128, 149, 121);
-		frame.getContentPane().add(lblNewLabel);
+		JLabel lblMonsterIcon = new JLabel("");
+		lblMonsterIcon.setIcon(new ImageIcon(ChooseStarterScreen.class.getResource("/Images/Monster/Bat.png")));
+		lblMonsterIcon.setToolTipText(bat.getMonsterInfo());
+		lblMonsterIcon.setBounds(29, 128, 149, 121);
+		frmChooseAStarter.getContentPane().add(lblMonsterIcon);
 		
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(ChooseStarterScreen.class.getResource("/Images/Monster/Slime.png")));
-		lblNewLabel_1.setBounds(218, 114, 108, 119);
-		frame.getContentPane().add(lblNewLabel_1);
+		JLabel lblMonsterIcon_2 = new JLabel("");
+		lblMonsterIcon_2.setIcon(new ImageIcon(ChooseStarterScreen.class.getResource("/Images/Monster/Slime.png")));
+		lblMonsterIcon_2.setToolTipText(slime.getMonsterInfo());
+		lblMonsterIcon_2.setBounds(218, 114, 108, 119);
+		frmChooseAStarter.getContentPane().add(lblMonsterIcon_2);
 		
-		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setIcon(new ImageIcon(ChooseStarterScreen.class.getResource("/Images/Monster/Skeleton.png")));
-		lblNewLabel_2.setBounds(483, 101, 141, 132);
-		frame.getContentPane().add(lblNewLabel_2);
+		JLabel lblMonsterIcon_3 = new JLabel("");
+		lblMonsterIcon_3.setIcon(new ImageIcon(ChooseStarterScreen.class.getResource("/Images/Monster/Skeleton.png")));
+		lblMonsterIcon_3.setToolTipText(skeleton.getMonsterInfo());
+		lblMonsterIcon_3.setBounds(483, 101, 141, 132);
+		frmChooseAStarter.getContentPane().add(lblMonsterIcon_3);
 		
-		JLabel lblNewLabel_3 = new JLabel("");
-		lblNewLabel_3.setIcon(new ImageIcon(ChooseStarterScreen.class.getResource("/Images/Monster/Ghost.png")));
-		lblNewLabel_3.setBounds(344, 105, 128, 144);
-		frame.getContentPane().add(lblNewLabel_3);
+		JLabel lblMonsterIcon_4 = new JLabel("");
+		lblMonsterIcon_4.setIcon(new ImageIcon(ChooseStarterScreen.class.getResource("/Images/Monster/Ghost.png")));
+		lblMonsterIcon_4.setToolTipText(ghost.getMonsterInfo());
+		lblMonsterIcon_4.setBounds(344, 105, 128, 144);
+		frmChooseAStarter.getContentPane().add(lblMonsterIcon_4);
 		
 		textField = new JTextField();
 		textField.setBounds(269, 277, 128, 19);
-		frame.getContentPane().add(textField);
+		frmChooseAStarter.getContentPane().add(textField);
 		textField.setColumns(10);
 		
-		JLabel lblNewLabel_4 = new JLabel("Enter a name for your monster");
+		JLabel lblNewLabel_4 = new JLabel("Enter a name for your monster:");
 		lblNewLabel_4.setBounds(29, 277, 235, 16);
-		frame.getContentPane().add(lblNewLabel_4);
+		frmChooseAStarter.getContentPane().add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_5 = new JLabel("");
 		lblNewLabel_5.setForeground(Color.RED);
 		lblNewLabel_5.setBounds(29, 255, 497, 15);
-		frame.getContentPane().add(lblNewLabel_5);
+		frmChooseAStarter.getContentPane().add(lblNewLabel_5);
 		
 		JRadioButton rdbtnNewRadioButton = new JRadioButton("Bat");
 		rdbtnNewRadioButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				selectedMonster = bat;
-				lblNewLabel_5.setText(bat.getMonsterInfo());
 				textField.setText(selectedMonster.getMonsterName());
 			}
 		});
 		buttonGroup.add(rdbtnNewRadioButton);
 		rdbtnNewRadioButton.setBounds(66, 69, 49, 23);
-		frame.getContentPane().add(rdbtnNewRadioButton);
+		frmChooseAStarter.getContentPane().add(rdbtnNewRadioButton);
 		
 		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Slime");
 		rdbtnNewRadioButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				selectedMonster = slime;
-				lblNewLabel_5.setText(slime.getMonsterInfo());
 				textField.setText(selectedMonster.getMonsterName());
 			}
 		});
 		buttonGroup.add(rdbtnNewRadioButton_1);
 		rdbtnNewRadioButton_1.setBounds(228, 69, 69, 23);
-		frame.getContentPane().add(rdbtnNewRadioButton_1);
+		frmChooseAStarter.getContentPane().add(rdbtnNewRadioButton_1);
 		
 		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("Ghost");
 		rdbtnNewRadioButton_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				selectedMonster = ghost;
-				lblNewLabel_5.setText(ghost.getMonsterInfo());
 				textField.setText(selectedMonster.getMonsterName());
 			}
 		});
 		buttonGroup.add(rdbtnNewRadioButton_2);
 		rdbtnNewRadioButton_2.setBounds(369, 69, 76, 23);
-		frame.getContentPane().add(rdbtnNewRadioButton_2);
+		frmChooseAStarter.getContentPane().add(rdbtnNewRadioButton_2);
 		
 		JRadioButton rdbtnNewRadioButton_3 = new JRadioButton("Skeleton");
 		rdbtnNewRadioButton_3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				selectedMonster = skeleton;
-				lblNewLabel_5.setText(skeleton.getMonsterInfo());
 				textField.setText(selectedMonster.getMonsterName());
 			}
 		});
 		buttonGroup.add(rdbtnNewRadioButton_3);
 		rdbtnNewRadioButton_3.setBounds(502, 69, 94, 23);
-		frame.getContentPane().add(rdbtnNewRadioButton_3);
+		frmChooseAStarter.getContentPane().add(rdbtnNewRadioButton_3);
 		
 		JButton btnNewButton = new JButton("Next");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -194,8 +195,6 @@ public class ChooseStarterScreen {
 		btnNewButton.setForeground(Color.WHITE);
 		btnNewButton.setBackground(new Color(0, 204, 102));
 		btnNewButton.setBounds(515, 265, 117, 38);
-		frame.getContentPane().add(btnNewButton);
-		
-
+		frmChooseAStarter.getContentPane().add(btnNewButton);
 	}
 }

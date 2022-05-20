@@ -56,7 +56,7 @@ public class MonsterScreen {
 	 */
 	private void initialize() {
 		frmMyMonsters = new JFrame();
-		frmMyMonsters.setTitle("My Monster's");
+		frmMyMonsters.setTitle("My Monster");
 		frmMyMonsters.setBounds(100, 100, 301, 417);
 		frmMyMonsters.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMyMonsters.getContentPane().setLayout(null);
@@ -348,7 +348,8 @@ public class MonsterScreen {
 				
 				if (numberOfselectedMonster == 2) {
 					Collections.swap(manager.getPlayer().getMonsterList(), swapMonster, swapMonsterTwo);
-					lblMessage.setText("Sucess");
+					manager.launchMonsterScreen();
+					closeWindow();
 				} else {
 					lblMessage.setText("Please select only two Monsters");
 				}

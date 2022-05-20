@@ -3,8 +3,6 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
-import javax.swing.JToggleButton;
-import javax.swing.JCheckBox;
 import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -12,6 +10,7 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import javax.swing.ButtonGroup;
+import javax.swing.JTextField;
 
 public class ShopMonsterScreen {
 
@@ -22,6 +21,7 @@ public class ShopMonsterScreen {
 	private int purchasePrice = 100;
 	private Monster selectedMonster = null;
 	private int selectedMonsterPrice;
+	private JTextField textField;
 	
 	/**
 	 * Launch the application.
@@ -94,7 +94,7 @@ public class ShopMonsterScreen {
 		 */
 		frmShopMonsters = new JFrame();
 		frmShopMonsters.setTitle("Shop - Monster");
-		frmShopMonsters.setBounds(100, 100, 590, 377);
+		frmShopMonsters.setBounds(100, 100, 590, 355);
 		frmShopMonsters.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmShopMonsters.getContentPane().setLayout(null);
 		
@@ -104,14 +104,19 @@ public class ShopMonsterScreen {
 		lblGold.setBounds(12, 11, 100, 40);
 		frmShopMonsters.getContentPane().add(lblGold);
 		
-		JLabel lblMonsterInfo = new JLabel("");
-		lblMonsterInfo.setBounds(39, 270, 529, 15);
-		frmShopMonsters.getContentPane().add(lblMonsterInfo);
-		
 		JLabel lblMessage = new JLabel("");
 		lblMessage.setForeground(Color.RED);
-		lblMessage.setBounds(46, 270, 175, 15);
+		lblMessage.setBounds(423, 260, 164, 15);
 		frmShopMonsters.getContentPane().add(lblMessage);
+		
+		JLabel lblNewLabel = new JLabel("Enter a name for the monster:");
+		lblNewLabel.setBounds(42, 260, 231, 15);
+		frmShopMonsters.getContentPane().add(lblNewLabel);
+		
+		textField = new JTextField();
+		textField.setBounds(276, 260, 130, 19);
+		frmShopMonsters.getContentPane().add(textField);
+		textField.setColumns(10);
 		
 		JLabel lblMonstersForSale = new JLabel("Monsters for sale");
 		lblMonstersForSale.setBounds(225, 11, 150, 20);
@@ -126,7 +131,7 @@ public class ShopMonsterScreen {
 		});
 		btnExit_1.setForeground(new Color(255, 255, 255));
 		btnExit_1.setBackground(new Color(255, 51, 102));
-		btnExit_1.setBounds(408, 300, 130, 30);
+		btnExit_1.setBounds(409, 288, 130, 30);
 		frmShopMonsters.getContentPane().add(btnExit_1);
 		
 		JButton btnItem = new JButton("Check out Items");
@@ -136,18 +141,26 @@ public class ShopMonsterScreen {
 				closeWindow();
 			}
 		});
-		btnItem.setBounds(202, 300, 175, 30);
+		btnItem.setBounds(203, 288, 175, 30);
 		frmShopMonsters.getContentPane().add(btnItem);
 		
 		JButton btnBuy = new JButton("Buy");
 		btnBuy.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				lblMonsterInfo.setText("");
 				if (selectedMonster != null) {
 					if (manager.getPlayer().getGoldAmount() >= selectedMonsterPrice) {
-						manager.getPlayer().buyMonster(selectedMonster, selectedMonsterPrice);
-						lblGold.setText(Integer.toString(manager.getPlayer().getGoldAmount()));
-						lblMessage.setText("Success");
+						if (manager.getPlayer().getMonsterList().size() <= manager.getPlayer().getMaxMonstersCanHave() - 1) {
+							if (textField.getText().length() > 0 && textField.getText().length() < 9) {
+								selectedMonster.setMonsterName(textField.getText());
+								manager.getPlayer().buyMonster(selectedMonster, selectedMonsterPrice);
+								lblGold.setText(Integer.toString(manager.getPlayer().getGoldAmount()));
+								lblMessage.setText("Success");
+							} else {
+								lblMessage.setText("Name 1 to 8 char. max");
+							}
+						} else {
+							lblMessage.setText("Not enough space");
+						}
 					} else {
 						lblMessage.setText("Not enough gold");
 					}
@@ -157,7 +170,7 @@ public class ShopMonsterScreen {
 			}
 			}
 		);
-		btnBuy.setBounds(39, 300, 130, 30);
+		btnBuy.setBounds(39, 288, 130, 30);
 		frmShopMonsters.getContentPane().add(btnBuy);
 		
 		/**
@@ -168,14 +181,15 @@ public class ShopMonsterScreen {
 		label_3.setBounds(67, 233, 70, 15);
 		frmShopMonsters.getContentPane().add(label_3);
 		
-		String MonsterNameOne = MonsterList.get(manager.RandomMonsterInShop).getMonsterID();
+		Monster monsterOne = MonsterList.get(manager.RandomMonsterInShop);
+		String MonsterNameOne = monsterOne.getMonsterID();
 		JRadioButton rdbtnMonster = new JRadioButton(MonsterNameOne);
 		rdbtnMonster.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				lblMessage.setText("");
-				selectedMonster = MonsterList.get(manager.RandomMonsterInShop);
+				selectedMonster = monsterOne;
 				selectedMonsterPrice = priceOne;
-				lblMonsterInfo.setText(selectedMonster.getMonsterInfo());
+				textField.setText(MonsterNameOne);
 			}
 		});
 		buttonGroup.add(rdbtnMonster);
@@ -184,10 +198,11 @@ public class ShopMonsterScreen {
 		frmShopMonsters.getContentPane().add(rdbtnMonster);
 		
 		String ImageSourceOne = "/Images/Monster/" + MonsterNameOne + ".png";
-		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon(ShopMonsterScreen.class.getResource(ImageSourceOne)));
-		label.setBounds(22, 101, 130, 120);
-		frmShopMonsters.getContentPane().add(label);
+		JLabel labelMonsterIcon = new JLabel("");
+		labelMonsterIcon.setIcon(new ImageIcon(ShopMonsterScreen.class.getResource(ImageSourceOne)));
+		labelMonsterIcon.setToolTipText(monsterOne.getMonsterInfo());
+		labelMonsterIcon.setBounds(22, 101, 130, 120);
+		frmShopMonsters.getContentPane().add(labelMonsterIcon);
 		
 		/**
 		 * Monster two for sale in Shop
@@ -197,14 +212,15 @@ public class ShopMonsterScreen {
 		label_3_1.setBounds(276, 233, 70, 15);
 		frmShopMonsters.getContentPane().add(label_3_1);
 		
-		String MonsterNameTwo = MonsterList.get(manager.RandomMonsterInShopTwo).getMonsterID();
+		Monster monsterTwo = MonsterList.get(manager.RandomMonsterInShopTwo);
+		String MonsterNameTwo = monsterTwo.getMonsterID();
 		JRadioButton rdbtnMonster_1 = new JRadioButton(MonsterNameTwo);
 		rdbtnMonster_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				lblMessage.setText("");
-				selectedMonster = MonsterList.get(manager.RandomMonsterInShopTwo);
+				selectedMonster = monsterTwo;
 				selectedMonsterPrice = priceTwo;
-				lblMonsterInfo.setText(selectedMonster.getMonsterInfo());
+				textField.setText(MonsterNameTwo);
 			}
 		});
 		buttonGroup.add(rdbtnMonster_1);
@@ -213,10 +229,11 @@ public class ShopMonsterScreen {
 		frmShopMonsters.getContentPane().add(rdbtnMonster_1);
 		
 		String ImageSourceTwo = "/Images/Monster/" + MonsterNameTwo + ".png";
-		JLabel label_1 = new JLabel("");
-		label_1.setIcon(new ImageIcon(ShopMonsterScreen.class.getResource(ImageSourceTwo)));
-		label_1.setBounds(245, 101, 130, 120);
-		frmShopMonsters.getContentPane().add(label_1);
+		JLabel labelMonsterIcon_2 = new JLabel("");
+		labelMonsterIcon_2.setIcon(new ImageIcon(ShopMonsterScreen.class.getResource(ImageSourceTwo)));
+		labelMonsterIcon_2.setToolTipText(monsterTwo.getMonsterInfo());
+		labelMonsterIcon_2.setBounds(245, 101, 130, 120);
+		frmShopMonsters.getContentPane().add(labelMonsterIcon_2);
 		
 		/**
 		 * Monster three for sale in Shop
@@ -226,14 +243,15 @@ public class ShopMonsterScreen {
 		label_3_1_1.setBounds(481, 233, 70, 15);
 		frmShopMonsters.getContentPane().add(label_3_1_1);
 		
-		String MonsterNameThree = MonsterList.get(manager.RandomMonsterInShopThree).getMonsterID();
+		Monster monsterThree = MonsterList.get(manager.RandomMonsterInShopThree);
+		String MonsterNameThree = monsterThree.getMonsterID();
 		JRadioButton rdbtnMonster_2 = new JRadioButton(MonsterNameThree);
 		rdbtnMonster_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				lblMessage.setText("");
-				selectedMonster = MonsterList.get(manager.RandomMonsterInShopThree);
+				selectedMonster = monsterThree;
 				selectedMonsterPrice = priceThree;
-				lblMonsterInfo.setText(selectedMonster.getMonsterInfo());
+				textField.setText(MonsterNameThree);
 			}
 		});
 		buttonGroup.add(rdbtnMonster_2);
@@ -242,9 +260,10 @@ public class ShopMonsterScreen {
 		frmShopMonsters.getContentPane().add(rdbtnMonster_2);
 		
 		String ImageSourceThree = "/Images/Monster/" + MonsterNameThree + ".png";
-		JLabel label_2 = new JLabel("");
-		label_2.setIcon(new ImageIcon(ShopMonsterScreen.class.getResource(ImageSourceThree)));
-		label_2.setBounds(438, 101, 130, 120);
-		frmShopMonsters.getContentPane().add(label_2);
+		JLabel labelMonsterIcon_3 = new JLabel("");
+		labelMonsterIcon_3.setIcon(new ImageIcon(ShopMonsterScreen.class.getResource(ImageSourceThree)));
+		labelMonsterIcon_3.setToolTipText(monsterThree.getMonsterInfo());
+		labelMonsterIcon_3.setBounds(438, 101, 130, 120);
+		frmShopMonsters.getContentPane().add(labelMonsterIcon_3);
 	}
 }

@@ -5,21 +5,23 @@ public class Monster {
 	private String rarity;
 	private int attack;
 	private int defence;
-	private int healthPoint;
+	private int maxHealthPoint;
+	private int currentHealthPoint;
 	private int healingAmount;
 	private boolean faintedToday;
 	private int battleAmountToday;
 	private Equipment equipment = null;
 	private Skill skill;
 	
-	public Monster(String monsterID, String monsterName, String rarity, int attack, int defence, int healthPoint, int healingAmount, Skill newSkill) 
+	public Monster(String monsterID, String monsterName, String rarity, int attack, int defence, int maxHealthPoint, int healingAmount, Skill newSkill) 
 	{
 		this.monsterID = monsterID;
 		this.monsterName = monsterName;
 		this.rarity = rarity;
 		this.attack = attack;
 		this.defence = defence;
-		this.healthPoint = healthPoint;
+		this.maxHealthPoint = maxHealthPoint;
+		currentHealthPoint = maxHealthPoint;
 		this.healingAmount = healingAmount;
 		skill = newSkill;
 	}
@@ -56,7 +58,7 @@ public class Monster {
 	
 	public int getMonsterHealthPoint()
 	{
-		return healthPoint;
+		return maxHealthPoint;
 	}
 	
 	public int getMonsterHealingAmount()
@@ -85,7 +87,7 @@ public class Monster {
 	}
 	
 	public String getMonsterInfo() {
-		String monsterInfo = "Attack: " + attack + "   Defence: " + defence + "   Healing: " + healingAmount + "   Skill: " + skill.getSkillName() + "   Rarity: " + rarity;
+		String monsterInfo = "HP: " + currentHealthPoint + "/" + maxHealthPoint + "   Attack: " + attack + "   Defence: " + defence + "   Healing: " + healingAmount + "   Skill: " + skill.getSkillName() + "   Rarity: " + rarity;
 		return monsterInfo;
 	}
 	
@@ -95,6 +97,21 @@ public class Monster {
 	
 	public void setMonsterEquipment(Equipment newEquipment) 
 	{
+		if (equipment != null) {
+			attack -= equipment.getEquipmentAttack();
+			defence -= equipment.getEquipmentDefence();
+		}
 		equipment = newEquipment;
+		attack += newEquipment.getEquipmentAttack();
+		defence += newEquipment.getEquipmentDefence();
+	}
+	
+	public void useFood(Food food) {
+		attack += food.getAttackGain();
+		defence += food.getDefenceGain();
+		currentHealthPoint += food.getHealingAmount();
+		if (currentHealthPoint > maxHealthPoint) {
+			currentHealthPoint = maxHealthPoint;
+		}
 	}
 }

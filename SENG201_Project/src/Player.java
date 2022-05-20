@@ -38,6 +38,10 @@ public class Player {
 		return EquipmentList;
 	}
 	
+	public int getMaxMonstersCanHave() {
+		return maxMonstersCanHave;
+	}
+	
 	public void setPlayerID(String name) {
 		PlayerID = name;
 	}
