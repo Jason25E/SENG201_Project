@@ -94,7 +94,9 @@ public class SaleEquipmentScreen {
 			lblX_4.setBounds(218, 44, 42, 24);
 			frame.getContentPane().add(lblX_4);
 			
-			JLabel lblNewLabel_3 = new JLabel("/Images/Equipment/" + FirstEquipmentName + ".png");
+
+			JLabel lblNewLabel_3 = new JLabel("");
+			lblNewLabel_3.setIcon(new ImageIcon(EquipmentScreen.class.getResource("/Images/Equipment/" + FirstEquipmentName + ".png")));
 			lblNewLabel_3.setBounds(199, 12, 61, 56);
 			frame.getContentPane().add(lblNewLabel_3);
 			
@@ -129,7 +131,8 @@ public class SaleEquipmentScreen {
 			lblX_5.setBounds(218, 108, 42, 24);
 			frame.getContentPane().add(lblX_5);
 			
-			JLabel lblNewLabel_1_1 = new JLabel("/Images/Equipment/" + SecondEquipmentName + ".png");
+			JLabel lblNewLabel_1_1 = new JLabel("");
+			lblNewLabel_1_1.setIcon(new ImageIcon(EquipmentScreen.class.getResource("/Images/Equipment/" + SecondEquipmentName + ".png")));
 			lblNewLabel_1_1.setBounds(199, 76, 61, 56);
 			frame.getContentPane().add(lblNewLabel_1_1);
 			
@@ -164,7 +167,9 @@ public class SaleEquipmentScreen {
 			lblX_6.setBounds(218, 172, 42, 24);
 			frame.getContentPane().add(lblX_6);
 			
-			JLabel lblNewLabel_2_1 = new JLabel("/Images/Equipment/" + ThirdEquipmentName + ".png");
+			
+			JLabel lblNewLabel_2_1 = new JLabel("");
+			lblNewLabel_2_1.setIcon(new ImageIcon(EquipmentScreen.class.getResource("/Images/Equipment/" + ThirdEquipmentName + ".png")));
 			lblNewLabel_2_1.setBounds(199, 140, 61, 56);
 			frame.getContentPane().add(lblNewLabel_2_1);
 			
@@ -198,7 +203,8 @@ public class SaleEquipmentScreen {
 			lblX_7.setBounds(218, 232, 42, 24);
 			frame.getContentPane().add(lblX_7);
 			
-			JLabel lblNewLabel_3_1 = new JLabel("/Images/Equipment/" + FourthEquipmentName + ".png");
+			JLabel lblNewLabel_3_1 = new JLabel("");
+			lblNewLabel_3_1.setIcon(new ImageIcon(EquipmentScreen.class.getResource("/Images/Equipment/" + FourthEquipmentName + ".png")));
 			lblNewLabel_3_1.setBounds(199, 204, 61, 56);
 			frame.getContentPane().add(lblNewLabel_3_1);
 			

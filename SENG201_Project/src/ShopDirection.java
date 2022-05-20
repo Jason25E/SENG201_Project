@@ -5,6 +5,7 @@ import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class ShopDirection {
@@ -50,6 +51,9 @@ public class ShopDirection {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		int ItemListSize = manager.getPlayer().getFoodList().size();
+		ArrayList<Item> ItemList = manager.getPlayer().getFoodList();
+		
 		frmShop = new JFrame();
 		frmShop.setTitle("Shop");
 		frmShop.setBounds(100, 100, 253, 371);
@@ -70,6 +74,7 @@ public class ShopDirection {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				manager.launchShopMonsterScreen();
+				closeWindow();
 			}
 		});
 		btnNewButton.addActionListener(new ActionListener() {
@@ -79,10 +84,12 @@ public class ShopDirection {
 		btnNewButton.setBounds(66, 55, 117, 25);
 		frmShop.getContentPane().add(btnNewButton);
 		
-		JButton btnItem = new JButton("Item");
+		JButton btnItem = new JButton("Food & Equip.");
+		btnItem.setFont(new Font("Dialog", Font.BOLD, 10));
 		btnItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				manager.launchShopItemScreen();
+				closeWindow();
 			}
 		});
 		btnItem.setBounds(66, 91, 117, 25);
@@ -91,7 +98,8 @@ public class ShopDirection {
 		JButton btnNewButton_1 = new JButton("Monster");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				manager.launchSaleMonsterScreen;
+				manager.launchSaleMonsterScreen();
+				closeWindow();
 			}
 		});
 		btnNewButton_1.setBounds(66, 171, 117, 25);
@@ -101,6 +109,7 @@ public class ShopDirection {
 		btnFood.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				manager.launchSaleItemScreen();
+				closeWindow();
 			}
 		});
 		btnFood.setBounds(66, 208, 117, 25);
@@ -110,6 +119,7 @@ public class ShopDirection {
 		btnEquipment.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				manager.launchSaleEquipmentScreen();
+				closeWindow();
 			}
 		});
 		btnEquipment.setBounds(66, 245, 117, 25);

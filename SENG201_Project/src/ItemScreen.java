@@ -88,7 +88,7 @@ public class ItemScreen {
 			Item FirstItem = manager.getPlayer().getFoodList().get(0);
 			
 			int FirstItemQuanitty = FirstItem.getQuantity();
-			String FirstItemQuanittyString = "x0";
+			String FirstItemQuanittyString = "";
 			if (FirstItemQuanitty >= 10) {
 				FirstItemQuanittyString = "x" + FirstItemQuanitty;
 			} else {

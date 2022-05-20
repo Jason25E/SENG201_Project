@@ -125,7 +125,7 @@ public class ShopMonsterScreen {
 		JButton btnExit_1 = new JButton("Exit");
 		btnExit_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				manager.launchMainScreen();
+				manager.launchShopDirectionScreen();
 				closeWindow();
 			}
 		});
