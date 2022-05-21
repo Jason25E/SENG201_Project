@@ -255,7 +255,7 @@ public class ItemScreen {
 				int index = comboBox.getSelectedIndex();
 				lblEffect.setForeground(Color.RED);
 				if (selectedFood != null) {
-					manager.getPlayer().getMonsterList().get(index).useFood((Food)selectedFood);
+					manager.getPlayer().getMonsterList().get(index).useFood((Food)selectedFood, manager.getPlayer());
 					lblEffect.setText("Success");
 					manager.launchItemScreen();
 					closeWindow();

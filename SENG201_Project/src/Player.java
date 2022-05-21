@@ -66,9 +66,12 @@ public class Player {
 		}
 	}
 	
-	public void removeMonster(Monster monster) {
+	public boolean removeMonster(Monster monster) {
 		if (MonsterList.size() > 1) {
 			MonsterList.remove(monster);
+			return true;
+		} else {
+			return false;
 		}
 	}
 	
@@ -78,8 +81,10 @@ public class Player {
 	}
 	
 	public void soldMonster(Monster monster, int goldGain) {
-		removeMonster(monster);
-		gainGold(goldGain);
+		if (removeMonster(monster) == true) {
+			gainGold(goldGain);
+		}
+		
 	}
 	
 	public void addFood(Item newItem) {
@@ -90,9 +95,20 @@ public class Player {
 		EquipmentList.add(newItem);
 	}
 	
-	public void soldItem(Item item, int goldGain) {
+	public void soldItem(Item item) {
 		item.reduceQuantity();
-		gainGold(goldGain);
+		gainGold(item.getSellingPrice());
+		if (item.getQuantity() == 0) {
+			FoodList.remove(item); 
+		}
+	}
+	
+	public void soldEquipment(Item item) {
+		item.reduceQuantity();
+		gainGold(item.getSellingPrice());
+		if (item.getQuantity() == 0) {
+			EquipmentList.remove(item); 
+		}
 	}
 	
 	public void buyFood(Item item, int goldUsed) {
@@ -127,5 +143,10 @@ public class Player {
 	
 	public void useItem(Item item) {
 		item.reduceQuantity();
+		if (item.getQuantity() == 0) {
+			FoodList.remove(item); 
+
+		}
 	}
+	
 }

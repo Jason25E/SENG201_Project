@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Monster {
 	private String monsterID;
 	private String monsterName;
@@ -107,8 +109,9 @@ public class Monster {
 		defence += newEquipment.getEquipmentDefence();
 		newEquipment.reduceQuantity();
 	}
+		
 	
-	public void useFood(Food food) {
+	public void useFood(Food food, Player player) {
 		attack += food.getAttackGain();
 		defence += food.getDefenceGain();
 		currentHealthPoint += food.getHealingAmount();
@@ -116,5 +119,10 @@ public class Monster {
 			currentHealthPoint = maxHealthPoint;
 		}
 		food.reduceQuantity();
+		
+		ArrayList FoodList = player.getFoodList();
+		if (food.getQuantity() == 0) {
+			FoodList.remove(food); 
+		}
 	}
 }
