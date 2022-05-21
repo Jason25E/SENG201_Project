@@ -180,6 +180,7 @@ public class BattleScreen {
 					}
 				}
 			});
+			btnSkill.setToolTipText("Reset skill power after use skill");
 			btnSkill.setBounds(166, 237, 117, 25);
 			frmBattle.getContentPane().add(btnSkill);
 			
@@ -231,6 +232,7 @@ public class BattleScreen {
 					}
 				}
 			});
+			btnAttack.setToolTipText("Increase power of skill after attack");
 			btnAttack.setBounds(34, 237, 117, 25);
 			frmBattle.getContentPane().add(btnAttack);
 			
@@ -281,6 +283,7 @@ public class BattleScreen {
 					}
 				}
 			});
+			btnDefence.setToolTipText("50% increase or reset power of skill after defence");
 			btnDefence.setBounds(295, 237, 117, 25);
 			frmBattle.getContentPane().add(btnDefence);
 			
