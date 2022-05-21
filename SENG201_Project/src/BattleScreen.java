@@ -6,10 +6,18 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
+import java.awt.Font;
 
 public class BattleScreen {
 
-	private JFrame frame;
+	private JFrame frmBattle;
+	
+	private GameManager manager;
+	private Monster currentMonster = null;
+	private Monster enemy = null;
+	
+	private int MyMonsterPower = 15;
+	private int MyMonsterSkillPower = 1;
 
 	/**
 	 * Launch the application.
@@ -19,7 +27,7 @@ public class BattleScreen {
 			public void run() {
 				try {
 					BattleScreen window = new BattleScreen();
-					window.frame.setVisible(true);
+					window.frmBattle.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -33,49 +41,258 @@ public class BattleScreen {
 	public BattleScreen() {
 		initialize();
 	}
+	
+	public BattleScreen(GameManager manager, Monster enemy) {
+		this.manager = manager;
+		this.enemy = enemy;
+		initialize();
+		frmBattle.setVisible(true);
+	}
+	
+	public void closeWindow() {
+		frmBattle.dispose();
+	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmBattle = new JFrame();
+		frmBattle.setTitle("Battle");
+		frmBattle.setBounds(100, 100, 450, 313);
+		frmBattle.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmBattle.getContentPane().setLayout(null);
 		
-		JButton btnAttack = new JButton("Attack");
-		btnAttack.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+		/**
+		 * Description of what happen in the battle
+		 */
+		JLabel lblDescription = new JLabel("");
+		lblDescription.setBounds(34, 192, 378, 15);
+		frmBattle.getContentPane().add(lblDescription);
+		
+		JLabel lblDescription_2 = new JLabel("");
+		lblDescription_2.setBounds(34, 210, 378, 15);
+		frmBattle.getContentPane().add(lblDescription_2);
+		
+		/**
+		 * My Monster
+		 */
+		/** Find out which monster can battle in the order they are in the Monster List */
+		boolean canBattle = false;
+		for (Monster i: manager.getPlayer().getMonsterList()) {
+			if (i.getMonsterCurrentHealthPoint() > 0 && canBattle == false) {
+				currentMonster = i;
+				canBattle = true;
 			}
-		});
-		btnAttack.setBounds(34, 232, 117, 25);
-		frame.getContentPane().add(btnAttack);
+		}
 		
-		JButton btnSkill = new JButton("Skill");
-		btnSkill.setBounds(163, 232, 117, 25);
-		frame.getContentPane().add(btnSkill);
+		if (currentMonster != null) {
+			/** Set and display the name of my Monster that currently in battle */
+			String myMonsterName = currentMonster.getMonsterName();
+			JLabel lblMyMonsterName = new JLabel(myMonsterName);
+			lblMyMonsterName.setBounds(22, 12, 106, 15);
+			frmBattle.getContentPane().add(lblMyMonsterName);
+			
+			/** Set and display the Health Point of my Monster that currently in battle */
+			String myMonsterHP = "HP:  " + currentMonster.getMonsterCurrentHealthPoint() + "/" + currentMonster.getMonsterMaxHealthPoint();
+			JLabel lblMyMonsterHP = new JLabel(myMonsterHP);
+			lblMyMonsterHP.setBounds(22, 33, 99, 15);
+			frmBattle.getContentPane().add(lblMyMonsterHP);
+			
+			/** Set and display the icon of my Monster that currently in battle */
+			String myMonsterIcon = "/Images/MonsterFlip/" + currentMonster.getMonsterID() + ".png";
+			JLabel lblMyMonsterIcon = new JLabel("");
+			lblMyMonsterIcon.setIcon(new ImageIcon(BattleScreen.class.getResource(myMonsterIcon)));
+			lblMyMonsterIcon.setBounds(21, 60, 130, 120);
+			frmBattle.getContentPane().add(lblMyMonsterIcon);
+			
+			/**
+			 * Enemy
+			 */
+			/** Set and display the name of enemy */
+			String enemyName = enemy.getMonsterID();
+			JLabel lblEnemyName = new JLabel(enemyName);
+			lblEnemyName.setBounds(314, 12, 122, 15);
+			frmBattle.getContentPane().add(lblEnemyName);
+			
+			/** Set and display the Health Point of enemy */
+			String enemyHP = "HP:  " + enemy.getMonsterCurrentHealthPoint() + "/" + enemy.getMonsterMaxHealthPoint();
+			JLabel lblEnemyHP = new JLabel(enemyHP);
+			lblEnemyHP.setBounds(314, 33, 111, 15);
+			frmBattle.getContentPane().add(lblEnemyHP);
+			
+			/** Set and display the icon of enemy */
+			String enemyIcon = "/Images/Monster/" + enemyName + ".png";
+			JLabel lblEnemyIcon = new JLabel("");
+			lblEnemyIcon.setIcon(new ImageIcon(BattleScreen.class.getResource(enemyIcon)));
+			lblEnemyIcon.setBounds(295, 60, 130, 120);
+			frmBattle.getContentPane().add(lblEnemyIcon);
+			
+			/**
+			 * Battle system
+			 */
+			/**
+			 * Skill
+			 */
+			String skillPower = "Power " + currentMonster.getMonsterSkill().getSkillDamage() * MyMonsterSkillPower;
+			JLabel lblSkillPower = new JLabel(skillPower);
+			lblSkillPower.setFont(new Font("Dialog", Font.BOLD, 10));
+			lblSkillPower.setBounds(200, 265, 70, 15);
+			frmBattle.getContentPane().add(lblSkillPower);
+			
+			String skillName = currentMonster.getMonsterSkill().getSkillName();
+			JButton btnSkill = new JButton(skillName);
+			btnSkill.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					/** Calculate the damage deals to each other */
+					int enemyPower = (int)((Math.random() * (25 - 12)) + 12);
+					int damageDealToEnemy = (MyMonsterPower * currentMonster.getMonsterAttack() * currentMonster.getMonsterSkill().getSkillDamage() * MyMonsterSkillPower / 80) - (enemy.getMonsterDefence() / 10);
+					int damageDealByEnemy = enemyPower * enemy.getMonsterAttack() / 10 - (currentMonster.getMonsterDefence() / 10);
+					
+					/** Apply the damage */
+					currentMonster.reduceCurrentHealthPoint(damageDealByEnemy);
+					enemy.reduceCurrentHealthPoint(damageDealToEnemy);
+					
+					/** Display what happen */
+					lblDescription.setText("" + currentMonster.getMonsterName() +" deals " + damageDealToEnemy + " damage to " + enemy.getMonsterName());
+					lblDescription_2.setText("" + enemy.getMonsterName() +" deals " + damageDealByEnemy + " damage to " + currentMonster.getMonsterName());
+					
+					/** Display the Health Point after the damage */
+					String myMonsterHP = "HP:  " + currentMonster.getMonsterCurrentHealthPoint() + "/" + currentMonster.getMonsterMaxHealthPoint();
+					lblMyMonsterHP.setText(myMonsterHP);
+					String enemyHP = "HP:  " + enemy.getMonsterCurrentHealthPoint() + "/" + enemy.getMonsterMaxHealthPoint();
+					lblEnemyHP.setText(enemyHP);
+					
+					/** Set skill power back to 1 and reload its power */
+					MyMonsterSkillPower = 1;
+					lblSkillPower.setText("Power " + currentMonster.getMonsterSkill().getSkillDamage() * MyMonsterSkillPower);
+					
+					int index = manager.getPlayer().getMonsterList().indexOf(currentMonster);
+					if (currentMonster.getMonsterCurrentHealthPoint() == 0) {
+						if (index == manager.getPlayer().getMonsterList().size() - 1) {
+							manager.launchBattleResultScreen(enemy, BattleScreen.this);
+						} else {
+							manager.launchBattleScreen(enemy);
+							closeWindow();
+						}
+					} else if (enemy.getMonsterCurrentHealthPoint() == 0) {
+						manager.launchBattleResultScreen(enemy, BattleScreen.this);
+					}
+				}
+			});
+			btnSkill.setBounds(166, 237, 117, 25);
+			frmBattle.getContentPane().add(btnSkill);
+			
+			/**
+			 * Attack
+			 */
+			JLabel lblAttackPower = new JLabel("Power " + MyMonsterPower);
+			lblAttackPower.setFont(new Font("Dialog", Font.BOLD, 10));
+			lblAttackPower.setBounds(68, 265, 70, 15);
+			frmBattle.getContentPane().add(lblAttackPower);
+			
+			JButton btnAttack = new JButton("Attack");
+			btnAttack.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					/** Calculate the damage deals to each other */
+					int enemyPower = (int)((Math.random() * (25 - 12)) + 12);
+					int damageDealToEnemy = (MyMonsterPower * currentMonster.getMonsterAttack() / 10) - (enemy.getMonsterDefence() / 10);
+					int damageDealByEnemy = enemyPower * enemy.getMonsterAttack() / 10 - (currentMonster.getMonsterDefence() / 10);
+					
+					/** Apply the damage */
+					currentMonster.reduceCurrentHealthPoint(damageDealByEnemy);
+					enemy.reduceCurrentHealthPoint(damageDealToEnemy);
+					
+					/** Display what happen */
+					lblDescription.setText("" + currentMonster.getMonsterName() +" deals " + damageDealToEnemy + " damage to " + enemy.getMonsterName());
+					lblDescription_2.setText("" + enemy.getMonsterName() +" deals " + damageDealByEnemy + " damage to " + currentMonster.getMonsterName());
+					
+					/** Display the Health Point after the damage */
+					String myMonsterHP = "HP:  " + currentMonster.getMonsterCurrentHealthPoint() + "/" + currentMonster.getMonsterMaxHealthPoint();
+					lblMyMonsterHP.setText(myMonsterHP);
+					String enemyHP = "HP:  " + enemy.getMonsterCurrentHealthPoint() + "/" + enemy.getMonsterMaxHealthPoint();
+					lblEnemyHP.setText(enemyHP);
+					
+					/** Increase the power of skill and reload its power */
+					MyMonsterSkillPower += 1;
+					lblSkillPower.setText("Power " + currentMonster.getMonsterSkill().getSkillDamage() * MyMonsterSkillPower);
+					
+					int index = manager.getPlayer().getMonsterList().indexOf(currentMonster);
+					if (currentMonster.getMonsterCurrentHealthPoint() == 0) {
+						if (index == manager.getPlayer().getMonsterList().size() - 1) {
+							manager.launchBattleResultScreen(enemy, BattleScreen.this);
+						} else {
+							manager.launchBattleScreen(enemy);
+							closeWindow();
+						}
+						closeWindow();
+					} else if (enemy.getMonsterCurrentHealthPoint() == 0) {
+						manager.launchBattleResultScreen(enemy, BattleScreen.this);
+					}
+				}
+			});
+			btnAttack.setBounds(34, 237, 117, 25);
+			frmBattle.getContentPane().add(btnAttack);
+			
+			/**
+			 * Defense
+			 */
+			JButton btnDefence = new JButton("Defence");
+			btnDefence.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					/** Calculate the damage deals to each other */
+					int enemyPower = (int)((Math.random() * (25 - 12)) + 12);
+					int damageDealToEnemy = 0;
+					int damageDealByEnemy = (enemyPower * enemy.getMonsterAttack() / 10 - (currentMonster.getMonsterDefence() / 10)) - currentMonster.getMonsterDefence() * 2;
+					if (damageDealByEnemy < 5) {
+						damageDealByEnemy = 5;
+					}
+					
+					/** Apply the damage */
+					currentMonster.reduceCurrentHealthPoint(damageDealByEnemy);
+					enemy.reduceCurrentHealthPoint(damageDealToEnemy);
+					
+					/** Display what happen */
+					lblDescription.setText("" + currentMonster.getMonsterName() +" deals " + damageDealToEnemy + " damage to " + enemy.getMonsterName());
+					lblDescription_2.setText("" + enemy.getMonsterName() +" deals " + damageDealByEnemy + " damage to " + currentMonster.getMonsterName());
+					
+					/** Display the Health Point after the damage */
+					String myMonsterHP = "HP:  " + currentMonster.getMonsterCurrentHealthPoint() + "/" + currentMonster.getMonsterMaxHealthPoint();
+					lblMyMonsterHP.setText(myMonsterHP);
 		
-		JButton btnDefence = new JButton("Defence");
-		btnDefence.setBounds(292, 232, 117, 25);
-		frame.getContentPane().add(btnDefence);
-		
-		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon(BattleScreen.class.getResource("/Images/MonsterFlip/Bat.png")));
-		label.setBounds(21, 67, 130, 120);
-		frame.getContentPane().add(label);
-		
-		JLabel label_1 = new JLabel("");
-		label_1.setIcon(new ImageIcon(BattleScreen.class.getResource("/Images/Monster/BlueDragons.png")));
-		label_1.setBounds(298, 67, 130, 120);
-		frame.getContentPane().add(label_1);
-		
-		JLabel lblHeal = new JLabel("Heal");
-		lblHeal.setBounds(45, 29, 70, 15);
-		frame.getContentPane().add(lblHeal);
-		
-		JLabel lblHeal_1 = new JLabel("Heal");
-		lblHeal_1.setBounds(314, 29, 70, 15);
-		frame.getContentPane().add(lblHeal_1);
-	}
+					
+					/** Increase or set the power of skill back to 1 and reload its power */
+					int random = (int)((Math.random() * (2 - 0)) + 0);
+					if (random == 1) {
+						MyMonsterSkillPower += 1;
+					} else {
+						MyMonsterSkillPower = 1;
+					}
+					lblSkillPower.setText("Power " + currentMonster.getMonsterSkill().getSkillDamage() * MyMonsterSkillPower);
+					
+					int index = manager.getPlayer().getMonsterList().indexOf(currentMonster);
+					if (currentMonster.getMonsterCurrentHealthPoint() == 0) {
+						if (index == manager.getPlayer().getMonsterList().size() - 1) {
+							manager.launchBattleResultScreen(enemy, BattleScreen.this);
+						} else {
+							manager.launchBattleScreen(enemy);
+							closeWindow();
+						}
+					}
+				}
+			});
+			btnDefence.setBounds(295, 237, 117, 25);
+			frmBattle.getContentPane().add(btnDefence);
+			
+			JLabel lblDefenceStrength = new JLabel("Block " + currentMonster.getMonsterDefence() * 2 + " Dmg");
+			lblDefenceStrength.setFont(new Font("Dialog", Font.BOLD, 10));
+			lblDefenceStrength.setBounds(315, 265, 100, 15);
+			frmBattle.getContentPane().add(lblDefenceStrength);
+			
+			} else {
+				manager.launchBattleResultScreen(enemy, BattleScreen.this);
+			}
+		}
+
 
 }

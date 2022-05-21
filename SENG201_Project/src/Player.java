@@ -46,6 +46,10 @@ public class Player {
 		PlayerID = name;
 	}
 	
+	public void gainScore(int amountGain) {
+		score += amountGain;
+	}
+	
 	public void setGoldAmount(int startGold) {
 		goldAmount = startGold;
 	}

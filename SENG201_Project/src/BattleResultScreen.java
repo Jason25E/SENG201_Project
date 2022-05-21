@@ -9,10 +9,13 @@ import java.awt.event.ActionEvent;
 
 public class BattleResultScreen {
 
-	private JFrame frame;
+	private JFrame frmBattleResult;
 	
 	private GameManager manager;
-
+	private int baseGoldReceive = 50;
+	private int baseScoreReceive = 100;
+	private Monster enemy = null;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -21,7 +24,7 @@ public class BattleResultScreen {
 			public void run() {
 				try {
 					BattleResultScreen window = new BattleResultScreen();
-					window.frame.setVisible(true);
+					window.frmBattleResult.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -37,14 +40,15 @@ public class BattleResultScreen {
 		
 	}
 	
-	public BattleResultScreen(GameManager manager) {
+	public BattleResultScreen(GameManager manager, Monster enemy) {
 		this.manager = manager;
+		this.enemy = enemy;
 		initialize();
-		frame.setVisible(true);
+		frmBattleResult.setVisible(true);
 	}
 	
 	public void closeWindow() {
-		frame.dispose();
+		frmBattleResult.dispose();
 	}
 	
 
@@ -52,47 +56,68 @@ public class BattleResultScreen {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		String Vitory = "Vitory!";
-		String Defeated = "Defeated";
+		frmBattleResult = new JFrame();
+		frmBattleResult.setTitle("Battle Result");
+		frmBattleResult.setBounds(100, 100, 285, 209);
+		frmBattleResult.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmBattleResult.getContentPane().setLayout(null);
 		
-		frame = new JFrame();
-		frame.setBounds(100, 100, 285, 209);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		int goldReceive = baseGoldReceive + enemy.getMonsterAttack() + enemy.getMonsterMaxHealthPoint() / 10;
+		int scoreGain = baseScoreReceive + enemy.getMonsterAttack() + enemy.getMonsterDefence() + enemy.getMonsterMaxHealthPoint();
 		
-		JLabel lblBattleResult = new JLabel(Vitory);
+		/**
+		 * Check if there are monster alive in the party to determine the battle result
+		 */
+		boolean monsterAlive = false;
+		for (Monster i: manager.getPlayer().getMonsterList()) {
+			if (i.getMonsterCurrentHealthPoint() > 0 && monsterAlive == false) {
+				monsterAlive = true;
+			}
+		}
+
+		JLabel lblBattleResult = new JLabel();
 		lblBattleResult.setFont(new Font("Dialog", Font.BOLD, 15));
-		lblBattleResult.setBounds(94, 12, 93, 15);
-		frame.getContentPane().add(lblBattleResult);
+		lblBattleResult.setBounds(110, 21, 93, 15);
+		frmBattleResult.getContentPane().add(lblBattleResult);
+		if (monsterAlive == true) {
+			lblBattleResult.setText("Vitory!");
+			manager.getPlayer().gainGold(goldReceive);
+			manager.getPlayer().gainScore(scoreGain);
+		} else {
+			lblBattleResult.setText("Defeated");
+			goldReceive = 0;
+			scoreGain = 0;
+		}
 		
 		JLabel lblGold = new JLabel("Gold:");
 		lblGold.setFont(new Font("Dialog", Font.BOLD, 15));
-		lblGold.setBounds(73, 48, 70, 20);
-		frame.getContentPane().add(lblGold);
+		lblGold.setBounds(73, 50, 70, 20);
+		frmBattleResult.getContentPane().add(lblGold);
 		
-		JLabel label = new JLabel("50");
+		JLabel label = new JLabel("" + goldReceive);
 		label.setFont(new Font("Dialog", Font.BOLD, 15));
-		label.setBounds(150, 48, 70, 20);
-		frame.getContentPane().add(label);
+		label.setBounds(160, 48, 70, 20);
+		frmBattleResult.getContentPane().add(label);
 		
 		JLabel lblNewLabel = new JLabel("Score:");
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 15));
 		lblNewLabel.setBounds(73, 80, 70, 20);
-		frame.getContentPane().add(lblNewLabel);
+		frmBattleResult.getContentPane().add(lblNewLabel);
 		
-		JLabel label_1 = new JLabel("100");
+		JLabel label_1 = new JLabel("" + scoreGain);
 		label_1.setFont(new Font("Dialog", Font.BOLD, 15));
-		label_1.setBounds(150, 80, 70, 20);
-		frame.getContentPane().add(label_1);
+		label_1.setBounds(160, 80, 70, 20);
+		frmBattleResult.getContentPane().add(label_1);
 		
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				manager.launchMainScreen();
+				closeWindow();
 			}
 		});
-		btnBack.setBounds(84, 129, 117, 35);
-		frame.getContentPane().add(btnBack);
+		btnBack.setBounds(82, 129, 117, 35);
+		frmBattleResult.getContentPane().add(btnBack);
 	}
 
 }

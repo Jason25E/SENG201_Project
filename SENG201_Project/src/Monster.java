@@ -58,7 +58,12 @@ public class Monster {
 		return defence;
 	}
 	
-	public int getMonsterHealthPoint()
+	public int getMonsterCurrentHealthPoint()
+	{
+		return currentHealthPoint;
+	}
+	
+	public int getMonsterMaxHealthPoint()
 	{
 		return maxHealthPoint;
 	}
@@ -123,6 +128,14 @@ public class Monster {
 		ArrayList FoodList = player.getFoodList();
 		if (food.getQuantity() == 0) {
 			FoodList.remove(food); 
+		}
+	}
+	
+	public void reduceCurrentHealthPoint(int damageReceive)
+	{
+		currentHealthPoint -= damageReceive;
+		if (currentHealthPoint < 0) {
+			currentHealthPoint = 0;
 		}
 	}
 }

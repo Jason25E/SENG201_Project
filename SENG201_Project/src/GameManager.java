@@ -18,6 +18,10 @@ public class GameManager {
 	public int RandomEnemyTwo = 1;
 	public int RandomEnemyThree = 2;
 	
+	private boolean battleEnemy = false;
+	private boolean battleEnemyTwo = false;
+	private boolean battleEnemyThree = false;
+	
 	public GameManager()
 	{
 		currentDay = 1;
@@ -51,6 +55,21 @@ public class GameManager {
 		return difficulty;
 	}
 	
+	public boolean getBattleEnemy()
+	{
+		return battleEnemy;
+	}
+	
+	public boolean getBattleEnemyTwo()
+	{
+		return battleEnemyTwo;
+	}
+	
+	public boolean getBattleEnemyThree()
+	{
+		return battleEnemyThree;
+	}
+	
 	public void reduceDayRemain()
 	{
 		if (dayRemain > 0) {
@@ -74,11 +93,33 @@ public class GameManager {
 		RandomEnemyThree = (int)((Math.random() * (9 - 0)) + 0);
 	}
 	
+	public void setBattleEnemyToFalse() {
+		battleEnemy = false;
+		battleEnemyTwo = false;
+		battleEnemyThree = false;
+	}
+	
+	public void changeBattleEnemy(boolean statue)
+	{
+		battleEnemy = statue;
+	}
+	
+	public void changeBattleEnemyTwo(boolean statue)
+	{
+		battleEnemyTwo = statue;
+	}
+	
+	public void changeBattleEnemyThree(boolean statue)
+	{
+		battleEnemyThree = statue;
+	}
+	
 	public void sleep()
 	{
 		reduceDayRemain();
 		generateRandomValueInShop();
 		generateRandomEnemy();
+		setBattleEnemyToFalse();
 	}
 	
 	/**
@@ -194,40 +235,18 @@ public class GameManager {
 		equipmentScreen.closeWindow();
 		launchMainScreen();
 	}
-	
+
 	public void launchSaleMonsterScreen()
 	{
-		SaleMonsterScreen SaleMonsterScreen = new SaleMonsterScreen(this);
+		SaleMonsterScreen saleMonsterScreen = new SaleMonsterScreen(this);
 	}
 	
-	public void closeSaleMonsterScreen(SaleMonsterScreen SaleMonsterScreen)
+	public void closeSaleMonsterScreen(SaleMonsterScreen saleMonsterScreen)
 	{
-		SaleMonsterScreen.closeWindow();
+		saleMonsterScreen.closeWindow();
 		launchMainScreen();
 	}
 	
-	public void launchSaleEquipmentScreen()
-	{
-		SaleEquipmentScreen SaleEquipmentScreen = new SaleEquipmentScreen(this);
-	}
-	
-	public void closeSaleEquipmentScreen(SaleEquipmentScreen SaleEquipmentScreen)
-	{
-		SaleEquipmentScreen.closeWindow();
-		launchMainScreen();
-	}
-	
-	public void launchSaleItemScreen()
-	{
-		SaleItemScreen SaleItemtScreen = new SaleItemScreen(this);
-	}
-	
-	public void closeSaleItemtScreen(SaleItemScreen SaleItemtScreen)
-	{
-		SaleItemtScreen.closeWindow();
-		launchMainScreen();
-	}
-	/*
 	public void launchSaleItemScreen()
 	{
 		SaleItemScreen SaleItemScreen = new SaleItemScreen(this);
@@ -249,7 +268,7 @@ public class GameManager {
 		saleEquipmentScreen.closeWindow();
 		launchMainScreen();
 	}
-	*/
+
 	
 	public void launchSelectBattleScreen()
 	{
@@ -261,18 +280,28 @@ public class GameManager {
 		selectBattleScreen.closeWindow();
 	}
 	
-	/*
-	public void launchBattleScreen()
+
+	public void launchBattleScreen(Monster enemy)
 	{
-		
+		BattleScreen battleScreen = new BattleScreen(this, enemy);
 	}
 	
-	public void closeBattleScreen(BattleScreen)
+	public void closeBattleScreen(BattleScreen battleScreen)
 	{
-		
+		battleScreen.closeWindow();
 	}
-	*/
 	
+	public void launchBattleResultScreen(Monster enemy, BattleScreen battleScreen)
+	{
+		BattleResultScreen battleResultScreen = new BattleResultScreen(this, enemy);
+		battleScreen.closeWindow();
+	}
+	
+	public void closeBattleResultScreen(BattleResultScreen battleResultScreen)
+	{
+		battleResultScreen.closeWindow();
+	}
+
 	public static void main(String[] argv) {
 		GameManager manager = new GameManager();
 		manager.launchStartScreen();
