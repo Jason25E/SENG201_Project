@@ -60,21 +60,26 @@ public class ChooseStarterScreen {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		float shop_info = manager.getShop_info();
+		int current_day = manager.getCurrentDay();
+		float monster_heal_rate = manager.getStart_gold_info();
+		int MonsterLevelTwo = manager.RandomMonsterLevelInShopTwo;
+		int MonsterLevel = manager.RandomMonsterLevelInShop;
 		/**
 		 * initialize the four monster that allow the player to choose
 		 */
 		Skill batSkill = new Skill("Bit", "Has a base power of 12", 12);
-		Monster bat = new Monster("Bat", "Bat", 1 ,"Common", 12, 10, 200, 60, batSkill);
+		Monster bat = new Monster("Bat", "Bat", MonsterLevel, "Common", 12 + 2 * MonsterLevel, 10 + 2 * MonsterLevel, 200 + Math.round(3 * monster_heal_rate * MonsterLevel), 30, batSkill);
 		
 		Skill slimeSkill = new Skill("Absorb", "Has a base power of 12", 12);
-		Monster slime = new Monster("Slime", "Slime", 1, "Common", 7, 10, 200, 120, slimeSkill);
+		Monster slime = new Monster("Slime", "Slime", MonsterLevel, "Common", 7 + 1 * MonsterLevel, 10 + 3 * MonsterLevel, 200 + Math.round((float)3.5 * monster_heal_rate * MonsterLevel), 60, slimeSkill);
 		
 		Skill ghostSkill = new Skill("Dive", "Has a base power of 12", 12);
-		Monster ghost = new Monster("Ghost", "Ghost", 1, "Common", 8, 20, 200, 60, ghostSkill);
+		Monster ghost = new Monster("Ghost", "Ghost", MonsterLevel, "Common", 8 + 2 * MonsterLevel, 17 + 3 * MonsterLevel, 200 + Math.round(3 * monster_heal_rate * MonsterLevel), 30, ghostSkill);
+		
 		
 		Skill skeletonSkill = new Skill("Slash", "Has a base power of 12", 12);
-		Monster skeleton = new Monster("Skeleton", "Skeleton", 1, "Common", 13, 20, 200, 50, skeletonSkill);
-		
+		Monster skeleton = new Monster("Skeleton", "Skeleton", MonsterLevelTwo, "Common", 13 + 3 * MonsterLevel, 15 + 2 * MonsterLevel, 200 + Math.round(2 * monster_heal_rate * MonsterLevel), 25, skeletonSkill);
 		/**
 		 * initialize the frame
 		 */

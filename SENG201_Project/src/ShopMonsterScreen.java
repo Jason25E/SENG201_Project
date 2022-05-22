@@ -67,27 +67,29 @@ public class ShopMonsterScreen {
 		
 		float shop_info = manager.getShop_info();
 		int current_day = manager.getCurrentDay();
-		purchasePrice = Math.round((purchasePrice + current_day * 5) * shop_info);
-		int MonsterLevel = manager.RandomMonsterLevelInShop;
-		ArrayList<Monster> MonsterList = new ArrayList<Monster>();
-		Skill batSkill = new Skill("Bit", "Has a base power of 12", 12);
-		Monster bat = new Monster("Bat", "Bat", MonsterLevel, "Common", 12 + 2 * MonsterLevel, 10 + 5 * MonsterLevel, 200, 70, batSkill);
-		
-		Skill slimeSkill = new Skill("Absorb", "Has a base power of 12", 12);
-		Monster slime = new Monster("Slime", "Slime", MonsterLevel, "Common", 7 + 1 * MonsterLevel, 10 + 5 * MonsterLevel, 200, 120, slimeSkill);
-		
-		Skill ghostSkill = new Skill("Dive", "Has a base power of 12", 12);
-		Monster ghost = new Monster("Ghost", "Ghost", MonsterLevel, "Common", 8 + 2 * MonsterLevel, 17 + 5 * MonsterLevel, 200, 70, ghostSkill);
-		
-		int MonsterLevelTwo = manager.RandomMonsterLevelInShopTwo;
-		Skill skeletonSkill = new Skill("Slash", "Has a base power of 12", 12);
-		Monster skeleton = new Monster("Skeleton", "Skeleton", MonsterLevelTwo, "Common", 13 + 3 * MonsterLevel, 15 + 5 * MonsterLevel, 200, 50, skeletonSkill);
-		
-		Skill witchSkill = new Skill("Thunder", "Has a base power of 12", 12);
-		Monster witch = new Monster("Witch", "Witch", MonsterLevelTwo, "Rare", 17 + 4 * MonsterLevel, 8 + 5 * MonsterLevel, 180, 70, witchSkill);
-		
-		Skill demonSkill = new Skill("Inferno", "Has a base power of 14", 14);
-		Monster demon = new Monster("Demon", "Demon", MonsterLevelTwo, "Rare", 15 + 3 * MonsterLevel, 18 + 5 * MonsterLevel, 200, 80, demonSkill);
+		float monster_heal_rate = manager.getStart_gold_info();
+	int MonsterLevel = manager.RandomMonsterLevelInShop;
+	purchasePrice = Math.round((purchasePrice + current_day * 5) * shop_info);
+	ArrayList<Monster> MonsterList = new ArrayList<Monster>();
+	
+	Skill batSkill = new Skill("Bit", "Has a base power of 12", 12);
+	Monster bat = new Monster("Bat", "Bat", MonsterLevel, "Common", 12 + 2 * MonsterLevel, 10 + 2 * MonsterLevel, 200 + Math.round(3 * monster_heal_rate * MonsterLevel), 30, batSkill);
+	
+	Skill slimeSkill = new Skill("Absorb", "Has a base power of 12", 12);
+	Monster slime = new Monster("Slime", "Slime", MonsterLevel, "Common", 7 + 1 * MonsterLevel, 10 + 3 * MonsterLevel, 200 + Math.round((float)3.5 * monster_heal_rate * MonsterLevel), 60, slimeSkill);
+	
+	Skill ghostSkill = new Skill("Dive", "Has a base power of 12", 12);
+	Monster ghost = new Monster("Ghost", "Ghost", MonsterLevel, "Common", 8 + 2 * MonsterLevel, 17 + 3 * MonsterLevel, 200 + Math.round(3 * monster_heal_rate * MonsterLevel), 35, ghostSkill);
+	
+	int MonsterLevelTwo = manager.RandomMonsterLevelInShopTwo;
+	Skill skeletonSkill = new Skill("Slash", "Has a base power of 12", 12);
+	Monster skeleton = new Monster("Skeleton", "Skeleton", MonsterLevelTwo, "Common", 13 + 3 * MonsterLevel, 15 + 2 * MonsterLevel, 200 + Math.round(2 * monster_heal_rate * MonsterLevel), 25, skeletonSkill);
+	
+	Skill witchSkill = new Skill("Thunder", "Has a base power of 12", 12);
+	Monster witch = new Monster("Witch", "Witch", MonsterLevelTwo, "Common", 17 + 4 * MonsterLevel, 8 + 1 * MonsterLevel, 180 + Math.round(2 * monster_heal_rate * MonsterLevel), 25, witchSkill);
+	
+	Skill demonSkill = new Skill("Inferno", "Has a base power of 14", 14);
+	Monster demon = new Monster("Demon", "Demon", MonsterLevelTwo, "Common", 15 + 3 * MonsterLevel, 18 + 3 * MonsterLevel, 200 + Math.round(3 * monster_heal_rate * MonsterLevel), 30, demonSkill);
 		
 		MonsterList.add(bat);
 		MonsterList.add(slime);

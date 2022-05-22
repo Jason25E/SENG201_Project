@@ -118,9 +118,9 @@ public class GameManager {
     }
 	
 	public void generateRandomEnemy() {
-		RandomEnemy = (int)((Math.random() * (9 - 0)) + 0);
-		RandomEnemyTwo = (int)((Math.random() * (9 - 0)) + 0);
-		RandomEnemyThree = (int)((Math.random() * (9 - 0)) + 0);
+		RandomEnemy = (int)((Math.random() * (6 - 0)) + 0);
+		RandomEnemyTwo = (int)((Math.random() * (6 - 0)) + 0);
+		RandomEnemyThree = (int)((Math.random() * (6 - 0)) + 0);
 	}
 	
 	public void setBattleEnemyToFalse() {
