@@ -84,6 +84,8 @@ public class BattleScreen {
 		
 		if (currentMonster != null) {
 			currentMonster.addBattleAmountToday();
+			lblDescription.setText(manager.getPlayer().getPlayerID() + " sent out " + currentMonster.getMonsterName());
+			
 			/** Set and display the name of my Monster that currently in battle */
 			String myMonsterName = currentMonster.getMonsterName();
 			JLabel lblMyMonsterName = new JLabel(myMonsterName);
