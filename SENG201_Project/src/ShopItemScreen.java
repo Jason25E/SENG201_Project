@@ -72,10 +72,10 @@ public class ShopItemScreen {
 		
 		ArrayList<Item> EquipmentList = new ArrayList<Item>();
 		/* Equipment(String equipmentName, String equipmentEffect, int purchasePrice, int sellingPrice, int attack, int defence) */
-		Equipment gainSmallAttack = new Equipment("Sword", "Increase 20 Attack", 20, 10, 20, 0);
-		Equipment gainBigAttack = new Equipment("Axe", "Increase 40 Attack", 30, 15, 40, 0);
-		Equipment gainSmallDefence = new Equipment("Helmet", "Increase 20 Defence", 20, 10, 0, 20);
-		Equipment gainBigDefence = new Equipment("Shield", "Increase 40 Defence", 30, 15, 0, 40);
+		Equipment gainSmallAttack = new Equipment("Sword", "Increase 20 Attack when equip", 20, 10, 20, 0);
+		Equipment gainBigAttack = new Equipment("Axe", "Increase 40 Attack when equip", 30, 15, 40, 0);
+		Equipment gainSmallDefence = new Equipment("Helmet", "Increase 20 Defence when equip", 20, 10, 0, 20);
+		Equipment gainBigDefence = new Equipment("Shield", "Increase 40 Defence when equip", 30, 15, 0, 40);
 		EquipmentList.add(gainSmallAttack);
 		EquipmentList.add(gainBigAttack);
 		EquipmentList.add(gainSmallDefence);
@@ -85,7 +85,7 @@ public class ShopItemScreen {
 		 * Initialize the frame itself.
 		 */
 		frmShopItem = new JFrame();
-		frmShopItem.setTitle("Shop - Item");
+		frmShopItem.setTitle("Shop - Food & Equip.");
 		frmShopItem.getContentPane().setForeground(Color.RED);
 		frmShopItem.setBounds(100, 100, 569, 321);
 		frmShopItem.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -97,12 +97,12 @@ public class ShopItemScreen {
 		lblGold.setBounds(12, 11, 100, 40);
 		frmShopItem.getContentPane().add(lblGold);
 		
-		JLabel lblItemsForSale = new JLabel("Items for sale");
-		lblItemsForSale.setBounds(228, 9, 150, 20);
+		JLabel lblItemsForSale = new JLabel("Food & Equip. for sale");
+		lblItemsForSale.setBounds(202, 11, 177, 20);
 		frmShopItem.getContentPane().add(lblItemsForSale);
 		
 		JLabel lblEffect = new JLabel("");
-		lblEffect.setBounds(228, 215, 207, 15);
+		lblEffect.setBounds(198, 215, 237, 15);
 		frmShopItem.getContentPane().add(lblEffect);
 		
 		JLabel lblMessage = new JLabel("");
@@ -165,6 +165,7 @@ public class ShopItemScreen {
 		rdbtnItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				selectedItem = FoodList.get(0);
+				lblMessage.setText("");
 				lblEffect.setText(selectedItem.getItemEffect());
 			}
 		});
@@ -191,6 +192,7 @@ public class ShopItemScreen {
 		rdbtnItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				selectedItem = FoodList.get(manager.RandomFoodInShop);
+				lblMessage.setText("");
 				lblEffect.setText(selectedItem.getItemEffect());
 			}
 		});
@@ -217,6 +219,7 @@ public class ShopItemScreen {
 		rdbtnItem_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				selectedItem = EquipmentList.get(manager.RandomEquipmentInShop);
+				lblMessage.setText("");
 				lblEffect.setText(selectedItem.getItemEffect());
 			}
 		});
@@ -244,6 +247,7 @@ public class ShopItemScreen {
 		rdbtnItem_1_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				selectedItem = EquipmentList.get(manager.RandomEquipmentInShopTwo);
+				lblMessage.setText("");
 				lblEffect.setText(selectedItem.getItemEffect());
 			}
 		});
