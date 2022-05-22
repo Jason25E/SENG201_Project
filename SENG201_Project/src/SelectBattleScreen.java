@@ -65,28 +65,28 @@ public class SelectBattleScreen {
 		float difficulty = manager.getShop_info();
 		ArrayList<Monster> EnemyMonsterList = new ArrayList<Monster>();
 		Skill batSkill = new Skill("Bit", "Has a base power of 12", 12);
-		Monster bat = new Monster("Bat", "Bat", monsterLevel, "Common", Math.round(difficulty * (20 + 5 * monsterLevel)), Math.round(difficulty * (10 + 5 * monsterLevel)), 200, 20, batSkill);
+		Monster bat = new Monster("Bat", "Bat", monsterLevel, "Common", Math.round(difficulty * (10 + 5 * monsterLevel)), Math.round(difficulty * (10 + 5 * monsterLevel)), 150, 20, batSkill);
 		
 		Skill slimeSkill = new Skill("Absorb", "Has a base power of 12", 12);
-		Monster slime = new Monster("Slime", "Slime", monsterLevel, "Common", Math.round(difficulty * (10 + 5 * monsterLevel)), Math.round(difficulty * (10 + 5 * monsterLevel)), 200, 40, slimeSkill);
+		Monster slime = new Monster("Slime", "Slime", monsterLevel, "Common", Math.round(difficulty * (7 + 5 * monsterLevel)), Math.round(difficulty * (10 + 5 * monsterLevel)), 150, 40, slimeSkill);
 		
 		Skill ghostSkill = new Skill("Dive", "Has a base power of 12", 12);
-		Monster ghost = new Monster("Ghost", "Ghost", monsterLevel, "Common", Math.round(difficulty * (10 + 5 * monsterLevel)), Math.round(difficulty * (20 + 5 * monsterLevel)), 200, 20, ghostSkill);
+		Monster ghost = new Monster("Ghost", "Ghost", monsterLevel, "Common", Math.round(difficulty * (7 + 5 * monsterLevel)), Math.round(difficulty * (20 + 5 * monsterLevel)), 150, 20, ghostSkill);
 		
 		Skill skeletonSkill = new Skill("Slash", "Has a base power of 12", 12);
-		Monster skeleton = new Monster("Skeleton", "Skeleton", monsterLevel, "Common", Math.round(difficulty * (20 + 5 * monsterLevel)), Math.round(difficulty * (20 + 5 * monsterLevel)), 200, 10, skeletonSkill);
+		Monster skeleton = new Monster("Skeleton", "Skeleton", monsterLevel, "Common", Math.round(difficulty * (10 + 5 * monsterLevel)), Math.round(difficulty * (20 + 5 * monsterLevel)), 150, 10, skeletonSkill);
 		
 		Skill witchSkill = new Skill("Thunder", "Has a base power of 12", 12);
-		Monster witch = new Monster("Witch", "Witch", monsterLevel, "Rare", Math.round(difficulty * (30 + 5 * monsterLevel)), Math.round(difficulty * (10 + 5 * monsterLevel)), 180, 20, witchSkill);
+		Monster witch = new Monster("Witch", "Witch", monsterLevel, "Rare", Math.round(difficulty * (20 + 5 * monsterLevel)), Math.round(difficulty * (10 + 5 * monsterLevel)), 120, 20, witchSkill);
 		
 		Skill demonSkill = new Skill("Inferno", "Has a base power of 14", 14);
-		Monster demon = new Monster("Demon", "Demon", monsterLevel, "Rare", Math.round(difficulty * (20 + 5 * monsterLevel)), Math.round(difficulty * (10 + 5 * monsterLevel)), 200, 20, demonSkill);
+		Monster demon = new Monster("Demon", "Demon", monsterLevel, "Rare", Math.round(difficulty * (10 + 5 * monsterLevel)), Math.round(difficulty * (10 + 5 * monsterLevel)), 150, 20, demonSkill);
 		
 		Skill redDragonSkill = new Skill("Slash", "Has a base power of 15", 15);
-		Monster redDragon = new Monster("RedDragons", "RedDragons", monsterLevel, "Rare", Math.round(difficulty * (20 + 5 * monsterLevel)), Math.round(difficulty * (10 + 5 * monsterLevel)), 300, 20, redDragonSkill);
+		Monster redDragon = new Monster("RedDragons", "RedDragons", monsterLevel, "Rare", Math.round(difficulty * (10 + 5 * monsterLevel)), Math.round(difficulty * (10 + 5 * monsterLevel)), 200, 20, redDragonSkill);
 		
 		Skill greenDragonSkill = new Skill("S.Slash", "Has a base power of 16", 16);
-		Monster greenDragon = new Monster("GreenDragons", "GreenDragons", monsterLevel, "S.Rare", Math.round(difficulty * (10 + 5 * monsterLevel)), Math.round(difficulty * (10 + 5 * monsterLevel)), 300, 40, greenDragonSkill);
+		Monster greenDragon = new Monster("GreenDragons", "GreenDragons", monsterLevel, "S.Rare", Math.round(difficulty * (10 + 5 * monsterLevel)), Math.round(difficulty * (10 + 5 * monsterLevel)), 200, 40, greenDragonSkill);
 		
 		Skill blueDragonSkill = new Skill("SS.Slash", "Has a base power of 18", 18);
 		Monster blueDragon = new Monster("BlueDragons", "BlueDragons", monsterLevel, "SS.Rare", Math.round(difficulty * (10 + 5 * monsterLevel)), Math.round(difficulty * (20 + 5 * monsterLevel)), 500, 20, blueDragonSkill);

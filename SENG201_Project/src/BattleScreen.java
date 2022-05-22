@@ -140,7 +140,7 @@ public class BattleScreen {
 			btnSkill.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					/** Calculate the damage deals to each other */
-					int enemyPower = (int)((Math.random() * (25 - 12)) + 12);
+					int enemyPower = (int)((Math.random() * (18)) + 12);
 					int damageDealToEnemy = (MyMonsterPower * currentMonster.getMonsterAttack() * currentMonster.getMonsterSkill().getSkillDamage() * MyMonsterSkillPower / 80) - (enemy.getMonsterDefence() / 10);
 					int damageDealByEnemy = enemyPower * enemy.getMonsterAttack() / 10 - (currentMonster.getMonsterDefence() / 10);
 					
@@ -191,9 +191,9 @@ public class BattleScreen {
 			btnAttack.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					/** Calculate the damage deals to each other */
-					int enemyPower = (int)((Math.random() * (25 - 12)) + 12);
-					int damageDealToEnemy = (MyMonsterPower * currentMonster.getMonsterAttack() / 10) - (enemy.getMonsterDefence() / 10);
-					int damageDealByEnemy = enemyPower * enemy.getMonsterAttack() / 10 - (currentMonster.getMonsterDefence() / 10);
+					int enemyPower = (int)((Math.random() * (13)) + 9);
+					int damageDealToEnemy = (MyMonsterPower * currentMonster.getMonsterAttack() / 10) - (enemy.getMonsterDefence() / 5);
+					int damageDealByEnemy = enemyPower * enemy.getMonsterAttack() / 10 - (currentMonster.getMonsterDefence() / 2);
 					
 					/** Apply the damage */
 					currentMonster.reduceCurrentHealthPoint(damageDealByEnemy);
@@ -237,7 +237,7 @@ public class BattleScreen {
 			btnDefence.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					/** Calculate the damage deals to each other */
-					int enemyPower = (int)((Math.random() * (25 - 12)) + 12);
+					int enemyPower = (int)((Math.random() * (18)) + 12);
 					int damageDealToEnemy = 0;
 					int damageDealByEnemy = (enemyPower * enemy.getMonsterAttack() / 10 - (currentMonster.getMonsterDefence() / 10)) - currentMonster.getMonsterDefence() * 2;
 					if (damageDealByEnemy < 5) {
