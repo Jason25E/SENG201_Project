@@ -25,6 +25,7 @@ public class SetupScreen {
 	private float start_gold_info = 0;
 	private float shop_info = 0;
 	private int monster_selling_info = 0;
+	private float monster_skill_rate = 0;
 
 	/**
 	 * Launch the application.
@@ -120,6 +121,7 @@ public class SetupScreen {
 				shop_info = 1;
 				start_gold_info = 1;
 				monster_selling_info = 4;
+				monster_skill_rate = 1;
 			}
 		});
 		buttonGroup.add(rdbtnEasy);
@@ -132,7 +134,8 @@ public class SetupScreen {
 			public void actionPerformed(ActionEvent arg0) {
 				shop_info = (float) 1.2;
 				monster_selling_info = 3;
-				start_gold_info = (float) 0.8;
+				start_gold_info = (float) 0.9;
+				monster_skill_rate = (float) 1.1;
 			}
 		});
 		buttonGroup.add(rdbtnNormal);
@@ -143,9 +146,11 @@ public class SetupScreen {
 		JRadioButton rdbtnHard = new JRadioButton("Hard");
 		rdbtnHard.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				shop_info = (float) 1.5;
-				start_gold_info = (float) 0.5;
+				shop_info = (float) 1.4;
+				start_gold_info = (float) 0.8;
 				monster_selling_info = 2;
+				monster_skill_rate = (float) 1.2;
+				
 			}
 		});
 		buttonGroup.add(rdbtnHard);
@@ -179,7 +184,7 @@ public class SetupScreen {
 					if (playerName.length() <= 15) {
 						if (shop_info != 0) {
 							Player player = new Player(playerName);
-							manager.Setup(player, numberOfDays, shop_info, start_gold_info, monster_selling_info);
+							manager.Setup(player, numberOfDays, shop_info, start_gold_info, monster_selling_info, monster_skill_rate);
 							manager.closeSetupScreen(SetupScreen.this);
 						} else {
 							lblNewLabel_2.setText("Please select a difficulty");
@@ -197,3 +202,5 @@ public class SetupScreen {
 		});
 	}
 }
+
+

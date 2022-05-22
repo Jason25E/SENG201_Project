@@ -19,9 +19,8 @@ public class ShopMonsterScreen {
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	
 	private GameManager manager;
-	private int purchasePrice = 100;
+	private int purchasePrice = 150;
 	private Monster selectedMonster = null;
-	private boolean buy = false;
 	private int selectedMonsterPrice;
 	private JTextField textField;
 	
@@ -65,26 +64,30 @@ public class ShopMonsterScreen {
 		/**
 		 * Initialize the Monsters that appear in shop.
 		 */
+		
+		float shop_info = manager.getShop_info();
+		int current_day = manager.getCurrentDay();
+		purchasePrice = Math.round((purchasePrice + current_day * 5) * shop_info);
 		int MonsterLevel = manager.RandomMonsterLevelInShop;
 		ArrayList<Monster> MonsterList = new ArrayList<Monster>();
 		Skill batSkill = new Skill("Bit", "Has a base power of 12", 12);
-		Monster bat = new Monster("Bat", "Bat", MonsterLevel, "Common", 20, 10, 100, 20, batSkill);
+		Monster bat = new Monster("Bat", "Bat", MonsterLevel, "Common", 12 + 2 * MonsterLevel, 10 + 5 * MonsterLevel, 200, 20, batSkill);
 		
 		Skill slimeSkill = new Skill("Absorb", "Has a base power of 12", 12);
-		Monster slime = new Monster("Slime", "Slime", MonsterLevel, "Common", 10, 10, 100, 40, slimeSkill);
+		Monster slime = new Monster("Slime", "Slime", MonsterLevel, "Common", 7 + 1 * MonsterLevel, 10 + 5 * MonsterLevel, 200, 60, slimeSkill);
 		
 		Skill ghostSkill = new Skill("Dive", "Has a base power of 12", 12);
-		Monster ghost = new Monster("Ghost", "Ghost", MonsterLevel, "Common", 10, 20, 100, 20, ghostSkill);
+		Monster ghost = new Monster("Ghost", "Ghost", MonsterLevel, "Common", 8 + 2 * MonsterLevel, 17 + 5 * MonsterLevel, 200, 20, ghostSkill);
 		
 		int MonsterLevelTwo = manager.RandomMonsterLevelInShopTwo;
 		Skill skeletonSkill = new Skill("Slash", "Has a base power of 12", 12);
-		Monster skeleton = new Monster("Skeleton", "Skeleton", MonsterLevelTwo, "Common", 20, 20, 100, 10, skeletonSkill);
+		Monster skeleton = new Monster("Skeleton", "Skeleton", MonsterLevelTwo, "Common", 13 + 3 * MonsterLevel, 15 + 5 * MonsterLevel, 200, 10, skeletonSkill);
 		
 		Skill witchSkill = new Skill("Thunder", "Has a base power of 12", 12);
-		Monster witch = new Monster("Witch", "Witch", MonsterLevelTwo, "Common", 30, 10, 80, 20, witchSkill);
+		Monster witch = new Monster("Witch", "Witch", MonsterLevelTwo, "Common", 17 + 4 * MonsterLevel, 8 + 5 * MonsterLevel, 180, 20, witchSkill);
 		
 		Skill demonSkill = new Skill("Inferno", "Has a base power of 14", 14);
-		Monster demon = new Monster("Demon", "Demon", MonsterLevelTwo, "Common", 20, 10, 100, 20, demonSkill);
+		Monster demon = new Monster("Demon", "Demon", MonsterLevelTwo, "Common", 15 + 3 * MonsterLevel, 18 + 5 * MonsterLevel, 200, 20, demonSkill);
 		
 		MonsterList.add(bat);
 		MonsterList.add(slime);
@@ -154,18 +157,13 @@ public class ShopMonsterScreen {
 				if (selectedMonster != null) {
 					if (manager.getPlayer().getGoldAmount() >= selectedMonsterPrice) {
 						if (manager.getPlayer().getMonsterList().size() <= manager.getPlayer().getMaxMonstersCanHave() - 1) {
-							if (textField.getText().length() > 0 && textField.getText().length() < 13) {
-								if (buy == false) {
-									selectedMonster.setMonsterName(textField.getText());
-									manager.getPlayer().buyMonster(selectedMonster, selectedMonsterPrice);
-									lblGold.setText(Integer.toString(manager.getPlayer().getGoldAmount()));
-									buy = true;
-									lblMessage.setText("Success");
-								} else {
-									lblMessage.setText("Reselect require");
-								}
+							if (textField.getText().length() > 0 && textField.getText().length() < 9) {
+								selectedMonster.setMonsterName(textField.getText());
+								manager.getPlayer().buyMonster(selectedMonster, selectedMonsterPrice);
+								lblGold.setText(Integer.toString(manager.getPlayer().getGoldAmount()));
+								lblMessage.setText("Success");
 							} else {
-								lblMessage.setText("Name 1 to 12 char. max");
+								lblMessage.setText("Name 1 to 8 char. max");
 							}
 						} else {
 							lblMessage.setText("Not enough space");
@@ -196,10 +194,9 @@ public class ShopMonsterScreen {
 		rdbtnMonster.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				lblMessage.setText("");
-				buy = false;
 				selectedMonster = monsterOne;
 				selectedMonsterPrice = priceOne;
-				textField.setText(MonsterNameOne + "_" + (int)((Math.random() * (99)) + 1));
+				textField.setText(MonsterNameOne);
 			}
 		});
 		buttonGroup.add(rdbtnMonster);
@@ -228,10 +225,9 @@ public class ShopMonsterScreen {
 		rdbtnMonster_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				lblMessage.setText("");
-				buy = false;
 				selectedMonster = monsterTwo;
 				selectedMonsterPrice = priceTwo;
-				textField.setText(MonsterNameTwo + "_" + (int)((Math.random() * (999)) + 1));
+				textField.setText(MonsterNameTwo);
 			}
 		});
 		buttonGroup.add(rdbtnMonster_1);
@@ -260,10 +256,9 @@ public class ShopMonsterScreen {
 		rdbtnMonster_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				lblMessage.setText("");
-				buy = false;
 				selectedMonster = monsterThree;
 				selectedMonsterPrice = priceThree;
-				textField.setText(MonsterNameThree + "_" + (int)((Math.random() * (999)) + 1));
+				textField.setText(MonsterNameThree);
 			}
 		});
 		buttonGroup.add(rdbtnMonster_2);

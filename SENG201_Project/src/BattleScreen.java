@@ -57,6 +57,8 @@ public class BattleScreen {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		float battle_rate = manager.getMonster_skill_rate();
+		float skill_rate = manager.getStart_gold_info();
 		frmBattle = new JFrame();
 		frmBattle.setTitle("Battle");
 		frmBattle.setBounds(100, 100, 450, 313);
@@ -82,8 +84,6 @@ public class BattleScreen {
 		
 		if (currentMonster != null) {
 			currentMonster.addBattleAmountToday();
-			lblDescription.setText(manager.getPlayer().getPlayerID() + " sent out " + currentMonster.getMonsterName());
-			
 			/** Set and display the name of my Monster that currently in battle */
 			String myMonsterName = currentMonster.getMonsterName();
 			JLabel lblMyMonsterName = new JLabel(myMonsterName);
@@ -142,9 +142,17 @@ public class BattleScreen {
 			btnSkill.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					/** Calculate the damage deals to each other */
-					int enemyPower = (int)((Math.random() * (18)) + 12);
-					int damageDealToEnemy = (MyMonsterPower * currentMonster.getMonsterAttack() * currentMonster.getMonsterSkill().getSkillDamage() * MyMonsterSkillPower / 80) - (enemy.getMonsterDefence() / 10);
-					int damageDealByEnemy = enemyPower * enemy.getMonsterAttack() / 10 - (currentMonster.getMonsterDefence() / 10);
+					float enemyPower = (float)((Math.random() * (battle_rate - 0.1)) + 0.7);
+					int damageDealToEnemy = Math.round(skill_rate * currentMonster.getMonsterAttack() + MyMonsterPower) - (enemy.getMonsterDefence() / 10);
+					if (MyMonsterSkillPower > 1) {
+						damageDealToEnemy = (currentMonster.getMonsterSkill().getSkillDamage() * MyMonsterSkillPower + Math.round(currentMonster.getMonsterAttack() * skill_rate)) - (enemy.getMonsterDefence() / 10);
+						MyMonsterSkillPower = 1;
+					} else {
+						MyMonsterSkillPower += 1;
+					}
+			
+					
+					int damageDealByEnemy = Math.round(enemyPower * enemy.getMonsterAttack()) - (currentMonster.getMonsterDefence() / 10);
 					
 					/** Apply the damage */
 					currentMonster.reduceCurrentHealthPoint(damageDealByEnemy);
@@ -161,7 +169,7 @@ public class BattleScreen {
 					lblEnemyHP.setText(enemyHP);
 					
 					/** Set skill power back to 1 and reload its power */
-					MyMonsterSkillPower = 1;
+					
 					lblSkillPower.setText("Power " + currentMonster.getMonsterSkill().getSkillDamage() * MyMonsterSkillPower);
 					
 					if (enemy.getMonsterCurrentHealthPoint() == 0) {
@@ -193,9 +201,9 @@ public class BattleScreen {
 			btnAttack.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					/** Calculate the damage deals to each other */
-					int enemyPower = (int)((Math.random() * (13)) + 9);
-					int damageDealToEnemy = (MyMonsterPower * currentMonster.getMonsterAttack() / 10) - (enemy.getMonsterDefence() / 5);
-					int damageDealByEnemy = enemyPower * enemy.getMonsterAttack() / 10 - (currentMonster.getMonsterDefence() / 2);
+					float enemyPower = (float)((Math.random() * (battle_rate-0.1)) + 0.7);
+					int damageDealToEnemy = Math.round(skill_rate * currentMonster.getMonsterAttack() + MyMonsterPower) - (enemy.getMonsterDefence() / 10);
+					int damageDealByEnemy = Math.round(enemyPower * enemy.getMonsterAttack()) - (currentMonster.getMonsterDefence() / 10);
 					
 					/** Apply the damage */
 					currentMonster.reduceCurrentHealthPoint(damageDealByEnemy);
@@ -239,9 +247,9 @@ public class BattleScreen {
 			btnDefence.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					/** Calculate the damage deals to each other */
-					int enemyPower = (int)((Math.random() * (18)) + 12);
+					float enemyPower = (float)((Math.random() * (battle_rate-0.1)) + 0.7);
 					int damageDealToEnemy = 0;
-					int damageDealByEnemy = (enemyPower * enemy.getMonsterAttack() / 10 - (currentMonster.getMonsterDefence() / 10)) - currentMonster.getMonsterDefence() * 2;
+					int damageDealByEnemy = Math.round(enemyPower * enemy.getMonsterAttack()) - Math.round((currentMonster.getMonsterDefence() * 2 * skill_rate));
 					if (damageDealByEnemy < 5) {
 						damageDealByEnemy = 5;
 					}
@@ -295,3 +303,5 @@ public class BattleScreen {
 
 
 }
+
+

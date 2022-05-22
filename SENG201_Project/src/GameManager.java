@@ -5,7 +5,9 @@ public class GameManager {
 	private int dayRemain;
 	private int currentDay;
 	private float shop_info;
+	private float start_gold_info;
 	private int monster_selling_info;
+	private float monster_skill_rate;
 
 
 	private int startGold;
@@ -33,11 +35,13 @@ public class GameManager {
 		currentDay = 1;
 	}
 	
-	public void Setup(Player player,  int dayRemain, float shop_info, float start_gold_info, int monster_selling_info)
+	public void Setup(Player player,  int dayRemain, float shop_info, float start_gold_info, int monster_selling_info, float monster_skill_rate)
 	{
 		this.player = player;
 		this.dayRemain = dayRemain;
 		this.shop_info = shop_info;
+		this.monster_skill_rate = monster_skill_rate;
+		this.start_gold_info = start_gold_info;
 		this.monster_selling_info = monster_selling_info;
 		this.startGold = Math.round(180 * start_gold_info);
 		this.player.setGoldAmount(startGold);
@@ -81,6 +85,16 @@ public class GameManager {
 	public int getMonster_selling_info()
 	{
 		return monster_selling_info;
+	}
+	
+	public float getMonster_skill_rate()
+	{
+		return monster_skill_rate;
+	}
+	
+	public float getStart_gold_info()
+	{
+		return start_gold_info;
 	}
 	
 	public void reduceDayRemain()
