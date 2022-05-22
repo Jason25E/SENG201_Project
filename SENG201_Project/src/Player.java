@@ -84,10 +84,20 @@ public class Player {
 		useGold(goldUsed);
 	}
 	
-	public void soldMonster(Monster monster, int goldGain) {
+	public void soldMonster(Monster monster, int goldGain, Equipment MonsterEquipment) {
 		if (removeMonster(monster) == true) {
 			gainGold(goldGain);
 		}
+		
+		if (MonsterEquipment != null) {
+			for (Item i: EquipmentList) {
+				if (i.getItemID() == MonsterEquipment.getItemID()) {
+					i.gainQuantity();
+
+				}
+			}
+		}
+		
 		
 	}
 	
@@ -102,6 +112,7 @@ public class Player {
 	public void soldItem(Item item) {
 		item.reduceQuantity();
 		gainGold(item.getSellingPrice());
+		
 		if (item.getQuantity() == 0) {
 			FoodList.remove(item); 
 		}
@@ -110,9 +121,7 @@ public class Player {
 	public void soldEquipment(Item item) {
 		item.reduceQuantity();
 		gainGold(item.getSellingPrice());
-		if (item.getQuantity() == 0) {
-			EquipmentList.remove(item); 
-		}
+
 	}
 	
 	public void buyFood(Item item, int goldUsed) {

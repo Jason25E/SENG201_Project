@@ -265,7 +265,7 @@ public class SaleMonsterScreen {
 			public void actionPerformed(ActionEvent arg0) {
 				if (selectedMonster != null) {
 					int SalePrice = (int) (selectedMonster.getMonsterAttack() * 1.5);
-					manager.getPlayer().soldMonster(selectedMonster, SalePrice);
+					manager.getPlayer().soldMonster(selectedMonster, SalePrice, selectedMonster.getMonsterEquipment());
 					manager.launchSaleMonsterScreen();
 					closeWindow();
 					

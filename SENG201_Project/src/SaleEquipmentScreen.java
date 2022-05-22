@@ -132,7 +132,7 @@ public class SaleEquipmentScreen {
 			JRadioButton rdbtnNameOfEquip1 = new JRadioButton(SecondEquipmentName);
 			rdbtnNameOfEquip1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					selectedEquipment = EquipmentList.get(0);
+					selectedEquipment = EquipmentList.get(1);
 				}
 			});
 			buttonGroup.add(rdbtnNameOfEquip1);
@@ -173,7 +173,7 @@ public class SaleEquipmentScreen {
 			JRadioButton rdbtnNameOfEquip2 = new JRadioButton(ThirdEquipmentName);
 			rdbtnNameOfEquip2.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					selectedEquipment = EquipmentList.get(0);
+					selectedEquipment = EquipmentList.get(3);
 				}
 			});
 			buttonGroup.add(rdbtnNameOfEquip2);
@@ -255,15 +255,20 @@ public class SaleEquipmentScreen {
 		JButton btnUse = new JButton("Sell");
 		btnUse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (selectedEquipment != null) {
-					int SalePrice = selectedEquipment.getSellingPrice();
-					manager.getPlayer().soldEquipment(selectedEquipment);
-					manager.launchSaleEquipmentScreen();
-					closeWindow();
+				if (selectedEquipment.getQuantity() > 0) {
+					if (selectedEquipment != null) {
+						int SalePrice = selectedEquipment.getSellingPrice();
+						manager.getPlayer().soldEquipment(selectedEquipment);
+						manager.launchSaleEquipmentScreen();
+						closeWindow();
 
+					} else {
+						label.setText("Please select an Equipment to sale");
+					}
 				} else {
-					label.setText("Please select an Equipment to sale");
+					label.setText("No Equipment to sale");
 				}
+				
 			}
 		});
 		btnUse.setFont(new Font("Dialog", Font.BOLD, 12));
