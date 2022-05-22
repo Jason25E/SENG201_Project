@@ -136,14 +136,19 @@ public class MainScreen {
 		btnMonster_1.setBounds(261, 325, 130, 40);
 		frmMain.getContentPane().add(btnMonster_1);
 		
+		JLabel lblEventInfo = new JLabel();
+		lblEventInfo.setFont(new Font("Dialog", Font.BOLD, 10));
+		lblEventInfo.setBounds(33, 375, 601, 15);
+		frmMain.getContentPane().add(lblEventInfo);
+		
 		JButton btnSleep = new JButton("Sleep");
 		btnSleep.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (manager.getDayRemain() == 0) {
+				if (manager.getDayRemain() == 1) {
 					manager.launchSummaryScreen();
 					closeWindow();
 				} else {
-					manager.sleep();
+					lblEventInfo.setText(manager.sleep());
 					lblNewLabel_2.setText(Integer.toString(manager.getCurrentDay()));
 					lblNewLabel_4.setText(Integer.toString(manager.getDayRemain()));
 				}
@@ -163,7 +168,5 @@ public class MainScreen {
 		});
 		btnEquipment.setBounds(472, 325, 130, 40);
 		frmMain.getContentPane().add(btnEquipment);
-		
-
 	}
 }

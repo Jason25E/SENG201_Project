@@ -153,48 +153,81 @@ public class GameManager {
 		}
 	}
 	
-	public void randomEvent() {
+	public String randomEvent() {
+		int random;
+		String descriptionOfRandomEvent = "";
+		Monster leaveMonster = null;
+		Monster joinMonster = null;
 		ArrayList<Monster> monsterList = player.getMonsterList();
 		for (Monster i : monsterList) {
 			/**
-			 * Chance to level up overnight depends on amount of battle participate today
+			 * Chance a monster level up overnight depends on amount of battle participate today
 			 */
 			if (i.getMonsterBattleAmountToday() >= 2) {
-				i.levelUp();
+				random = 1;
 			} else if (i.getMonsterBattleAmountToday() == 1) {
-				int random = (int)((Math.random() * (2)) + 0);
-				if (random == 1) {
-					i.levelUp();
-				}
+				random = (int)((Math.random() * (2)) + 1);
 			} else {
-				int random = (int)((Math.random() * (11)) + 1);
-				if (random < 2) {
-					i.levelUp();
+				random = (int)((Math.random() * (10)) + 1);
+			}
+			if (random <= 1) {
+				i.levelUp();
+				descriptionOfRandomEvent += i.getMonsterName() + " has level up. ";
+			}
+			
+			/**
+			 * Chance to a monster leave overnight depends on fainted or not today
+			 */
+			random = (int)((Math.random() * (100)) + 1);
+			if (i.getMonsterFaintedToday() == true) {
+				random = (int)((Math.random() * (70)) + 1);
+			}
+			if (random <= 5) {
+				if (player.getMonsterList().size() > 1) {
+					leaveMonster = i;
+					descriptionOfRandomEvent += i.getMonsterName() + " has leave. ";
 				}
 			}
 			
 			/**
-			 * Chance to level up overnight depends on fainted or not today
+			 * Chance a new monster join overnight depends on how many free slot in party
 			 */
-			if (i.getMonsterFaintedToday() == true) {
-				int random = (int)((Math.random() * (101)) + 1);
-				if (random <= 5) {
-					if (player.getMonsterList().size() > 1) {
-						player.removeMonster(i);
-					}
-				}
+			random = 6;
+			if (player.getMonsterList().size() == 3) {
+				random = (int)((Math.random() * (100)) + 1);
+			} else if (player.getMonsterList().size() == 2) {
+				random = (int)((Math.random() * (50)) + 1);
+			} else if (player.getMonsterList().size() == 1) {
+				random = (int)((Math.random() * (20)) + 1);
+			}
+			if (random <= 5) {
+				String monsterName = "Slimey_" + (int)((Math.random() * (999)) + 1);
+				Skill slimeSkill = new Skill("Absorb", "Has a base power of 14", 14);
+				Monster slime = new Monster("Slime", monsterName, 5, "Common", 50, 50, 100, 80, slimeSkill);
+				joinMonster = slime;
+				descriptionOfRandomEvent += slime.getMonsterName() + " has join. ";
 			}
 		}
+		if (joinMonster != null) {
+			player.addMonster(joinMonster);
+		}
+		if (leaveMonster != null) {
+			player.getMonsterList().remove(leaveMonster);
+		}
+		
+		return descriptionOfRandomEvent;
 	}
 	
-	public void sleep()
+	public String sleep()
 	{
 		reduceDayRemain();
 		generateRandomValueInShop();
 		generateRandomEnemy();
 		setBattleEnemyToFalse();
-		randomEvent();
+		String descriptionOfRandomEvent = randomEvent();
 		resetMonsterActivity();
+		
+		return descriptionOfRandomEvent;
 	}
 	
 	/**

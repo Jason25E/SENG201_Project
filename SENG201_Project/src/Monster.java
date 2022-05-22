@@ -111,6 +111,11 @@ public class Monster {
 		}
 	}
 	
+	public String getFullMonsterInfo() {
+		String monsterInfo = monsterName + "  Lv:" + level + "  HP: " + currentHealthPoint + "/" + maxHealthPoint + "   Attack: " + attack + "   Defence: " + defence + "   Healing: " + healingAmount + "   Skill: " + skill.getSkillName() + "   Rarity: " + rarity;
+		return monsterInfo;
+	}
+	
 	public String getMonsterInfo() {
 		String monsterInfo = "Lv:" + level + "  HP: " + currentHealthPoint + "/" + maxHealthPoint + "   Attack: " + attack + "   Defence: " + defence + "   Healing: " + healingAmount + "   Skill: " + skill.getSkillName() + "   Rarity: " + rarity;
 		return monsterInfo;
