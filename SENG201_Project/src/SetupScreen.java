@@ -22,8 +22,10 @@ public class SetupScreen {
 	
 	private GameManager manager;
 	private int numberOfDays = 15;
-	private String difficulty = "Null";
-	
+	private float start_gold_info = 0;
+	private float shop_info = 0;
+	private int monster_selling_info = 0;
+
 	/**
 	 * Launch the application.
 	 */
@@ -115,7 +117,9 @@ public class SetupScreen {
 		JRadioButton rdbtnEasy = new JRadioButton("Easy");
 		rdbtnEasy.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				difficulty = "Easy";
+				shop_info = 1;
+				start_gold_info = 1;
+				monster_selling_info = 4;
 			}
 		});
 		buttonGroup.add(rdbtnEasy);
@@ -126,7 +130,9 @@ public class SetupScreen {
 		JRadioButton rdbtnNormal = new JRadioButton("Normal");
 		rdbtnNormal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				difficulty = "Normal";
+				shop_info = (float) 1.2;
+				monster_selling_info = 3;
+				start_gold_info = (float) 0.8;
 			}
 		});
 		buttonGroup.add(rdbtnNormal);
@@ -137,7 +143,9 @@ public class SetupScreen {
 		JRadioButton rdbtnHard = new JRadioButton("Hard");
 		rdbtnHard.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				difficulty = "Hard";
+				shop_info = (float) 1.5;
+				start_gold_info = (float) 0.5;
+				monster_selling_info = 2;
 			}
 		});
 		buttonGroup.add(rdbtnHard);
@@ -169,9 +177,9 @@ public class SetupScreen {
 					* Create a new player using the name as the one in the text field
 					*/
 					if (playerName.length() <= 15) {
-						if (difficulty != "Null") {
+						if (shop_info != 0) {
 							Player player = new Player(playerName);
-							manager.Setup(player, numberOfDays, difficulty);
+							manager.Setup(player, numberOfDays, shop_info, start_gold_info, monster_selling_info);
 							manager.closeSetupScreen(SetupScreen.this);
 						} else {
 							lblNewLabel_2.setText("Please select a difficulty");

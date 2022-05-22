@@ -19,7 +19,7 @@ public class ShopMonsterScreen {
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	
 	private GameManager manager;
-	private int purchasePrice = 100;
+	private int purchasePrice = 200;
 	private Monster selectedMonster = null;
 	private int selectedMonsterPrice;
 	private JTextField textField;
@@ -64,6 +64,9 @@ public class ShopMonsterScreen {
 		/**
 		 * Initialize the Monsters that appear in shop.
 		 */
+		
+		float shop_info = manager.getShop_info();
+		purchasePrice = Math.round(purchasePrice * shop_info);
 		int MonsterLevel = manager.RandomMonsterLevelInShop;
 		ArrayList<Monster> MonsterList = new ArrayList<Monster>();
 		Skill batSkill = new Skill("Bit", "Has a base power of 12", 12);

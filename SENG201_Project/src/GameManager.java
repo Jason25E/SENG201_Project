@@ -4,8 +4,11 @@ public class GameManager {
 	private Player player;
 	private int dayRemain;
 	private int currentDay;
-	private String difficulty;
-	private int startGold = 1000;
+	private float shop_info;
+	private int monster_selling_info;
+
+
+	private int startGold;
 	
 	public int RandomFoodInShop = 1;
 	public int RandomEquipmentInShop = 0 ;
@@ -15,7 +18,7 @@ public class GameManager {
 	public int RandomMonsterInShopThree = 4;
 	
 	public int RandomMonsterLevelInShop = 1;
-	public int RandomMonsterLevelInShopTwo = 1;
+    public int RandomMonsterLevelInShopTwo = 1;
 	
 	public int RandomEnemy = 0;
 	public int RandomEnemyTwo = 1;
@@ -30,11 +33,13 @@ public class GameManager {
 		currentDay = 1;
 	}
 	
-	public void Setup(Player player,  int dayRemain, String difficulty)
+	public void Setup(Player player,  int dayRemain, float shop_info, float start_gold_info, int monster_selling_info)
 	{
 		this.player = player;
 		this.dayRemain = dayRemain;
-		this.difficulty = difficulty;
+		this.shop_info = shop_info;
+		this.monster_selling_info = monster_selling_info;
+		this.startGold = Math.round(180 * start_gold_info);
 		this.player.setGoldAmount(startGold);
 	}
 	
@@ -53,9 +58,9 @@ public class GameManager {
 		return currentDay;
 	}
 	
-	public String getDifficulty()
+	public float getShop_info()
 	{
-		return difficulty;
+		return shop_info;
 	}
 	
 	public boolean getBattleEnemy()
@@ -73,6 +78,11 @@ public class GameManager {
 		return battleEnemyThree;
 	}
 	
+	public int getMonster_selling_info()
+	{
+		return monster_selling_info;
+	}
+	
 	public void reduceDayRemain()
 	{
 		if (dayRemain > 0) {
@@ -82,16 +92,16 @@ public class GameManager {
 	}
 	
 	public void generateRandomValueInShop() {
-		RandomFoodInShop = (int)((Math.random() * (4 - 1)) + 1);
-		RandomEquipmentInShop = (int)((Math.random() * (4 - 0)) + 0);
-		RandomEquipmentInShopTwo = (int)((Math.random() * (4 - 0)) + 0);
-		RandomMonsterInShop = (int)((Math.random() * (6 - 0)) + 0);
-		RandomMonsterInShopTwo = (int)((Math.random() * (6 - 0)) + 0);
-		RandomMonsterInShopThree = (int)((Math.random() * (6 - 0)) + 0);
-		
-		RandomMonsterLevelInShop = (int)((Math.random() * (currentDay)) + 1);
-		RandomMonsterLevelInShopTwo = (int)((Math.random() * (currentDay)) + 1);;
-	}
+        RandomFoodInShop = (int)((Math.random() * (4 - 1)) + 1);
+        RandomEquipmentInShop = (int)((Math.random() * (4 - 0)) + 0);
+        RandomEquipmentInShopTwo = (int)((Math.random() * (4 - 0)) + 0);
+        RandomMonsterInShop = (int)((Math.random() * (6 - 0)) + 0);
+        RandomMonsterInShopTwo = (int)((Math.random() * (6 - 0)) + 0);
+        RandomMonsterInShopThree = (int)((Math.random() * (6 - 0)) + 0);
+       
+        RandomMonsterLevelInShop = (int)((Math.random() * (currentDay)) + 1);
+        RandomMonsterLevelInShopTwo = (int)((Math.random() * (currentDay)) + 1);;
+    }
 	
 	public void generateRandomEnemy() {
 		RandomEnemy = (int)((Math.random() * (9 - 0)) + 0);
@@ -120,21 +130,12 @@ public class GameManager {
 		battleEnemyThree = statue;
 	}
 	
-	public void resetMonsterActivity() {
-		ArrayList<Monster> monsterList = getPlayer().getMonsterList();
-		for (Monster i : monsterList) {
-			i.setBattleAmountToday(0);
-			i.setfaintedToday(false);
-		}
-	}
-	
 	public void sleep()
 	{
 		reduceDayRemain();
 		generateRandomValueInShop();
 		generateRandomEnemy();
 		setBattleEnemyToFalse();
-		resetMonsterActivity();
 	}
 	
 	/**
@@ -251,6 +252,17 @@ public class GameManager {
 		launchMainScreen();
 	}
 
+	public void launchSaleMonsterScreen()
+	{
+		SaleMonsterScreen saleMonsterScreen = new SaleMonsterScreen(this);
+	}
+	
+	public void closeSaleMonsterScreen(SaleMonsterScreen saleMonsterScreen)
+	{
+		saleMonsterScreen.closeWindow();
+		launchMainScreen();
+	}
+	
 	public void launchSaleItemScreen()
 	{
 		SaleItemScreen SaleItemScreen = new SaleItemScreen(this);
@@ -273,16 +285,6 @@ public class GameManager {
 		launchMainScreen();
 	}
 
-	public void launchSaleMonsterScreen()
-	{
-		SaleMonsterScreen saleMonsterScreen = new SaleMonsterScreen(this);
-	}
-	
-	public void closeSaleMonsterScreen(SaleMonsterScreen saleMonsterScreen)
-	{
-		saleMonsterScreen.closeWindow();
-		launchMainScreen();
-	}
 	
 	public void launchSelectBattleScreen()
 	{

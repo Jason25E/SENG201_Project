@@ -59,12 +59,15 @@ public class ShopItemScreen {
 		/**
 		 * Initialize the Foods and Equipments that appears in shop.
 		 */
+		
+		float shop_info = manager.getShop_info();
+
 		ArrayList<Item> FoodList = new ArrayList<Item>();
 		/* Food(String foodName, String foodEffect, int purchasePrice, int sellingPrice, int heal, int attack, int defence) */
-		Food smallHeal = new Food("Watermelons", "Recover 20 HP", 5, 2, 20, 0, 0);
-		Food bigHeal = new Food("Sandwich", "Recover 70 HP", 15, 7, 70, 0, 0);
-		Food gainAttack = new Food("Steaks", "Increase 10 Attack", 10, 5, 0, 10, 0);
-		Food gainDefence = new Food("Coffee", "Increase 10 Defence", 10, 5, 0, 0, 10);
+		Food smallHeal = new Food("Watermelons", "Recover 20 HP", Math.round(10 * shop_info), Math.round(5 * shop_info), 20, 0, 0);
+		Food bigHeal = new Food("Sandwich", "Recover 70 HP", Math.round(20 * shop_info), Math.round(10 * shop_info), 70, 0, 0);
+		Food gainAttack = new Food("Steaks", "Increase 10 Attack", Math.round(99 * shop_info), Math.round(49 * shop_info), 0, 3, 0);
+		Food gainDefence = new Food("Coffee", "Increase 10 Defence", Math.round(88 * shop_info), Math.round(44 * shop_info), 0, 0, 5);
 		FoodList.add(smallHeal);
 		FoodList.add(bigHeal);
 		FoodList.add(gainAttack);
@@ -72,10 +75,10 @@ public class ShopItemScreen {
 		
 		ArrayList<Item> EquipmentList = new ArrayList<Item>();
 		/* Equipment(String equipmentName, String equipmentEffect, int purchasePrice, int sellingPrice, int attack, int defence) */
-		Equipment gainSmallAttack = new Equipment("Sword", "Increase 20 Attack when equip", 20, 10, 20, 0);
-		Equipment gainBigAttack = new Equipment("Axe", "Increase 40 Attack when equip", 30, 15, 40, 0);
-		Equipment gainSmallDefence = new Equipment("Helmet", "Increase 20 Defence when equip", 20, 10, 0, 20);
-		Equipment gainBigDefence = new Equipment("Shield", "Increase 40 Defence when equip", 30, 15, 0, 40);
+		Equipment gainSmallAttack = new Equipment("Sword", "Increase 20 Attack when equip", Math.round(198 * shop_info), Math.round(99 * shop_info), 20, 0);
+		Equipment gainBigAttack = new Equipment("Axe", "Increase 40 Attack when equip", Math.round(298 * shop_info), Math.round(149 * shop_info), 30, 0);
+		Equipment gainSmallDefence = new Equipment("Helmet", "Increase 20 Defence when equip", Math.round(198 * shop_info), Math.round(99 * shop_info), 0, 30);
+		Equipment gainBigDefence = new Equipment("Shield", "Increase 40 Defence when equip", Math.round(298 * shop_info), Math.round(149 * shop_info), 0, 40);
 		EquipmentList.add(gainSmallAttack);
 		EquipmentList.add(gainBigAttack);
 		EquipmentList.add(gainSmallDefence);

@@ -59,8 +59,10 @@ public class SaleMonsterScreen {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
 		int MonsterListSize = manager.getPlayer().getMonsterList().size();
 		ArrayList<Monster> MonsterList = manager.getPlayer().getMonsterList();
+		int monster_selling_info = manager.getMonster_selling_info();
 		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 309, 454);
@@ -264,7 +266,7 @@ public class SaleMonsterScreen {
 		btnUse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (selectedMonster != null) {
-					int SalePrice = (int) (selectedMonster.getMonsterAttack() * 1.5);
+					int SalePrice = (int) (selectedMonster.getMonsterLevel * monster_selling_info + 100);
 					manager.getPlayer().soldMonster(selectedMonster, SalePrice, selectedMonster.getMonsterEquipment());
 					manager.launchSaleMonsterScreen();
 					closeWindow();
