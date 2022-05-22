@@ -362,6 +362,16 @@ public class GameManager {
 	{
 		battleResultScreen.closeWindow();
 	}
+	
+	public void launchSummaryScreen()
+	{
+		SummaryScreen summaryScreen = new SummaryScreen(this);
+	}
+	
+	public void closeSummaryScreen(SummaryScreen summaryScreen)
+	{
+		summaryScreen.closeWindow();
+	}
 
 	public static void main(String[] argv) {
 		GameManager manager = new GameManager();

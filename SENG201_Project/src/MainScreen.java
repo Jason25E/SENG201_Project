@@ -125,7 +125,7 @@ public class MainScreen {
 		btnBattle.setBounds(249, 86, 150, 200);
 		frmMain.getContentPane().add(btnBattle);
 		
-		JButton btnMonster_1 = new JButton("Item");
+		JButton btnMonster_1 = new JButton("Food");
 		btnMonster_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -139,9 +139,14 @@ public class MainScreen {
 		JButton btnSleep = new JButton("Sleep");
 		btnSleep.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				manager.sleep();
-				lblNewLabel_2.setText(Integer.toString(manager.getCurrentDay()));
-				lblNewLabel_4.setText(Integer.toString(manager.getDayRemain()));
+				if (manager.getDayRemain() == 0) {
+					manager.launchSummaryScreen();
+					closeWindow();
+				} else {
+					manager.sleep();
+					lblNewLabel_2.setText(Integer.toString(manager.getCurrentDay()));
+					lblNewLabel_4.setText(Integer.toString(manager.getDayRemain()));
+				}
 			}
 		});
 		btnSleep.setToolTipText("Healed all monsters and move to next day");
