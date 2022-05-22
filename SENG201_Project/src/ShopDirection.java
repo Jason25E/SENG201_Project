@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class ShopDirection {
 
@@ -56,7 +57,7 @@ public class ShopDirection {
 		
 		frmShop = new JFrame();
 		frmShop.setTitle("Shop");
-		frmShop.setBounds(100, 100, 253, 371);
+		frmShop.setBounds(100, 100, 253, 356);
 		frmShop.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmShop.getContentPane().setLayout(null);
 		
@@ -126,6 +127,8 @@ public class ShopDirection {
 		frmShop.getContentPane().add(btnEquipment);
 		
 		JButton btnExit = new JButton("Exit");
+		btnExit.setBackground(new Color(255, 51, 102));
+		btnExit.setForeground(Color.WHITE);
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				manager.launchMainScreen();
@@ -133,7 +136,7 @@ public class ShopDirection {
 			}
 		});
 		btnExit.setFont(new Font("Dialog", Font.BOLD, 17));
-		btnExit.setBounds(66, 303, 117, 25);
+		btnExit.setBounds(66, 290, 117, 25);
 		frmShop.getContentPane().add(btnExit);
 	}
 }

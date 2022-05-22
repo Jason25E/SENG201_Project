@@ -14,7 +14,7 @@ import javax.swing.JRadioButton;
 
 public class SaleEquipmentScreen {
 
-	private JFrame frame;
+	private JFrame frmSaleEquipment;
 	
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	
@@ -29,7 +29,7 @@ public class SaleEquipmentScreen {
 			public void run() {
 				try {
 					SaleEquipmentScreen window = new SaleEquipmentScreen();
-					window.frame.setVisible(true);
+					window.frmSaleEquipment.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -47,11 +47,11 @@ public class SaleEquipmentScreen {
 	public SaleEquipmentScreen(GameManager manager) {
 		this.manager = manager;
 		initialize();
-		frame.setVisible(true);
+		frmSaleEquipment.setVisible(true);
 	}
 	
 	public void closeWindow() {
-		frame.dispose();
+		frmSaleEquipment.dispose();
 	}
 
 	/**
@@ -61,15 +61,16 @@ public class SaleEquipmentScreen {
 		int EquipmentListSize = manager.getPlayer().getEquipmentList().size();
 		ArrayList<Item> EquipmentList = manager.getPlayer().getEquipmentList();
 		
-		frame = new JFrame();
-		frame.setBounds(100, 100, 300, 414);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmSaleEquipment = new JFrame();
+		frmSaleEquipment.setTitle("Sale - Equipment");
+		frmSaleEquipment.setBounds(100, 100, 300, 414);
+		frmSaleEquipment.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmSaleEquipment.getContentPane().setLayout(null);
 		
 		JLabel label = new JLabel("");
 		label.setBounds(12, 314, 267, 15);
 		label.setForeground(Color.RED);
-		frame.getContentPane().add(label);
+		frmSaleEquipment.getContentPane().add(label);
 		
 		/**/
 		
@@ -95,24 +96,24 @@ public class SaleEquipmentScreen {
 			});
 			buttonGroup.add(rdbtnNameOfEquip0);
 			rdbtnNameOfEquip0.setBounds(12, 54, 177, 33);
-			frame.getContentPane().add(rdbtnNameOfEquip0);
+			frmSaleEquipment.getContentPane().add(rdbtnNameOfEquip0);
 			
 			JLabel lblX_4 = new JLabel(FirstEquipmentQuanittyString);
 			lblX_4.setForeground(Color.BLACK);
 			lblX_4.setFont(new Font("Dialog", Font.BOLD, 20));
 			lblX_4.setBounds(222, 86, 42, 24);
-			frame.getContentPane().add(lblX_4);
+			frmSaleEquipment.getContentPane().add(lblX_4);
 			
 
 			JLabel lblNewLabel_3 = new JLabel("");
 			lblNewLabel_3.setIcon(new ImageIcon(EquipmentScreen.class.getResource("/Images/Equipment/" + FirstEquipmentName + ".png")));
 			lblNewLabel_3.setBounds(203, 54, 61, 56);
-			frame.getContentPane().add(lblNewLabel_3);
+			frmSaleEquipment.getContentPane().add(lblNewLabel_3);
 			
 			int EquipmentPrice0 = FirstEquipment.getSellingPrice();
 			JLabel lblPrice = new JLabel("$" + EquipmentPrice0);
 			lblPrice.setBounds(119, 95, 70, 15);
-			frame.getContentPane().add(lblPrice);
+			frmSaleEquipment.getContentPane().add(lblPrice);
 			
 
 		}
@@ -137,23 +138,23 @@ public class SaleEquipmentScreen {
 			});
 			buttonGroup.add(rdbtnNameOfEquip1);
 			rdbtnNameOfEquip1.setBounds(12, 118, 177, 33);
-			frame.getContentPane().add(rdbtnNameOfEquip1);
+			frmSaleEquipment.getContentPane().add(rdbtnNameOfEquip1);
 			
 			JLabel lblX_5 = new JLabel(SecondEquipmentQuanittyString);
 			lblX_5.setForeground(Color.BLACK);
 			lblX_5.setFont(new Font("Dialog", Font.BOLD, 20));
 			lblX_5.setBounds(222, 150, 42, 24);
-			frame.getContentPane().add(lblX_5);
+			frmSaleEquipment.getContentPane().add(lblX_5);
 			
 			JLabel lblNewLabel_1_1 = new JLabel("");
 			lblNewLabel_1_1.setIcon(new ImageIcon(EquipmentScreen.class.getResource("/Images/Equipment/" + SecondEquipmentName + ".png")));
 			lblNewLabel_1_1.setBounds(203, 118, 61, 56);
-			frame.getContentPane().add(lblNewLabel_1_1);
+			frmSaleEquipment.getContentPane().add(lblNewLabel_1_1);
 			
 			int EquipmentPrice1 = SecondEquipment.getSellingPrice();
 			JLabel lblPrice_1 = new JLabel("$" + EquipmentPrice1);
 			lblPrice_1.setBounds(119, 159, 70, 15);
-			frame.getContentPane().add(lblPrice_1);
+			frmSaleEquipment.getContentPane().add(lblPrice_1);
 
 
 		}
@@ -178,24 +179,24 @@ public class SaleEquipmentScreen {
 			});
 			buttonGroup.add(rdbtnNameOfEquip2);
 			rdbtnNameOfEquip2.setBounds(12, 182, 177, 33);
-			frame.getContentPane().add(rdbtnNameOfEquip2);
+			frmSaleEquipment.getContentPane().add(rdbtnNameOfEquip2);
 			
 			JLabel lblX_6 = new JLabel(ThirdEquipmentQuanittyString);
 			lblX_6.setForeground(Color.BLACK);
 			lblX_6.setFont(new Font("Dialog", Font.BOLD, 20));
 			lblX_6.setBounds(222, 214, 42, 24);
-			frame.getContentPane().add(lblX_6);
+			frmSaleEquipment.getContentPane().add(lblX_6);
 			
 			
 			JLabel lblNewLabel_2_1 = new JLabel("");
 			lblNewLabel_2_1.setIcon(new ImageIcon(EquipmentScreen.class.getResource("/Images/Equipment/" + ThirdEquipmentName + ".png")));
 			lblNewLabel_2_1.setBounds(203, 182, 61, 56);
-			frame.getContentPane().add(lblNewLabel_2_1);
+			frmSaleEquipment.getContentPane().add(lblNewLabel_2_1);
 			
 			int EquipmentPrice2 = ThirdEquipment.getSellingPrice();
 			JLabel lblPrice_1_1 = new JLabel("$" + EquipmentPrice2);
 			lblPrice_1_1.setBounds(119, 223, 70, 15);
-			frame.getContentPane().add(lblPrice_1_1);
+			frmSaleEquipment.getContentPane().add(lblPrice_1_1);
 			
 		}
 		
@@ -219,23 +220,23 @@ public class SaleEquipmentScreen {
 			});
 			buttonGroup.add(rdbtnNameOfEquip3);
 			rdbtnNameOfEquip3.setBounds(12, 246, 177, 33);
-			frame.getContentPane().add(rdbtnNameOfEquip3);
+			frmSaleEquipment.getContentPane().add(rdbtnNameOfEquip3);
 			
 			JLabel lblX_7 = new JLabel(FourthEquipmentQuanittyString);
 			lblX_7.setForeground(Color.BLACK);
 			lblX_7.setFont(new Font("Dialog", Font.BOLD, 20));
 			lblX_7.setBounds(222, 274, 42, 24);
-			frame.getContentPane().add(lblX_7);
+			frmSaleEquipment.getContentPane().add(lblX_7);
 			
 			JLabel lblNewLabel_3_1 = new JLabel("");
 			lblNewLabel_3_1.setIcon(new ImageIcon(EquipmentScreen.class.getResource("/Images/Equipment/" + FourthEquipmentName + ".png")));
 			lblNewLabel_3_1.setBounds(203, 246, 61, 56);
-			frame.getContentPane().add(lblNewLabel_3_1);
+			frmSaleEquipment.getContentPane().add(lblNewLabel_3_1);
 			
 			int EquipmentPrice3 = FourthEquipment.getSellingPrice();
 			JLabel lblPrice_1_2 = new JLabel("$" + EquipmentPrice3);
 			lblPrice_1_2.setBounds(119, 287, 70, 15);
-			frame.getContentPane().add(lblPrice_1_2);
+			frmSaleEquipment.getContentPane().add(lblPrice_1_2);
 			
 			
 		}
@@ -249,7 +250,7 @@ public class SaleEquipmentScreen {
 		});
 		btnExit.setFont(new Font("Dialog", Font.BOLD, 12));
 		btnExit.setBounds(199, 341, 80, 30);
-		frame.getContentPane().add(btnExit);
+		frmSaleEquipment.getContentPane().add(btnExit);
 		
 		
 		JButton btnUse = new JButton("Sell");
@@ -273,13 +274,13 @@ public class SaleEquipmentScreen {
 		});
 		btnUse.setFont(new Font("Dialog", Font.BOLD, 12));
 		btnUse.setBounds(12, 341, 80, 30);
-		frame.getContentPane().add(btnUse);
+		frmSaleEquipment.getContentPane().add(btnUse);
 		
 		int goldAmount = manager.getPlayer().getGoldAmount();
 		JLabel lblGold = new JLabel(Integer.toString(goldAmount));
 		lblGold.setIcon(new ImageIcon(SaleEquipmentScreen.class.getResource("/Images/Coin.png")));
 		lblGold.setBounds(12, 12, 100, 30);
-		frame.getContentPane().add(lblGold);
+		frmSaleEquipment.getContentPane().add(lblGold);
 		
 
 		
