@@ -17,6 +17,7 @@ public class BattleResultScreen {
 	private int baseGoldReceive = 50;
 	private int baseScoreReceive = 100;
 	private Monster enemy = null;
+
 	
 	/**
 	 * Launch the application.
@@ -64,6 +65,11 @@ public class BattleResultScreen {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		float gold_receive_rate = manager.getStart_gold_info();
+		float score_gain_rate = manager.getShop_info();
+		int total_gold = manager.getPlayer().getGoldAmount();
+		int current_day = manager.getCurrentDay();
+		int monster_price = Math.round((150 + current_day * 5) * score_gain_rate);
 		frmBattleResult = new JFrame();
 		frmBattleResult.setTitle("Battle Result");
 		frmBattleResult.setBounds(100, 100, 349, 459);
@@ -73,8 +79,8 @@ public class BattleResultScreen {
 		/**
 		 * Calculate gold receive and score gain after the battle.
 		 */
-		int goldReceive = baseGoldReceive + enemy.getMonsterAttack() + enemy.getMonsterMaxHealthPoint() / 10;
-		int scoreGain = baseScoreReceive + enemy.getMonsterAttack() + enemy.getMonsterDefence() + enemy.getMonsterMaxHealthPoint();
+		int goldReceive = Math.round((baseGoldReceive + enemy.getMonsterAttack() + enemy.getMonsterMaxHealthPoint() / 10) * gold_receive_rate);
+		int scoreGain = Math.round(baseScoreReceive + enemy.getMonsterAttack() + enemy.getMonsterDefence() + enemy.getMonsterMaxHealthPoint() * score_gain_rate);
 		
 		/**
 		 * Check if there are monster alive in the party to determine the battle result
@@ -125,7 +131,7 @@ public class BattleResultScreen {
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (monsterAlive == false && 100 + manager.getCurrentDay() * 2 > manager.getPlayer().getGoldAmount()) {
+				if (monsterAlive == false && total_gold < monster_price) {
 					manager.launchSummaryScreen();
 				} else {
 					manager.launchMainScreen();

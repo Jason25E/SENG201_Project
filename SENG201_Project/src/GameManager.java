@@ -43,7 +43,7 @@ public class GameManager {
 		this.monster_skill_rate = monster_skill_rate;
 		this.start_gold_info = start_gold_info;
 		this.monster_selling_info = monster_selling_info;
-		this.startGold = Math.round(1800 * start_gold_info);
+		this.startGold = Math.round(180 * start_gold_info);
 		this.player.setGoldAmount(startGold);
 	}
 	

@@ -279,4 +279,6 @@ public class ShopMonsterScreen {
 		labelMonsterIcon_3.setBounds(438, 101, 130, 120);
 		frmShopMonsters.getContentPane().add(labelMonsterIcon_3);
 	}
+	
+
 }
