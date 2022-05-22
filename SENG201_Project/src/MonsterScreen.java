@@ -76,7 +76,7 @@ public class MonsterScreen {
 		Monster firstMonster = manager.getPlayer().getMonsterList().get(0);
 		String monsterNameOne = firstMonster.getMonsterName();
 		JCheckBox cbMonster = new JCheckBox(monsterNameOne);
-		cbMonster.setBounds(63, 8, 99, 32);
+		cbMonster.setBounds(63, 8, 109, 32);
 		frmMyMonsters.getContentPane().add(cbMonster);
 		
 		if (firstMonster.getMonsterEquipment() != null) {
