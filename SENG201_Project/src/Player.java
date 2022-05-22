@@ -4,6 +4,7 @@ public class Player {
 	private String PlayerID;
 	private int goldAmount;
 	private int score;
+	private int goldEarned;
 	private ArrayList<Monster> MonsterList = new ArrayList<Monster>();
 	private ArrayList<Item> FoodList = new ArrayList<Item>();
 	private ArrayList<Item> EquipmentList = new ArrayList<Item>();
@@ -20,6 +21,10 @@ public class Player {
 	
 	public int getGoldAmount() {
 		return goldAmount;
+	}
+	
+	public int getGoldEarned() {
+		return goldEarned;
 	}
 	
 	public int getScore() {
@@ -56,6 +61,7 @@ public class Player {
 	
 	public void gainGold(int amountGain) {
 		goldAmount += amountGain;
+		goldEarned += amountGain;
 	}
 	
 	public void useGold(int amountUsed) {

@@ -52,7 +52,7 @@ public class SummaryScreen {
 	private void initialize() {
 		frmSummary = new JFrame();
 		frmSummary.setTitle("Summary");
-		frmSummary.setBounds(100, 100, 285, 380);
+		frmSummary.setBounds(100, 100, 285, 301);
 		frmSummary.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmSummary.getContentPane().setLayout(null);
 		
@@ -61,16 +61,49 @@ public class SummaryScreen {
 		lblSummary.setBounds(98, 22, 101, 15);
 		frmSummary.getContentPane().add(lblSummary);
 		
+		JLabel lblPlayer = new JLabel("Player: ");
+		lblPlayer.setFont(new Font("Dialog", Font.BOLD, 15));
+		lblPlayer.setBounds(48, 70, 70, 15);
+		frmSummary.getContentPane().add(lblPlayer);
+		
+		String playerName = manager.getPlayer().getPlayerID();
+		JLabel lblPlayerName = new JLabel(playerName);
+		lblPlayerName.setBounds(120, 70, 154, 15);
+		frmSummary.getContentPane().add(lblPlayerName);
+		
+		
+		JLabel lblDayPlay = new JLabel("Day played: ");
+		lblDayPlay.setFont(new Font("Dialog", Font.BOLD, 15));
+		lblDayPlay.setBounds(48, 105, 105, 15);
+		frmSummary.getContentPane().add(lblDayPlay);
+		
+		int dayPlayed = manager.getCurrentDay();
+		JLabel lblDayPlayText = new JLabel("" + dayPlayed);
+		lblDayPlayText.setBounds(170, 105, 85, 15);
+		frmSummary.getContentPane().add(lblDayPlayText);
+		
+		
+		JLabel lblFoldEarned = new JLabel("Gold Earned: ");
+		lblFoldEarned.setFont(new Font("Dialog", Font.BOLD, 15));
+		lblFoldEarned.setBounds(48, 140, 117, 15);
+		frmSummary.getContentPane().add(lblFoldEarned);
+		
+		int goldEarned = manager.getPlayer().getGoldEarned();
+		JLabel lblFoldEarnedText = new JLabel("" + goldEarned);
+		lblFoldEarnedText.setBounds(170, 140, 104, 15);
+		frmSummary.getContentPane().add(lblFoldEarnedText);
+		
+		
 		JLabel lblTotalScore = new JLabel("Total Score:");
 		lblTotalScore.setFont(new Font("Dialog", Font.BOLD, 15));
-		lblTotalScore.setBounds(48, 252, 101, 15);
+		lblTotalScore.setBounds(48, 175, 101, 15);
 		frmSummary.getContentPane().add(lblTotalScore);
 		
 		int totalScore = manager.getPlayer().getScore();
-		JLabel lblNewLabel = new JLabel("" + totalScore);
-		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 15));
-		lblNewLabel.setBounds(174, 252, 70, 15);
-		frmSummary.getContentPane().add(lblNewLabel);
+		JLabel lblTotalScoreText = new JLabel("" + totalScore);
+		lblTotalScoreText.setFont(new Font("Dialog", Font.BOLD, 15));
+		lblTotalScoreText.setBounds(170, 175, 100, 15);
+		frmSummary.getContentPane().add(lblTotalScoreText);
 		
 		JButton btnFinish = new JButton("Finish");
 		btnFinish.addActionListener(new ActionListener() {
@@ -80,16 +113,7 @@ public class SummaryScreen {
 				closeWindow();
 			}
 		});
-		btnFinish.setBounds(82, 291, 117, 35);
+		btnFinish.setBounds(82, 220, 117, 35);
 		frmSummary.getContentPane().add(btnFinish);
-		
-		JLabel lblNewLabel_1 = new JLabel("Player: ");
-		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 15));
-		lblNewLabel_1.setBounds(48, 69, 70, 15);
-		frmSummary.getContentPane().add(lblNewLabel_1);
-		
-		JLabel lblNewLabel_2 = new JLabel("New label");
-		lblNewLabel_2.setBounds(120, 69, 115, 15);
-		frmSummary.getContentPane().add(lblNewLabel_2);
 	}
 }
