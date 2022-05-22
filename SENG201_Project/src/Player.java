@@ -97,8 +97,6 @@ public class Player {
 				}
 			}
 		}
-		
-		
 	}
 	
 	public void addFood(Item newItem) {
@@ -182,5 +180,15 @@ public class Player {
 			}
 		}
 		return monster;
+	}
+	
+	public boolean sameMonsterName(String monsterName) {
+		boolean same = false;
+		for (Monster i: MonsterList) {
+			if (monsterName.equals(i.getMonsterName())) {
+				same = true;
+			}
+		}
+		return same;
 	}
 }

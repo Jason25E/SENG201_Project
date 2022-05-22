@@ -79,7 +79,7 @@ public class SaleMonsterScreen {
 		if (MonsterListSize >= 1) {
 			Monster FirstMonster = manager.getPlayer().getMonsterList().get(0);
 			Skill Skill0 = FirstMonster.getMonsterSkill();
-			String MonsterName0 = FirstMonster.getMonsterID();
+			String MonsterName0 = FirstMonster.getMonsterName();
 			String SkillName0 = Skill0.getSkillName();
 			
 			int MonsterPrice0 = (int) (FirstMonster.getMonsterAttack() * 1.5);
@@ -96,14 +96,14 @@ public class SaleMonsterScreen {
 
 				}
 			});
-			rdbtnMonster.setBounds(63, 54, 99, 32);
+			rdbtnMonster.setBounds(63, 54, 124, 32);
 			frmSaleMonster.getContentPane().add(rdbtnMonster);
 			
 			if (FirstMonster.getMonsterEquipment() != null) {
 				Equipment Equipment0 = FirstMonster.getMonsterEquipment();
 				String EquipmentName0 = Equipment0.getItemID();
 				JButton btnEquipment = new JButton(EquipmentName0);
-				btnEquipment.setBounds(178, 48, 109, 25);
+				btnEquipment.setBounds(178, 94, 109, 25);
 				frmSaleMonster.getContentPane().add(btnEquipment);
 				
 			}
@@ -114,7 +114,7 @@ public class SaleMonsterScreen {
 			frmSaleMonster.getContentPane().add(btnSkill);
 			
 			JLabel lblNewLabel = new JLabel("");
-			lblNewLabel.setIcon(new ImageIcon(EquipmentScreen.class.getResource("/Images/Monster/" + MonsterName0 + ".png")));
+			lblNewLabel.setIcon(new ImageIcon(EquipmentScreen.class.getResource("/Images/Monster/" + FirstMonster.getMonsterID() + ".png")));
 			lblNewLabel.setBounds(171, 54, 116, 65);
 			frmSaleMonster.getContentPane().add(lblNewLabel);
 			
@@ -125,7 +125,7 @@ public class SaleMonsterScreen {
 			Monster SecondMonster = manager.getPlayer().getMonsterList().get(1);
 			Skill Skill1 = SecondMonster.getMonsterSkill();
 			String SkillName1 = Skill1.getSkillName();
-			String MonsterName1 = SecondMonster.getMonsterID();
+			String MonsterName1 = SecondMonster.getMonsterName();
 			
 			int MonsterPrice1 = (int) (SecondMonster.getMonsterAttack() * 1.5);
 			JLabel label_1 = new JLabel("$" + MonsterPrice1);
@@ -133,11 +133,9 @@ public class SaleMonsterScreen {
 			label_1.setBounds(25, 140, 50, 50);
 			frmSaleMonster.getContentPane().add(label_1);
 			
-			JButton btnEquipment_1_1 = new JButton(SkillName1);
-			btnEquipment_1_1.setBounds(63, 171, 109, 25);
-			frmSaleMonster.getContentPane().add(btnEquipment_1_1);
-			
-			
+			JButton btnSkill_2= new JButton(SkillName1);
+			btnSkill_2.setBounds(63, 171, 109, 25);
+			frmSaleMonster.getContentPane().add(btnSkill_2);
 			
 			JRadioButton rdbtnMonster_1 = new JRadioButton(MonsterName1);
 			rdbtnMonster_1.addActionListener(new ActionListener() {
@@ -146,20 +144,20 @@ public class SaleMonsterScreen {
 
 				}
 			});
-			rdbtnMonster_1.setBounds(63, 131, 109, 32);
+			rdbtnMonster_1.setBounds(63, 131, 124, 32);
 			frmSaleMonster.getContentPane().add(rdbtnMonster_1);
 			
 			if (SecondMonster.getMonsterEquipment() != null) {
 				Equipment Equipment1 = SecondMonster.getMonsterEquipment();
 				String EquipmentName1 = Equipment1.getItemID();
 				JButton btnEquipment_2 = new JButton(EquipmentName1);
-				btnEquipment_2.setBounds(178, 125, 109, 25);
+				btnEquipment_2.setBounds(178, 171, 109, 25);
 				frmSaleMonster.getContentPane().add(btnEquipment_2);
 			
 			}
 			
 			JLabel lblNewLabel_1 = new JLabel("New label");
-			lblNewLabel_1.setIcon(new ImageIcon(EquipmentScreen.class.getResource("/Images/Monster/" + MonsterName1 + ".png")));
+			lblNewLabel_1.setIcon(new ImageIcon(EquipmentScreen.class.getResource("/Images/Monster/" + SecondMonster.getMonsterID() + ".png")));
 			lblNewLabel_1.setBounds(178, 131, 116, 65);
 			frmSaleMonster.getContentPane().add(lblNewLabel_1);
 			
@@ -170,7 +168,7 @@ public class SaleMonsterScreen {
 			Monster ThirdMonster = manager.getPlayer().getMonsterList().get(2);
 			Skill Skill2 = ThirdMonster.getMonsterSkill();
 			String SkillName2 = Skill2.getSkillName();
-			String MonsterName2 = ThirdMonster.getMonsterID();
+			String MonsterName2 = ThirdMonster.getMonsterName();
 			
 			int MonsterPrice2 = (int) (ThirdMonster.getMonsterAttack() * 1.5);
 			JLabel label_2 = new JLabel("$" + MonsterPrice2);
@@ -178,9 +176,9 @@ public class SaleMonsterScreen {
 			label_2.setBounds(25, 217, 50, 50);
 			frmSaleMonster.getContentPane().add(label_2);
 			
-			JButton btnEquipment_1_2 = new JButton(SkillName2);
-			btnEquipment_1_2.setBounds(63, 248, 109, 25);
-			frmSaleMonster.getContentPane().add(btnEquipment_1_2);
+			JButton btnSkill_3 = new JButton(SkillName2);
+			btnSkill_3.setBounds(63, 248, 109, 25);
+			frmSaleMonster.getContentPane().add(btnSkill_3);
 			
 			
 			JRadioButton rdbtnMonster_2 = new JRadioButton(MonsterName2);
@@ -190,7 +188,7 @@ public class SaleMonsterScreen {
 
 				}
 			});
-			rdbtnMonster_2.setBounds(63, 208, 109, 32);
+			rdbtnMonster_2.setBounds(63, 208, 124, 32);
 			frmSaleMonster.getContentPane().add(rdbtnMonster_2);
 			
 			
@@ -198,12 +196,12 @@ public class SaleMonsterScreen {
 				Equipment Equipment2 = ThirdMonster.getMonsterEquipment();
 				String EquipmentName2 = Equipment2.getItemID();
 				JButton btnEquipment_3 = new JButton(EquipmentName2);
-				btnEquipment_3.setBounds(178, 202, 109, 25);
+				btnEquipment_3.setBounds(178, 248, 109, 25);
 				frmSaleMonster.getContentPane().add(btnEquipment_3);
 			}
 				
 			JLabel lblNewLabel_2 = new JLabel("New label");
-			lblNewLabel_2.setIcon(new ImageIcon(EquipmentScreen.class.getResource("/Images/Monster/" + MonsterName2 + ".png")));
+			lblNewLabel_2.setIcon(new ImageIcon(EquipmentScreen.class.getResource("/Images/Monster/" + ThirdMonster.getMonsterID() + ".png")));
 			lblNewLabel_2.setBounds(171, 208, 116, 65);
 			frmSaleMonster.getContentPane().add(lblNewLabel_2);
 			
@@ -215,7 +213,7 @@ public class SaleMonsterScreen {
 			Monster FourthMonster = manager.getPlayer().getMonsterList().get(3);
 			Skill Skill3 = FourthMonster.getMonsterSkill();
 			String SkillName3 = Skill3.getSkillName();
-			String MonsterName3 = FourthMonster.getMonsterID();
+			String MonsterName3 = FourthMonster.getMonsterName();
 			
 			int MonsterPrice3 = (int) (FourthMonster.getMonsterAttack() * 1.5);
 			JLabel label_3 = new JLabel("$" + MonsterPrice3);
@@ -223,9 +221,9 @@ public class SaleMonsterScreen {
 			label_3.setBounds(25, 294, 50, 50);
 			frmSaleMonster.getContentPane().add(label_3);
 			
-			JButton btnEquipment_1_3 = new JButton(SkillName3);
-			btnEquipment_1_3.setBounds(63, 325, 109, 25);
-			frmSaleMonster.getContentPane().add(btnEquipment_1_3);
+			JButton btnSkill_4= new JButton(SkillName3);
+			btnSkill_4.setBounds(63, 325, 109, 25);
+			frmSaleMonster.getContentPane().add(btnSkill_4);
 			
 			JRadioButton rdbtnMonster_3 = new JRadioButton(MonsterName3);
 			rdbtnMonster_3.addActionListener(new ActionListener() {
@@ -234,20 +232,20 @@ public class SaleMonsterScreen {
 
 				}
 			});
-			rdbtnMonster_3.setBounds(63, 285, 109, 32);
+			rdbtnMonster_3.setBounds(63, 285, 124, 32);
 			frmSaleMonster.getContentPane().add(rdbtnMonster_3);
 			
 			if (FourthMonster.getMonsterEquipment() != null) {
 				Equipment Equipment3 = FourthMonster.getMonsterEquipment();
 				String EquipmentName3 = Equipment3.getItemID();
 				JButton btnEquipment_4 = new JButton(EquipmentName3);
-				btnEquipment_4.setBounds(178, 279, 109, 25);
+				btnEquipment_4.setBounds(178, 325, 109, 25);
 				frmSaleMonster.getContentPane().add(btnEquipment_4);
 			}	
 			
 			
 			JLabel lblNewLabel_2_1 = new JLabel("New label");
-			lblNewLabel_2_1.setIcon(new ImageIcon(EquipmentScreen.class.getResource("/Images/Monster/" + MonsterName3 + ".png")));
+			lblNewLabel_2_1.setIcon(new ImageIcon(EquipmentScreen.class.getResource("/Images/Monster/" + FourthMonster.getMonsterID() + ".png")));
 			lblNewLabel_2_1.setBounds(171, 285, 116, 65);
 			frmSaleMonster.getContentPane().add(lblNewLabel_2_1);
 		}
@@ -285,7 +283,7 @@ public class SaleMonsterScreen {
 		int goldAmount = manager.getPlayer().getGoldAmount();
 		JLabel lblGold = new JLabel(Integer.toString(goldAmount));
 		lblGold.setIcon(new ImageIcon(SaleMonsterScreen.class.getResource("/Images/Coin.png")));
-		lblGold.setBounds(25, 12, 100, 30);
+		lblGold.setBounds(12, 12, 100, 30);
 		frmSaleMonster.getContentPane().add(lblGold);
 		
 

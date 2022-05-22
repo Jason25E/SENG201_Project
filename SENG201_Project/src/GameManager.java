@@ -22,9 +22,9 @@ public class GameManager {
 	public int RandomMonsterLevelInShop = 1;
     public int RandomMonsterLevelInShopTwo = 1;
 	
-	public int RandomEnemy = 0;
-	public int RandomEnemyTwo = 1;
-	public int RandomEnemyThree = 2;
+	public int RandomEnemy = 1;
+	public int RandomEnemyTwo = 2;
+	public int RandomEnemyThree = 0;
 	
 	private boolean battleEnemy = false;
 	private boolean battleEnemyTwo = false;
@@ -43,7 +43,7 @@ public class GameManager {
 		this.monster_skill_rate = monster_skill_rate;
 		this.start_gold_info = start_gold_info;
 		this.monster_selling_info = monster_selling_info;
-		this.startGold = Math.round(180 * start_gold_info);
+		this.startGold = Math.round(1800 * start_gold_info);
 		this.player.setGoldAmount(startGold);
 	}
 	
@@ -202,8 +202,8 @@ public class GameManager {
 			}
 			if (random <= 5) {
 				String monsterName = "Slimey_" + (int)((Math.random() * (999)) + 1);
-				Skill slimeSkill = new Skill("Absorb", "Has a base power of 14", 14);
-				Monster slime = new Monster("Slime", monsterName, 5, "Common", 50, 50, 100, 80, slimeSkill);
+				Skill slimeSkill = new Skill("Grip", "Has a base power of 14", 14);
+				Monster slime = new Monster("Slime", monsterName, 5, "Rare", 50, 50, 100, 80, slimeSkill);
 				joinMonster = slime;
 				descriptionOfRandomEvent += slime.getMonsterName() + " has join. ";
 			}

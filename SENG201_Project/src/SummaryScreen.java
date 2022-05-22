@@ -52,7 +52,7 @@ public class SummaryScreen {
 	private void initialize() {
 		frmSummary = new JFrame();
 		frmSummary.setTitle("Summary");
-		frmSummary.setBounds(100, 100, 285, 209);
+		frmSummary.setBounds(100, 100, 285, 380);
 		frmSummary.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmSummary.getContentPane().setLayout(null);
 		
@@ -63,13 +63,13 @@ public class SummaryScreen {
 		
 		JLabel lblTotalScore = new JLabel("Total Score:");
 		lblTotalScore.setFont(new Font("Dialog", Font.BOLD, 15));
-		lblTotalScore.setBounds(61, 68, 101, 15);
+		lblTotalScore.setBounds(48, 252, 101, 15);
 		frmSummary.getContentPane().add(lblTotalScore);
 		
 		int totalScore = manager.getPlayer().getScore();
 		JLabel lblNewLabel = new JLabel("" + totalScore);
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 15));
-		lblNewLabel.setBounds(171, 68, 70, 15);
+		lblNewLabel.setBounds(174, 252, 70, 15);
 		frmSummary.getContentPane().add(lblNewLabel);
 		
 		JButton btnFinish = new JButton("Finish");
@@ -80,7 +80,16 @@ public class SummaryScreen {
 				closeWindow();
 			}
 		});
-		btnFinish.setBounds(84, 119, 117, 35);
+		btnFinish.setBounds(82, 291, 117, 35);
 		frmSummary.getContentPane().add(btnFinish);
+		
+		JLabel lblNewLabel_1 = new JLabel("Player: ");
+		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 15));
+		lblNewLabel_1.setBounds(48, 69, 70, 15);
+		frmSummary.getContentPane().add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("New label");
+		lblNewLabel_2.setBounds(120, 69, 115, 15);
+		frmSummary.getContentPane().add(lblNewLabel_2);
 	}
 }
