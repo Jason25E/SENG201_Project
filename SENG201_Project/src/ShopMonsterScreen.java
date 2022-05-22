@@ -71,10 +71,10 @@ public class ShopMonsterScreen {
 		int MonsterLevel = manager.RandomMonsterLevelInShop;
 		ArrayList<Monster> MonsterList = new ArrayList<Monster>();
 		Skill batSkill = new Skill("Bit", "Has a base power of 12", 12);
-		Monster bat = new Monster("Bat", "Bat", MonsterLevel, "Common", 20, 10, 100, 20, batSkill);
+		Monster bat = new Monster("Bat", "Bat", MonsterLevel, "Common", 20 + 5 * MonsterLevel, 10, 100, 20, batSkill);
 		
 		Skill slimeSkill = new Skill("Absorb", "Has a base power of 12", 12);
-		Monster slime = new Monster("Slime", "Slime", MonsterLevel, "Common", 10, 10, 100, 40, slimeSkill);
+		Monster slime = new Monster("Slime", "Slime", MonsterLevel, "Common", 10, 10, 100, 60, slimeSkill);
 		
 		Skill ghostSkill = new Skill("Dive", "Has a base power of 12", 12);
 		Monster ghost = new Monster("Ghost", "Ghost", MonsterLevel, "Common", 10, 20, 100, 20, ghostSkill);
@@ -87,7 +87,7 @@ public class ShopMonsterScreen {
 		Monster witch = new Monster("Witch", "Witch", MonsterLevelTwo, "Common", 30, 10, 80, 20, witchSkill);
 		
 		Skill demonSkill = new Skill("Inferno", "Has a base power of 14", 14);
-		Monster demon = new Monster("Demon", "Demon", MonsterLevelTwo, "Common", 20, 10, 100, 20, demonSkill);
+		Monster demon = new Monster("Demon", "Demon", MonsterLevelTwo, "Common", 20, 20, 100, 20, demonSkill);
 		
 		MonsterList.add(bat);
 		MonsterList.add(slime);

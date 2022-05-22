@@ -267,7 +267,7 @@ public class SaleMonsterScreen {
 		btnUse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (selectedMonster != null) {
-					int SalePrice = (int) (selectedMonster.getMonsterLevel * monster_selling_info + 100 + current_day *2);
+					int SalePrice = (int) (selectedMonster.getMonsterLevel() * monster_selling_info + 100 + current_day *2);
 					manager.getPlayer().soldMonster(selectedMonster, SalePrice, selectedMonster.getMonsterEquipment());
 					manager.launchSaleMonsterScreen();
 					closeWindow();
