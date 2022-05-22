@@ -66,7 +66,8 @@ public class ShopMonsterScreen {
 		 */
 		
 		float shop_info = manager.getShop_info();
-		purchasePrice = Math.round(purchasePrice * shop_info);
+		int current_day = manager.getCurrentDay();
+		purchasePrice = Math.round(purchasePrice * shop_info + current_day * 2);
 		int MonsterLevel = manager.RandomMonsterLevelInShop;
 		ArrayList<Monster> MonsterList = new ArrayList<Monster>();
 		Skill batSkill = new Skill("Bit", "Has a base power of 12", 12);
