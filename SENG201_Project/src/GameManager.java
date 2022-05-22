@@ -130,12 +130,57 @@ public class GameManager {
 		battleEnemyThree = statue;
 	}
 	
+	public void resetMonsterActivity() {
+		ArrayList<Monster> monsterList = player.getMonsterList();
+		for (Monster i : monsterList) {
+			i.setBattleAmountToday(0);
+			i.setfaintedToday(false);
+			i.heal(i.getMonsterHealingAmount());
+		}
+	}
+	
+	public void randomEvent() {
+		ArrayList<Monster> monsterList = player.getMonsterList();
+		for (Monster i : monsterList) {
+			/**
+			 * Chance to level up overnight depends on amount of battle participate today
+			 */
+			if (i.getMonsterBattleAmountToday() >= 2) {
+				i.levelUp();
+			} else if (i.getMonsterBattleAmountToday() == 1) {
+				int random = (int)((Math.random() * (2)) + 0);
+				if (random == 1) {
+					i.levelUp();
+				}
+			} else {
+				int random = (int)((Math.random() * (11)) + 1);
+				if (random < 2) {
+					i.levelUp();
+				}
+			}
+			
+			/**
+			 * Chance to level up overnight depends on fainted or not today
+			 */
+			if (i.getMonsterFaintedToday() == true) {
+				int random = (int)((Math.random() * (101)) + 1);
+				if (random <= 5) {
+					if (player.getMonsterList().size() > 1) {
+						player.removeMonster(i);
+					}
+				}
+			}
+		}
+	}
+	
 	public void sleep()
 	{
 		reduceDayRemain();
 		generateRandomValueInShop();
 		generateRandomEnemy();
 		setBattleEnemyToFalse();
+		randomEvent();
+		resetMonsterActivity();
 	}
 	
 	/**

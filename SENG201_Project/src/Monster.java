@@ -98,6 +98,19 @@ public class Monster {
 		return skill;
 	}
 	
+	public void levelUp() {
+		level += 1;
+		attack += 5;
+		defence += 5;
+	}
+	
+	public void heal(int amountHeal) {
+		currentHealthPoint += amountHeal;
+		if (currentHealthPoint > maxHealthPoint) {
+			currentHealthPoint = maxHealthPoint;
+		}
+	}
+	
 	public String getMonsterInfo() {
 		String monsterInfo = "Lv:" + level + "  HP: " + currentHealthPoint + "/" + maxHealthPoint + "   Attack: " + attack + "   Defence: " + defence + "   Healing: " + healingAmount + "   Skill: " + skill.getSkillName() + "   Rarity: " + rarity;
 		return monsterInfo;
@@ -123,10 +136,7 @@ public class Monster {
 	public void useFood(Food food, Player player) {
 		attack += food.getAttackGain();
 		defence += food.getDefenceGain();
-		currentHealthPoint += food.getHealingAmount();
-		if (currentHealthPoint > maxHealthPoint) {
-			currentHealthPoint = maxHealthPoint;
-		}
+		heal(food.getHealingAmount());
 		food.reduceQuantity();
 		
 		ArrayList FoodList = player.getFoodList();
