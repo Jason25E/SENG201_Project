@@ -78,15 +78,10 @@ public class BattleScreen {
 		 * My Monster
 		 */
 		/** Find out which monster can battle in the order they are in the Monster List */
-		boolean canBattle = false;
-		for (Monster i: manager.getPlayer().getMonsterList()) {
-			if (i.getMonsterCurrentHealthPoint() > 0 && canBattle == false) {
-				currentMonster = i;
-				canBattle = true;
-			}
-		}
+		currentMonster = manager.getPlayer().firstMonsterCanBattle();
 		
 		if (currentMonster != null) {
+			currentMonster.addBattleAmountToday();
 			/** Set and display the name of my Monster that currently in battle */
 			String myMonsterName = currentMonster.getMonsterName();
 			JLabel lblMyMonsterName = new JLabel(myMonsterName);
@@ -167,16 +162,16 @@ public class BattleScreen {
 					MyMonsterSkillPower = 1;
 					lblSkillPower.setText("Power " + currentMonster.getMonsterSkill().getSkillDamage() * MyMonsterSkillPower);
 					
-					int index = manager.getPlayer().getMonsterList().indexOf(currentMonster);
-					if (currentMonster.getMonsterCurrentHealthPoint() == 0) {
-						if (index == manager.getPlayer().getMonsterList().size() - 1) {
-							manager.launchBattleResultScreen(enemy, BattleScreen.this);
-						} else {
+					if (enemy.getMonsterCurrentHealthPoint() == 0) {
+						manager.launchBattleResultScreen(enemy, BattleScreen.this);
+					} else if (currentMonster.getMonsterCurrentHealthPoint() == 0) {
+						currentMonster.setfaintedToday(true);
+						if (manager.getPlayer().canMonstersBattle() == true) {
 							manager.launchBattleScreen(enemy);
 							closeWindow();
+						} else {
+							manager.launchBattleResultScreen(enemy, BattleScreen.this);
 						}
-					} else if (enemy.getMonsterCurrentHealthPoint() == 0) {
-						manager.launchBattleResultScreen(enemy, BattleScreen.this);
 					}
 				}
 			});
@@ -218,17 +213,16 @@ public class BattleScreen {
 					MyMonsterSkillPower += 1;
 					lblSkillPower.setText("Power " + currentMonster.getMonsterSkill().getSkillDamage() * MyMonsterSkillPower);
 					
-					int index = manager.getPlayer().getMonsterList().indexOf(currentMonster);
-					if (currentMonster.getMonsterCurrentHealthPoint() == 0) {
-						if (index == manager.getPlayer().getMonsterList().size() - 1) {
-							manager.launchBattleResultScreen(enemy, BattleScreen.this);
-						} else {
+					if (enemy.getMonsterCurrentHealthPoint() == 0) {
+						manager.launchBattleResultScreen(enemy, BattleScreen.this);
+					} else if (currentMonster.getMonsterCurrentHealthPoint() == 0) {
+						currentMonster.setfaintedToday(true);
+						if (manager.getPlayer().canMonstersBattle() == true) {
 							manager.launchBattleScreen(enemy);
 							closeWindow();
+						} else {
+							manager.launchBattleResultScreen(enemy, BattleScreen.this);
 						}
-						closeWindow();
-					} else if (enemy.getMonsterCurrentHealthPoint() == 0) {
-						manager.launchBattleResultScreen(enemy, BattleScreen.this);
 					}
 				}
 			});
@@ -272,9 +266,9 @@ public class BattleScreen {
 					}
 					lblSkillPower.setText("Power " + currentMonster.getMonsterSkill().getSkillDamage() * MyMonsterSkillPower);
 					
-					int index = manager.getPlayer().getMonsterList().indexOf(currentMonster);
 					if (currentMonster.getMonsterCurrentHealthPoint() == 0) {
-						if (index == manager.getPlayer().getMonsterList().size() - 1) {
+						currentMonster.setfaintedToday(true);
+						if (manager.getPlayer().canMonstersBattle() == false) {
 							manager.launchBattleResultScreen(enemy, BattleScreen.this);
 						} else {
 							manager.launchBattleScreen(enemy);

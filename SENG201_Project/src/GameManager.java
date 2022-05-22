@@ -14,6 +14,9 @@ public class GameManager {
 	public int RandomMonsterInShopTwo = 2;
 	public int RandomMonsterInShopThree = 4;
 	
+	public int RandomMonsterLevelInShop = 1;
+	public int RandomMonsterLevelInShopTwo = 1;
+	
 	public int RandomEnemy = 0;
 	public int RandomEnemyTwo = 1;
 	public int RandomEnemyThree = 2;
@@ -85,6 +88,9 @@ public class GameManager {
 		RandomMonsterInShop = (int)((Math.random() * (6 - 0)) + 0);
 		RandomMonsterInShopTwo = (int)((Math.random() * (6 - 0)) + 0);
 		RandomMonsterInShopThree = (int)((Math.random() * (6 - 0)) + 0);
+		
+		RandomMonsterLevelInShop = (int)((Math.random() * (currentDay)) + 1);
+		RandomMonsterLevelInShopTwo = (int)((Math.random() * (currentDay)) + 1);;
 	}
 	
 	public void generateRandomEnemy() {
@@ -114,12 +120,21 @@ public class GameManager {
 		battleEnemyThree = statue;
 	}
 	
+	public void resetMonsterActivity() {
+		ArrayList<Monster> monsterList = getPlayer().getMonsterList();
+		for (Monster i : monsterList) {
+			i.setBattleAmountToday(0);
+			i.setfaintedToday(false);
+		}
+	}
+	
 	public void sleep()
 	{
 		reduceDayRemain();
 		generateRandomValueInShop();
 		generateRandomEnemy();
 		setBattleEnemyToFalse();
+		resetMonsterActivity();
 	}
 	
 	/**
@@ -236,17 +251,6 @@ public class GameManager {
 		launchMainScreen();
 	}
 
-	public void launchSaleMonsterScreen()
-	{
-		SaleMonsterScreen saleMonsterScreen = new SaleMonsterScreen(this);
-	}
-	
-	public void closeSaleMonsterScreen(SaleMonsterScreen saleMonsterScreen)
-	{
-		saleMonsterScreen.closeWindow();
-		launchMainScreen();
-	}
-	
 	public void launchSaleItemScreen()
 	{
 		SaleItemScreen SaleItemScreen = new SaleItemScreen(this);
@@ -269,6 +273,16 @@ public class GameManager {
 		launchMainScreen();
 	}
 
+	public void launchSaleMonsterScreen()
+	{
+		SaleMonsterScreen saleMonsterScreen = new SaleMonsterScreen(this);
+	}
+	
+	public void closeSaleMonsterScreen(SaleMonsterScreen saleMonsterScreen)
+	{
+		saleMonsterScreen.closeWindow();
+		launchMainScreen();
+	}
 	
 	public void launchSelectBattleScreen()
 	{

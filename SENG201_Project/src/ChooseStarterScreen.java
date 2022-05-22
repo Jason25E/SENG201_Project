@@ -64,16 +64,16 @@ public class ChooseStarterScreen {
 		 * initialize the four monster that allow the player to choose
 		 */
 		Skill batSkill = new Skill("Bit", "Has a base power of 12", 12);
-		Monster bat = new Monster("Bat", "Bat", "Common", 20, 10, 100, 20, batSkill);
+		Monster bat = new Monster("Bat", "Bat", 1 ,"Common", 20, 10, 100, 20, batSkill);
 		
 		Skill slimeSkill = new Skill("Absorb", "Has a base power of 12", 12);
-		Monster slime = new Monster("Slime", "Slime", "Common", 10, 10, 100, 40, slimeSkill);
+		Monster slime = new Monster("Slime", "Slime", 1, "Common", 10, 10, 100, 40, slimeSkill);
 		
 		Skill ghostSkill = new Skill("Dive", "Has a base power of 12", 12);
-		Monster ghost = new Monster("Ghost", "Ghost", "Common", 10, 20, 100, 20, ghostSkill);
+		Monster ghost = new Monster("Ghost", "Ghost", 1, "Common", 10, 20, 100, 20, ghostSkill);
 		
 		Skill skeletonSkill = new Skill("Slash", "Has a base power of 12", 12);
-		Monster skeleton = new Monster("Skeleton", "Skeleton", "Common", 20, 20, 100, 10, skeletonSkill);
+		Monster skeleton = new Monster("Skeleton", "Skeleton", 1, "Common", 20, 20, 100, 10, skeletonSkill);
 		
 		/**
 		 * initialize the frame

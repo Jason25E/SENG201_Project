@@ -61,33 +61,34 @@ public class SelectBattleScreen {
 		/**
 		 * Initialize the enemy Monsters that can be battle against.
 		 */
+		int monsterLevel = manager.getCurrentDay();
 		ArrayList<Monster> EnemyMonsterList = new ArrayList<Monster>();
 		Skill batSkill = new Skill("Bit", "Has a base power of 12", 12);
-		Monster bat = new Monster("Bat", "Bat", "Common", 20, 10, 200, 20, batSkill);
+		Monster bat = new Monster("Bat", "Bat", monsterLevel, "Common", 20, 10, 200, 20, batSkill);
 		
 		Skill slimeSkill = new Skill("Absorb", "Has a base power of 12", 12);
-		Monster slime = new Monster("Slime", "Slime", "Common", 10, 10, 200, 40, slimeSkill);
+		Monster slime = new Monster("Slime", "Slime", monsterLevel, "Common", 10, 10, 200, 40, slimeSkill);
 		
 		Skill ghostSkill = new Skill("Dive", "Has a base power of 12", 12);
-		Monster ghost = new Monster("Ghost", "Ghost", "Common", 10, 20, 200, 20, ghostSkill);
+		Monster ghost = new Monster("Ghost", "Ghost", monsterLevel, "Common", 10, 20, 200, 20, ghostSkill);
 		
 		Skill skeletonSkill = new Skill("Slash", "Has a base power of 12", 12);
-		Monster skeleton = new Monster("Skeleton", "Skeleton", "Common", 20, 20, 200, 10, skeletonSkill);
+		Monster skeleton = new Monster("Skeleton", "Skeleton", monsterLevel, "Common", 20, 20, 200, 10, skeletonSkill);
 		
 		Skill witchSkill = new Skill("Thunder", "Has a base power of 12", 12);
-		Monster witch = new Monster("Witch", "Witch", "Common", 30, 10, 180, 20, witchSkill);
+		Monster witch = new Monster("Witch", "Witch", monsterLevel, "Rare", 30, 10, 180, 20, witchSkill);
 		
 		Skill demonSkill = new Skill("Inferno", "Has a base power of 14", 14);
-		Monster demon = new Monster("Demon", "Demon", "Common", 20, 10, 200, 20, demonSkill);
+		Monster demon = new Monster("Demon", "Demon", monsterLevel, "Rare", 20, 10, 200, 20, demonSkill);
 		
 		Skill redDragonSkill = new Skill("Slash", "Has a base power of 15", 15);
-		Monster redDragon = new Monster("RedDragons", "RedDragons", "Rare", 20, 10, 300, 20, redDragonSkill);
+		Monster redDragon = new Monster("RedDragons", "RedDragons", monsterLevel, "Rare", 20, 10, 300, 20, redDragonSkill);
 		
 		Skill greenDragonSkill = new Skill("S.Slash", "Has a base power of 16", 16);
-		Monster greenDragon = new Monster("GreenDragons", "GreenDragons", "S.Rare", 10, 10, 300, 40, greenDragonSkill);
+		Monster greenDragon = new Monster("GreenDragons", "GreenDragons", monsterLevel, "S.Rare", 10, 10, 300, 40, greenDragonSkill);
 		
 		Skill blueDragonSkill = new Skill("SS.Slash", "Has a base power of 18", 18);
-		Monster blueDragon = new Monster("BlueDragons", "BlueDragons", "SS.Rare", 10, 20, 500, 20, blueDragonSkill);
+		Monster blueDragon = new Monster("BlueDragons", "BlueDragons", monsterLevel, "SS.Rare", 10, 20, 500, 20, blueDragonSkill);
 		
 		EnemyMonsterList.add(bat);
 		EnemyMonsterList.add(slime);

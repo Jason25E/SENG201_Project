@@ -12,20 +12,25 @@ public class Monster {
 	private int healingAmount;
 	private boolean faintedToday;
 	private int battleAmountToday;
-	private Equipment equipment = null;
+	private Equipment equipment;
 	private Skill skill;
 	
-	public Monster(String monsterID, String monsterName, String rarity, int attack, int defence, int maxHealthPoint, int healingAmount, Skill newSkill) 
+	public Monster(String monsterID, String monsterName, int level, String rarity, int attack, int defence, int maxHealthPoint, int healingAmount, Skill newSkill) 
 	{
 		this.monsterID = monsterID;
 		this.monsterName = monsterName;
+		this.level = level;
 		this.rarity = rarity;
 		this.attack = attack;
 		this.defence = defence;
 		this.maxHealthPoint = maxHealthPoint;
 		currentHealthPoint = maxHealthPoint;
 		this.healingAmount = healingAmount;
+		faintedToday = false;
+		battleAmountToday = 0;
+		equipment = null;
 		skill = newSkill;
+		
 	}
 	
 	public String getMonsterID() 
@@ -94,7 +99,7 @@ public class Monster {
 	}
 	
 	public String getMonsterInfo() {
-		String monsterInfo = "HP: " + currentHealthPoint + "/" + maxHealthPoint + "   Attack: " + attack + "   Defence: " + defence + "   Healing: " + healingAmount + "   Skill: " + skill.getSkillName() + "   Rarity: " + rarity;
+		String monsterInfo = "Lv:" + level + "  HP: " + currentHealthPoint + "/" + maxHealthPoint + "   Attack: " + attack + "   Defence: " + defence + "   Healing: " + healingAmount + "   Skill: " + skill.getSkillName() + "   Rarity: " + rarity;
 		return monsterInfo;
 	}
 	
@@ -114,7 +119,6 @@ public class Monster {
 		defence += newEquipment.getEquipmentDefence();
 		newEquipment.reduceQuantity();
 	}
-		
 	
 	public void useFood(Food food, Player player) {
 		attack += food.getAttackGain();
@@ -137,5 +141,17 @@ public class Monster {
 		if (currentHealthPoint < 0) {
 			currentHealthPoint = 0;
 		}
+	}
+	
+	public void setBattleAmountToday(int value) {
+		battleAmountToday = value;
+	}
+	
+	public void addBattleAmountToday() {
+		battleAmountToday += 1;
+	}
+	
+	public void setfaintedToday(boolean statue) {
+		faintedToday = statue;
 	}
 }

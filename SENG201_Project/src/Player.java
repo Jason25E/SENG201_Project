@@ -162,4 +162,25 @@ public class Player {
 		}
 	}
 	
+	public boolean canMonstersBattle() {
+		boolean canBattle = false;
+		for (Monster i: MonsterList) {
+			if (i.getMonsterCurrentHealthPoint() > 0 && canBattle == false) {
+				canBattle = true;
+			}
+		}
+		return canBattle;
+	}
+	
+	public Monster firstMonsterCanBattle() {
+		boolean canBattle = false;
+		Monster monster = null;
+		for (Monster i: MonsterList) {
+			if (i.getMonsterCurrentHealthPoint() > 0 && canBattle == false) {
+				monster = i;
+				canBattle = true;
+			}
+		}
+		return monster;
+	}
 }

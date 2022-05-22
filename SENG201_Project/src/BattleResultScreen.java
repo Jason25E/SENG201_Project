@@ -68,12 +68,7 @@ public class BattleResultScreen {
 		/**
 		 * Check if there are monster alive in the party to determine the battle result
 		 */
-		boolean monsterAlive = false;
-		for (Monster i: manager.getPlayer().getMonsterList()) {
-			if (i.getMonsterCurrentHealthPoint() > 0 && monsterAlive == false) {
-				monsterAlive = true;
-			}
-		}
+		boolean monsterAlive = manager.getPlayer().canMonstersBattle();
 
 		JLabel lblBattleResult = new JLabel();
 		lblBattleResult.setFont(new Font("Dialog", Font.BOLD, 15));
