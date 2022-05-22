@@ -63,6 +63,7 @@ public class SaleMonsterScreen {
 		int MonsterListSize = manager.getPlayer().getMonsterList().size();
 		ArrayList<Monster> MonsterList = manager.getPlayer().getMonsterList();
 		int monster_selling_info = manager.getMonster_selling_info();
+		int current_day = manager.getCurrentDay();
 		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 309, 454);
@@ -266,7 +267,7 @@ public class SaleMonsterScreen {
 		btnUse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (selectedMonster != null) {
-					int SalePrice = (int) (selectedMonster.getMonsterLevel * monster_selling_info + 100);
+					int SalePrice = (int) (selectedMonster.getMonsterLevel * monster_selling_info + 100 + current_day *2);
 					manager.getPlayer().soldMonster(selectedMonster, SalePrice, selectedMonster.getMonsterEquipment());
 					manager.launchSaleMonsterScreen();
 					closeWindow();
