@@ -13,7 +13,13 @@ import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import java.awt.Color;
 import javax.swing.JComboBox;
-
+/**
+ * The class ItemScreen
+ * Show all the food in the inventory 
+ * Allow player to use to the monster in the monster list
+ * @author fye15, zde19
+ *
+ */
 public class ItemScreen {
 
 	private JFrame frmMyItems;
@@ -23,34 +29,22 @@ public class ItemScreen {
 	private Item selectedFood = null;
 	
 	/**
-	 * Launch the application.
+	 * The variable require one parameter
+	 * @param manager of the type GameManager
+	 * set this manager to manager 
+	 * run the initialize variable
+	 * set the frmMyItems visible to true
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ItemScreen window = new ItemScreen();
-					window.frmMyItems.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
-	public ItemScreen() {
-		initialize();
-	}
-	
 	public ItemScreen(GameManager manager) {
 		this.manager = manager;
 		initialize();
 		frmMyItems.setVisible(true);
 	}
 	
+	/**
+	 * The variable
+	 * set the frmMyItems dispose
+	 */
 	public void closeWindow() {
 		frmMyItems.dispose();
 	}
@@ -64,32 +58,47 @@ public class ItemScreen {
 		int ItemListSize = manager.getPlayer().getFoodList().size();
 		ArrayList<Item> ItemList = manager.getPlayer().getFoodList();
 		
+		/**
+		 * A frame with the name "My Food"
+		 */
 		frmMyItems = new JFrame();
 		frmMyItems.setTitle("My Food");
 		frmMyItems.setBounds(100, 100, 274, 401);
 		frmMyItems.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMyItems.getContentPane().setLayout(null);
 		
+		/**
+		 * A label recive information from "Use"
+		 */
 		JLabel lblEffect = new JLabel("");
 		lblEffect.setBounds(22, 270, 248, 22);
 		frmMyItems.getContentPane().add(lblEffect);
 		
-
+		/**
+		 * A comboBox takes all the monster in the monster list 
+		 * Display each monster name the player
+		 */
 		String[] monsterName = new String[4];
 		int index = 0;
 		for (Monster i: manager.getPlayer().getMonsterList()) {
 			monsterName[index] = i.getMonsterName();
 			index += 1;
 		}
-		
 		JComboBox<String> comboBox = new JComboBox<>(monsterName);
 		comboBox.setMaximumRowCount(4);
 		comboBox.setBounds(146, 298, 114, 24);
 		frmMyItems.getContentPane().add(comboBox);
 
+		/**
+		 * Display the first food
+		 * if there is a food in the list
+		 */
 		if (ItemListSize >= 1) {
 			Item FirstItem = manager.getPlayer().getFoodList().get(0);
 			
+			/**
+			 * A label shows the number of the first food
+			 */
 			int FirstItemQuanitty = FirstItem.getQuantity();
 			String FirstItemQuanittyString = "x0";
 			if (FirstItemQuanitty >= 10) {
@@ -104,6 +113,10 @@ public class ItemScreen {
 			lblX.setBounds(218, 40, 42, 24);
 			frmMyItems.getContentPane().add(lblX);
 			
+			/**
+			 * A RadioButton with the name of the first food
+			 * Set the selectedFood to the first food if selected
+			 */
 			String FirstItemName = FirstItem.getItemID();
 			JRadioButton rdbtnNameOfItem = new JRadioButton(FirstItemName);
 			rdbtnNameOfItem.addActionListener(new ActionListener() {
@@ -117,6 +130,9 @@ public class ItemScreen {
 			rdbtnNameOfItem.setBounds(8, 8, 177, 56);
 			frmMyItems.getContentPane().add(rdbtnNameOfItem);
 			
+			/**
+			 * A label show the image of the first food
+			 */
 			JLabel lblNewLabel = new JLabel("");
 			lblNewLabel.setIcon(new ImageIcon(ItemScreen.class.getResource("/Images/Food/" + FirstItemName + ".png")));
 			lblNewLabel.setBounds(199, 8, 61, 56);
@@ -124,9 +140,16 @@ public class ItemScreen {
 			
 		} 
 		
+		/**
+		 * Display the secnod food
+		 * if there is a food in the list
+		 */
 		if (ItemListSize >= 2) {
 			Item SecondItem = manager.getPlayer().getFoodList().get(1);
 			
+			/**
+			 * A label shows the number of the secnod food
+			 */
 			int SecondItemQuanitty = SecondItem.getQuantity();
 			String SecondItemQuanittyString = "";
 			if (SecondItemQuanitty >= 10) {
@@ -141,6 +164,10 @@ public class ItemScreen {
 			lblX_1.setBounds(218, 104, 42, 24);
 			frmMyItems.getContentPane().add(lblX_1);
 			
+			/**
+			 * A RadioButton with the name of the second food
+			 * Set the selectedFood to the second food if selected
+			 */
 			String SecondItemName = SecondItem.getItemID();
 			JRadioButton rdbtnNameOfItem_1 = new JRadioButton(SecondItemName);
 			rdbtnNameOfItem_1.addActionListener(new ActionListener() {
@@ -154,6 +181,9 @@ public class ItemScreen {
 			rdbtnNameOfItem_1.setBounds(8, 72, 177, 56);
 			frmMyItems.getContentPane().add(rdbtnNameOfItem_1);
 			
+			/**
+			 * A label show the image of the second food
+			 */
 			JLabel lblNewLabel_4 = new JLabel("");
 			lblNewLabel_4.setIcon(new ImageIcon(ItemScreen.class.getResource("/Images/Food/" + SecondItemName + ".png")));
 			lblNewLabel_4.setBounds(199, 72, 61, 56);
@@ -161,9 +191,16 @@ public class ItemScreen {
 			
 		} 
 		
+		/**
+		 * Display the third food
+		 * if there is a food in the list
+		 */
 		if (ItemListSize >= 3) {
 			Item ThirdItem = manager.getPlayer().getFoodList().get(2);
 			
+			/**
+			 * A label shows the number of the third food
+			 */
 			int ThirdItemQuanitty = ThirdItem.getQuantity();
 			String ThirdItemQuanittyString = "";
 			if (ThirdItemQuanitty >= 10) {
@@ -178,6 +215,10 @@ public class ItemScreen {
 			lblX_2.setBounds(218, 168, 42, 24);
 			frmMyItems.getContentPane().add(lblX_2);
 			
+			/**
+			 * A RadioButton with the name of the third food
+			 * Set the selectedFood to the third food if selected
+			 */
 			String ThirdItemName = ThirdItem.getItemID();
 			JRadioButton rdbtnNameOfItem_2 = new JRadioButton(ThirdItemName);
 			rdbtnNameOfItem_2.addActionListener(new ActionListener() {
@@ -191,6 +232,9 @@ public class ItemScreen {
 			rdbtnNameOfItem_2.setBounds(8, 136, 177, 56);
 			frmMyItems.getContentPane().add(rdbtnNameOfItem_2);
 
+			/**
+			 * A label show the image of the third food
+			 */
 			JLabel lblNewLabel_1 = new JLabel("");
 			lblNewLabel_1.setIcon(new ImageIcon(ItemScreen.class.getResource("/Images/Food/" + ThirdItemName + ".png")));
 			lblNewLabel_1.setBounds(199, 136, 61, 56);
@@ -199,9 +243,16 @@ public class ItemScreen {
 			
 		} 
 		
+		/**
+		 * Display the fourth food
+		 * if there is a food in the list
+		 */
 		if (ItemListSize == 4){
 			Item FourthItem = manager.getPlayer().getFoodList().get(3);
 			
+			/**
+			 * A label shows the number of the fourth food
+			 */
 			int FourthItemQuanitty = FourthItem.getQuantity();
 			String FourthItemQuanittyString = "";
 			if (FourthItemQuanitty >= 10) {
@@ -216,6 +267,10 @@ public class ItemScreen {
 			lblX_3.setBounds(218, 245, 42, 24);
 			frmMyItems.getContentPane().add(lblX_3);
 			
+			/**
+			 * A RadioButton with the name of the fourth food
+			 * Set the selectedFood to the fourth food if selected
+			 */
 			String FourthItemName = FourthItem.getItemID();
 			JRadioButton rdbtnNameOfItem_3 = new JRadioButton(FourthItemName);
 			rdbtnNameOfItem_3.addActionListener(new ActionListener() {
@@ -229,6 +284,9 @@ public class ItemScreen {
 			rdbtnNameOfItem_3.setBounds(8, 200, 177, 56);
 			frmMyItems.getContentPane().add(rdbtnNameOfItem_3);
 			
+			/**
+			 * A label show the image of the fourth food
+			 */
 			JLabel lblNewLabel_2 = new JLabel("");
 			lblNewLabel_2.setIcon(new ImageIcon(ItemScreen.class.getResource("/Images/Food/" + FourthItemName + ".png")));
 			lblNewLabel_2.setBounds(199, 200, 61, 56);

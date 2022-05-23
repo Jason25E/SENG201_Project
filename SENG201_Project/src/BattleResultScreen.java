@@ -8,43 +8,30 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 
+/**
+ * This class BattleResult 
+ * The gold gain in every battle 
+ * The score gain in every battle 
+ * And the updated monster state after every battle
+ * @author fye15, zde19
+ *
+ */
+
 public class BattleResultScreen {
 	
 	/** Initialize the Variables use in the file */
-	private JFrame frmBattleResult;
 	
+	private JFrame frmBattleResult;
 	private GameManager manager;
 	private int baseGoldReceive = 50;
 	private int baseScoreReceive = 100;
 	private Monster enemy = null;
 
-	
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					BattleResultScreen window = new BattleResultScreen();
-					window.frmBattleResult.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
 	/**
 	 * Create the application.
-	 */
-	public BattleResultScreen() {
-		initialize();
-		
-	}
-	
-	/**
-	 * Create the application.
+	 * BattleResultScreen require the parameters 
+	 * manager of type GameManager
+	 * enemy of type Monster 
 	 */
 	public BattleResultScreen(GameManager manager, Monster enemy) {
 		this.manager = manager;
@@ -107,27 +94,43 @@ public class BattleResultScreen {
 			scoreGain = 0;
 		}
 		
-		
+		/**
+		 * A label display the text "Gold:"
+		 */
 		JLabel lblGold = new JLabel("Gold:");
 		lblGold.setFont(new Font("Dialog", Font.BOLD, 15));
 		lblGold.setBounds(90, 53, 70, 20);
 		frmBattleResult.getContentPane().add(lblGold);
 		
+		/**
+		 * A label display the gold receive after every battle
+		 */
 		JLabel label = new JLabel("" + goldReceive);
 		label.setFont(new Font("Dialog", Font.BOLD, 15));
 		label.setBounds(180, 51, 70, 20);
 		frmBattleResult.getContentPane().add(label);
 		
+		/**
+		 * A label display the text "Score:"
+		 */
 		JLabel lblNewLabel = new JLabel("Score:");
 		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 15));
 		lblNewLabel.setBounds(90, 83, 70, 20);
 		frmBattleResult.getContentPane().add(lblNewLabel);
 		
+		/**
+		 * A label display the score gain after every battle
+		 */
 		JLabel label_1 = new JLabel("" + scoreGain);
 		label_1.setFont(new Font("Dialog", Font.BOLD, 15));
 		label_1.setBounds(180, 83, 70, 20);
 		frmBattleResult.getContentPane().add(label_1);
 		
+		/**
+		 * A button which allow you to go back to 
+		 * If win it go back to the main screen
+		 * lose go to summary screen
+		 */
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -142,7 +145,7 @@ public class BattleResultScreen {
 		btnBack.setBounds(109, 385, 117, 35);
 		frmBattleResult.getContentPane().add(btnBack);
 		
-		/** First Monster */
+		/** Display the First Monster in party */
 		Monster firstMonster = manager.getPlayer().getMonsterList().get(0);
 		JLabel lblMonsterIcon = new JLabel();
 		lblMonsterIcon.setIcon(new ImageIcon(BattleResultScreen.class.getResource("/Images/Monster/" + firstMonster.getMonsterID() + ".png")));
@@ -150,7 +153,7 @@ public class BattleResultScreen {
 		lblMonsterIcon.setToolTipText(firstMonster.getFullMonsterInfo());
 		frmBattleResult.getContentPane().add(lblMonsterIcon);
 		
-		/** Second Monster */
+		/** Display Second Monster if there is monster in the monster list */
 		if (manager.getPlayer().getMonsterList().size() >= 2) {
 			Monster secondMonster = manager.getPlayer().getMonsterList().get(1);
 			JLabel lblMonsterIcon_2 = new JLabel();
@@ -160,7 +163,7 @@ public class BattleResultScreen {
 			frmBattleResult.getContentPane().add(lblMonsterIcon_2);
 		}
 		
-		/** Third Monster */
+		/** Display Third Monster if there is monster in the monster list */
 		if (manager.getPlayer().getMonsterList().size() >= 3) {
 			Monster thirdMonster = manager.getPlayer().getMonsterList().get(2);
 			JLabel lblMonsterIcon_3 = new JLabel();
@@ -170,7 +173,7 @@ public class BattleResultScreen {
 			frmBattleResult.getContentPane().add(lblMonsterIcon_3);
 		}
 		
-		/** Fourth Monster */
+		/** Display Fourth Monster if there is monster in the monster list */
 		if (manager.getPlayer().getMonsterList().size() >= 4) {
 			Monster fourthMonster = manager.getPlayer().getMonsterList().get(3);
 			JLabel lblMonsterIcon_4 = new JLabel();

@@ -8,6 +8,14 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 
+/**
+ * This class BsssattleScreen
+ * It find the fist can battle monster in the monster list a battle with
+ * The selected enemy monster form the SelectBattleScreen
+ * Launch BattleResultScreen after battle 
+ * @author fye15, zde19
+ *
+ */
 public class BattleScreen {
 
 	private JFrame frmBattle;
@@ -18,30 +26,13 @@ public class BattleScreen {
 	
 	private int MyMonsterPower = 15;
 	private int MyMonsterSkillPower = 1;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					BattleScreen window = new BattleScreen();
-					window.frmBattle.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	
 	/**
 	 * Create the application.
+	 * BattleScreen which take the two parameters of
+	 * @param manager of the type GameManager
+	 * @param enemy of the type Monster
 	 */
-	public BattleScreen() {
-		initialize();
-	}
-	
 	public BattleScreen(GameManager manager, Monster enemy) {
 		this.manager = manager;
 		this.enemy = enemy;
@@ -49,6 +40,9 @@ public class BattleScreen {
 		frmBattle.setVisible(true);
 	}
 	
+	/**
+	 * Close the application
+	 */
 	public void closeWindow() {
 		frmBattle.dispose();
 	}
@@ -139,6 +133,9 @@ public class BattleScreen {
 			lblSkillPower.setBounds(200, 265, 70, 15);
 			frmBattle.getContentPane().add(lblSkillPower);
 			
+			/**
+			 * Set the button name to skillName
+			 */
 			String skillName = currentMonster.getMonsterSkill().getSkillName();
 			JButton btnSkill = new JButton(skillName);
 			btnSkill.addActionListener(new ActionListener() {
@@ -152,8 +149,6 @@ public class BattleScreen {
 					} else {
 						MyMonsterSkillPower += 1;
 					}
-			
-					
 					int damageDealByEnemy = Math.round(enemyPower * enemy.getMonsterAttack()) - (currentMonster.getMonsterDefence() / 10);
 					
 					/** Apply the damage */
@@ -293,6 +288,9 @@ public class BattleScreen {
 			btnDefence.setBounds(295, 237, 117, 25);
 			frmBattle.getContentPane().add(btnDefence);
 			
+			/** 
+			 * A label shows the information of the damage that can block
+			 */
 			JLabel lblDefenceStrength = new JLabel("Block " + currentMonster.getMonsterDefence() * 2 + " Dmg");
 			lblDefenceStrength.setFont(new Font("Dialog", Font.BOLD, 10));
 			lblDefenceStrength.setBounds(315, 265, 100, 15);
