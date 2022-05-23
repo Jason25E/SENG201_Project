@@ -12,41 +12,35 @@ import java.util.Collections;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 
+/**
+ * The class MonsterScreen
+ * Display all the monster that in the player's monster list
+ * Diplay the information of each monster
+ * @author zde19
+ *
+ */
 public class MonsterScreen {
 
 	private JFrame frmMyMonsters;
 	
 	private GameManager manager;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MonsterScreen window = new MonsterScreen();
-					window.frmMyMonsters.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
-	public MonsterScreen() {
-		initialize();
-	}
 	
+	/**
+	 * The variable require one parameter
+	 * @param manager of the type GameManager
+	 * run the initialize
+	 * set the frmMain visible
+	 */
 	public MonsterScreen(GameManager manager) {
 		this.manager = manager;
 		initialize();
 		frmMyMonsters.setVisible(true);
 	}
 	
+	/**
+	 * The variable 
+	 * set the frmMain dispose
+	 */
 	public void closeWindow() {
 		frmMyMonsters.dispose();
 	}
@@ -55,12 +49,18 @@ public class MonsterScreen {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		/**
+		 * A frame with the name "My Monster"
+		 */
 		frmMyMonsters = new JFrame();
 		frmMyMonsters.setTitle("My Monster");
 		frmMyMonsters.setBounds(100, 100, 301, 417);
 		frmMyMonsters.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMyMonsters.getContentPane().setLayout(null);
 		
+		/**
+		 * a lablel with the text "Show info about the skill/equip."
+		 */
 		JLabel lblShowInfoAbout = new JLabel("Show info about the skill/equip.");
 		lblShowInfoAbout.setBounds(32, 320, 238, 15);
 		frmMyMonsters.getContentPane().add(lblShowInfoAbout);
@@ -79,6 +79,9 @@ public class MonsterScreen {
 		cbMonster.setBounds(63, 8, 109, 32);
 		frmMyMonsters.getContentPane().add(cbMonster);
 		
+		/**
+		 * Check if the moster is equip a equipment or not
+		 */
 		if (firstMonster.getMonsterEquipment() != null) {
 			/**
 			 * Display the equipment of the first Monster if it has one
@@ -112,6 +115,9 @@ public class MonsterScreen {
 		btnSkill.setBounds(63, 48, 109, 25);
 		frmMyMonsters.getContentPane().add(btnSkill);
 		
+		/**
+		 * A lable shows the image of the first monster
+		 */
 		String imageSourceOne = "/Images/Monster/" + firstMonster.getMonsterID() + ".png";
 		JLabel lblMonsterIcon = new JLabel();
 		lblMonsterIcon.setIcon(new ImageIcon(MonsterScreen.class.getResource(imageSourceOne)));
@@ -128,6 +134,9 @@ public class MonsterScreen {
 		frmMyMonsters.getContentPane().add(label_1);
 		JCheckBox cbMonster_2 = new JCheckBox("Null");
 		
+		/**
+		 * Display if there is a senond monster in the monster list
+		 */
 		if (manager.getPlayer().getMonsterList().size() >= 2) {
 			/**
 			 * Try to get and set the info for second Monster only if it the player have the second Monster in the Monster Array
@@ -152,6 +161,9 @@ public class MonsterScreen {
 			btnSKill2.setBounds(63, 125, 109, 25);
 			frmMyMonsters.getContentPane().add(btnSKill2);
 			
+			/**
+			 * Check if the moster is equip a equipment or not
+			 */
 			if (secondMonster.getMonsterEquipment() != null) {
 				/**
 				 * Display the equipment of the second Monster if it has one
@@ -171,6 +183,9 @@ public class MonsterScreen {
 				frmMyMonsters.getContentPane().add(btnEquipment_2);
 			}
 			
+			/**
+			 * A lable shows the image of the second monster
+			 */
 			String imageSourceTwo = "/Images/Monster/" + secondMonster.getMonsterID() + ".png";
 			JLabel lblMonsterIcon_2 = new JLabel();
 			lblMonsterIcon_2.setIcon(new ImageIcon(MonsterScreen.class.getResource(imageSourceTwo)));
@@ -188,6 +203,9 @@ public class MonsterScreen {
 		frmMyMonsters.getContentPane().add(label_2);
 		JCheckBox cbMonster_3 = new JCheckBox("Null");
 		
+		/**
+		 * Display if there is a third monster in the monster list
+		 */
 		if (manager.getPlayer().getMonsterList().size() >= 3) {
 			/**
 			 * Try to get and set the info for third Monster only if it the player have the third Monster in the Monster Array
@@ -212,6 +230,9 @@ public class MonsterScreen {
 			btnSkill3.setBounds(63, 202, 109, 25);
 			frmMyMonsters.getContentPane().add(btnSkill3);
 			
+			/**
+			 * Check if the moster is equip a equipment or not
+			 */
 			if (thirdMonster.getMonsterEquipment() != null) {
 				/**
 				 * Display the equipment of the third Monster if it has one
@@ -231,7 +252,9 @@ public class MonsterScreen {
 				frmMyMonsters.getContentPane().add(btnEquipment_3);
 			}
 
-			
+			/**
+			 * A lable shows the image of the third monster
+			 */
 			String imageSourceThree = "/Images/Monster/" + thirdMonster.getMonsterID() + ".png";
 			JLabel lblMonsterIcon_3 = new JLabel();
 			lblMonsterIcon_3.setIcon(new ImageIcon(MonsterScreen.class.getResource(imageSourceThree)));
@@ -249,6 +272,9 @@ public class MonsterScreen {
 		frmMyMonsters.getContentPane().add(label_3);
 		JCheckBox cbMonster_4 = new JCheckBox("Null");
 		
+		/**
+		 * Display if there is a fourth monster in the monster list
+		 */
 		if (manager.getPlayer().getMonsterList().size() >= 4) {
 			/**
 			 * Try to get and set the info for fourth Monster only if it the player have the fourth Monster in the Monster Array
@@ -273,6 +299,9 @@ public class MonsterScreen {
 			btnSkill4.setBounds(63, 279, 109, 25);
 			frmMyMonsters.getContentPane().add(btnSkill4);
 			
+			/**
+			 * Check if the moster is equip a equipment or not
+			 */
 			if (fourthMonster.getMonsterEquipment() != null) {
 				/**
 				 * Display the equipment of the fourth Monster if it has one
@@ -292,6 +321,9 @@ public class MonsterScreen {
 				frmMyMonsters.getContentPane().add(btnEquipment_4);
 			}
 
+			/**
+			 * A lable shows the image of the fourth monster
+			 */
 			String imageSourceFour= "/Images/Monster/" + fourthMonster.getMonsterID() + ".png";
 			JLabel lblMonsterIcon_4 = new JLabel();
 			lblMonsterIcon_4.setIcon(new ImageIcon(MonsterScreen.class.getResource(imageSourceFour)));
@@ -359,6 +391,11 @@ public class MonsterScreen {
 		btnEquipment_1_3_1.setBounds(12, 351, 130, 25);
 		frmMyMonsters.getContentPane().add(btnEquipment_1_3_1);
 		
+		/**
+		 * A button with the name "Exit"
+		 * press launch MainScreen
+		 * close window
+		 */
 		JButton btnEquipment_4_1 = new JButton("Exit");
 		btnEquipment_4_1.setForeground(new Color(255, 255, 255));
 		btnEquipment_4_1.setBackground(new Color(255, 51, 102));
