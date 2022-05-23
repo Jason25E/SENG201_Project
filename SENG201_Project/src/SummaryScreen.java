@@ -7,6 +7,12 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * The class summary
+ * Display the total score of the player
+ * @author fye15, zde19
+ *
+ */
 public class SummaryScreen {
 
 	private JFrame frmSummary;

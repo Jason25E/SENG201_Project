@@ -12,6 +12,13 @@ import javax.swing.JRadioButton;
 import java.awt.Font;
 import javax.swing.ButtonGroup;
 
+/**
+ * The class SelectBattleScreen
+ * Display the enemy monster that can battle on that day
+ * Launch other screen
+ * @author fye15, zde19
+ *
+ */
 public class SelectBattleScreen {
 
 	private JFrame frmSelectBattle;
@@ -22,34 +29,21 @@ public class SelectBattleScreen {
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	
 	/**
-	 * Launch the application.
+	 * The variable require one parameter
+	 * @param manager of the type GameManager
+	 * run the initialize
+	 * set the frmMain visible
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SelectBattleScreen window = new SelectBattleScreen();
-					window.frmSelectBattle.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
-	public SelectBattleScreen() {
-		initialize();
-	}
-	
 	public SelectBattleScreen(GameManager manager) {
 		this.manager = manager;
 		initialize();
 		frmSelectBattle.setVisible(true);
 	}
 	
+	/**
+	 * The variable 
+	 * set the frmMain dispose
+	 */
 	public void closeWindow() {
 		frmSelectBattle.dispose();
 	}
@@ -71,7 +65,10 @@ public class SelectBattleScreen {
 			enemy_heal_increase = (current_day - 1) * 10;
 		}
 		
-		
+		/**
+		 * set all the information to each enemy monster
+		 * add the monsters into two different list
+		 */
 		Skill batSkill = new Skill("Bit", "Has a base power of 12", 12);
 		Monster bat = new Monster("Bat", "Bat", monsterLevel, "Common", Math.round(difficulty * (12 + 2 * monsterLevel)), Math.round(difficulty * (15 + 2 * monsterLevel)), 150 + enemy_heal_increase, 20, batSkill);
 		
@@ -109,12 +106,18 @@ public class SelectBattleScreen {
 		EnemyMonsterList2.add(greenDragon);
 		EnemyMonsterList2.add(blueDragon);
 		
+		/**
+		 * A frame with title "Select Battle"
+		 */
 		frmSelectBattle = new JFrame();
 		frmSelectBattle.setTitle("Select Battle");
 		frmSelectBattle.setBounds(100, 100, 590, 302);
 		frmSelectBattle.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmSelectBattle.getContentPane().setLayout(null);
 		
+		/**
+		 * A label recive message from battle button
+		 */
 		JLabel lblMessage = new JLabel();
 		lblMessage.setFont(new Font("Dialog", Font.BOLD, 11));
 		lblMessage.setForeground(Color.RED);
@@ -123,11 +126,14 @@ public class SelectBattleScreen {
 		
 		/**
 		 * First Enemy
+		 * check if the current day is 15 
+		 * yes, set RandomEnemyMonster to the first monster in the EnemyMonsterList2
 		 */
 		Monster RandomEnemyMonster0 = EnemyMonsterList1.get(manager.RandomEnemy);
 		if (current_day == 15) {
 			RandomEnemyMonster0 = EnemyMonsterList2.get(0);
 		}
+		
 		
 		Monster firstEnemy = RandomEnemyMonster0; 
 		String firstEnemyName = firstEnemy.getMonsterID();
@@ -152,6 +158,8 @@ public class SelectBattleScreen {
 		
 		/**
 		 * Second Enemy
+		 * check if the current day is 15 
+		 * yes, set RandomEnemyMonster to the second monster in the EnemyMonsterList2
 		 */
 		Monster RandomEnemyMonster1 = EnemyMonsterList1.get(manager.RandomEnemyTwo);
 		if (current_day == 15) {
@@ -180,7 +188,15 @@ public class SelectBattleScreen {
 		frmSelectBattle.getContentPane().add(rdbtnMonster_1);
 		
 		/**
-		 * Third Enemy
+		 * Third enemy
+		 * check check if the current day is 5
+		 * yes, set RandomEnemyMonster to the first monster in the EnemyMonsterList2
+		 * 
+		 * check if the current day is 10
+		 * yes, set RandomEnemyMonster to the second monster in the EnemyMonsterList2
+		 * 
+		 * check if the current day is 15 
+		 * yes, set RandomEnemyMonster to the all three monsters in the EnemyMonsterList2
 		 */
 		Monster RandomEnemyMonster2 = EnemyMonsterList1.get(manager.RandomEnemyThree);
 		if (current_day == 5) {

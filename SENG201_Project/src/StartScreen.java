@@ -9,7 +9,14 @@ import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import javax.swing.Action;
 
-
+/**
+ * The class StartScreen
+ * Can launch to 
+ * SetupScreen
+ * and quit
+ * @author fye15, zde19
+ *
+ */
 public class StartScreen {
 
 	private JFrame frame;

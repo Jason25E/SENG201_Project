@@ -9,35 +9,23 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 
+/**
+ * The class ShopDirection
+ * Can launch 
+ * SaleMonsterScreen
+ * SaleItemScreen
+ * SaleEquipmentScreen
+ * ShopMonsterScreen
+ * ShopItemScreen
+ * @author fye15, zde19
+ *
+ */
 public class ShopDirection {
 
 	private JFrame frmShop;
 	
 	private GameManager manager;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ShopDirection window = new ShopDirection();
-					window.frmShop.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
-	public ShopDirection() {
-		initialize();
-	}
-	
 	public ShopDirection(GameManager manager) {
 		this.manager = manager;
 		initialize();

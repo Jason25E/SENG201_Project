@@ -1,4 +1,10 @@
-
+/**
+ * The class Skill
+ * Take the information of the skill from monster
+ * Store in the coresponding parameters
+ * @author fye15, zde19
+ *
+ */
 public class Skill {
 	private String skillName;
 	private String skillEffect;

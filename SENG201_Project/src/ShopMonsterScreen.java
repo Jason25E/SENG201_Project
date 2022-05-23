@@ -13,6 +13,13 @@ import javax.swing.ButtonGroup;
 import javax.swing.JTextField;
 import java.awt.Font;
 
+/**
+ * The class ShopMonsterScreen
+ * Display three random monster in the monsterlist
+ * Player will be able to buy monster to play game
+ * @author zde19
+ *
+ */
 public class ShopMonsterScreen {
 
 	private JFrame frmShopMonsters;

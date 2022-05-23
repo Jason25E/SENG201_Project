@@ -11,6 +11,14 @@ import javax.swing.ButtonGroup;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * The class ShopItemScreen
+ * Display a fixed heal food 
+ * Display a random food of the other three from food list
+ * Display two random equipment from equipment list
+ * @author fye15, zde19
+ *
+ */
 public class ShopItemScreen {
 
 	private JFrame frmShopItem;

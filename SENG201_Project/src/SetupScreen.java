@@ -14,6 +14,14 @@ import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * The class SetupScreen
+ * Set the name of the player
+ * set the diffculty of the game
+ * set the day in the game
+ * @author fye15, zde19
+ *
+ */
 public class SetupScreen {
 
 	private JFrame frame;
@@ -26,29 +34,6 @@ public class SetupScreen {
 	private float shop_info = 0;
 	private int monster_selling_info = 0;
 	private float monster_skill_rate = 0;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SetupScreen window = new SetupScreen();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
-	public SetupScreen() {
-		initialize();
-	}
 	
 	public SetupScreen(GameManager manager) {
 		this.manager = manager;
