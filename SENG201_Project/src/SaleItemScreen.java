@@ -1,4 +1,3 @@
-import java.awt.EventQueue;
 import java.awt.Font;
 
 import javax.swing.ButtonGroup;
@@ -99,6 +98,7 @@ public class SaleItemScreen {
 			 */
 			String FirstItemName = FirstItem.getItemID();
 			JRadioButton rdbtnNameOfItem = new JRadioButton(FirstItemName);
+			buttonGroup.add(rdbtnNameOfItem);
 			rdbtnNameOfItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					selectedFood = ItemList.get(0);
@@ -155,6 +155,7 @@ public class SaleItemScreen {
 			 */
 			String SecondItemName = SecondItem.getItemID();
 			JRadioButton rdbtnNameOfItem_1 = new JRadioButton(SecondItemName);
+			buttonGroup.add(rdbtnNameOfItem_1);
 			rdbtnNameOfItem_1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					selectedFood = ItemList.get(1);
@@ -211,6 +212,7 @@ public class SaleItemScreen {
 			 */
 			String ThirdItemName = ThirdItem.getItemID();
 			JRadioButton rdbtnNameOfItem_2 = new JRadioButton(ThirdItemName);
+			buttonGroup.add(rdbtnNameOfItem_2);
 			rdbtnNameOfItem_2.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					selectedFood = ItemList.get(2);
@@ -266,6 +268,7 @@ public class SaleItemScreen {
 			 */
 			String FourthItemName = FourthItem.getItemID();
 			JRadioButton rdbtnNameOfItem_3 = new JRadioButton(FourthItemName);
+			buttonGroup.add(rdbtnNameOfItem_3);
 			rdbtnNameOfItem_3.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					selectedFood = ItemList.get(3);
@@ -310,7 +313,6 @@ public class SaleItemScreen {
 		btnUse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (selectedFood != null) {
-					int SalePrice = selectedFood.getSellingPrice();
 					manager.getPlayer().soldItem(selectedFood);
 					manager.launchSaleItemScreen();
 					closeWindow();

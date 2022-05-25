@@ -1,4 +1,3 @@
-import java.awt.EventQueue;
 import java.awt.Font;
 
 import javax.swing.ButtonGroup;
@@ -104,6 +103,7 @@ public class SaleMonsterScreen {
 			 * set selectedMonster if selected
 			 */
 			JRadioButton rdbtnMonster = new JRadioButton(MonsterName0);
+			buttonGroup.add(rdbtnMonster);
 			rdbtnMonster.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					selectedMonster = MonsterList.get(0);
@@ -180,6 +180,7 @@ public class SaleMonsterScreen {
 			 * set selectedMonster if selected
 			 */
 			JRadioButton rdbtnMonster_1 = new JRadioButton(MonsterName1);
+			buttonGroup.add(rdbtnMonster_1);
 			rdbtnMonster_1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					selectedMonster = MonsterList.get(1);
@@ -249,6 +250,7 @@ public class SaleMonsterScreen {
 			 * set selectedMonster if selected
 			 */
 			JRadioButton rdbtnMonster_2 = new JRadioButton(MonsterName2);
+			buttonGroup.add(rdbtnMonster_2);
 			rdbtnMonster_2.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					selectedMonster = MonsterList.get(2);
@@ -318,6 +320,7 @@ public class SaleMonsterScreen {
 			 * set selectedMonster if selected
 			 */
 			JRadioButton rdbtnMonster_3 = new JRadioButton(MonsterName3);
+			buttonGroup.add(rdbtnMonster_3);
 			rdbtnMonster_3.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					selectedMonster = MonsterList.get(3);

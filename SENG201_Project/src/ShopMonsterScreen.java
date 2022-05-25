@@ -93,10 +93,10 @@ public class ShopMonsterScreen {
 	Monster skeleton = new Monster("Skeleton", "Skeleton", MonsterLevelTwo, "Common", 13 + 3 * MonsterLevel, 15 + 2 * MonsterLevel, 200 + Math.round(2 * monster_heal_rate * MonsterLevel), 25, skeletonSkill);
 	
 	Skill witchSkill = new Skill("Thunder", "Has a base power of 12", 12);
-	Monster witch = new Monster("Witch", "Witch", MonsterLevelTwo, "Common", 17 + 4 * MonsterLevel, 8 + 1 * MonsterLevel, 180 + Math.round(2 * monster_heal_rate * MonsterLevel), 25, witchSkill);
+	Monster witch = new Monster("Witch", "Witch", MonsterLevelTwo, "Rare", 17 + 4 * MonsterLevel, 8 + 1 * MonsterLevel, 180 + Math.round(2 * monster_heal_rate * MonsterLevel), 25, witchSkill);
 	
 	Skill demonSkill = new Skill("Inferno", "Has a base power of 14", 14);
-	Monster demon = new Monster("Demon", "Demon", MonsterLevelTwo, "Common", 15 + 3 * MonsterLevel, 18 + 3 * MonsterLevel, 200 + Math.round(3 * monster_heal_rate * MonsterLevel), 30, demonSkill);
+	Monster demon = new Monster("Demon", "Demon", MonsterLevelTwo, "Rare", 15 + 3 * MonsterLevel, 18 + 3 * MonsterLevel, 200 + Math.round(3 * monster_heal_rate * MonsterLevel), 30, demonSkill);
 		
 		MonsterList.add(bat);
 		MonsterList.add(slime);

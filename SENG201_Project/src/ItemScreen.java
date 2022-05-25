@@ -1,11 +1,8 @@
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.JLabel;

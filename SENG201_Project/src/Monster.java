@@ -279,7 +279,7 @@ public class Monster {
 		heal(food.getHealingAmount());
 		food.reduceQuantity();
 		
-		ArrayList FoodList = player.getFoodList();
+		ArrayList<Item> FoodList = player.getFoodList();
 		if (food.getQuantity() == 0) {
 			FoodList.remove(food); 
 		}

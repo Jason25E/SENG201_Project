@@ -1,5 +1,3 @@
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -52,8 +50,6 @@ public class ChooseStarterScreen {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		float shop_info = manager.getShop_info();
-		int current_day = manager.getCurrentDay();
 		float monster_heal_rate = manager.getStart_gold_info();
 		int MonsterLevelTwo = manager.RandomMonsterLevelInShopTwo;
 		int MonsterLevel = manager.RandomMonsterLevelInShop;

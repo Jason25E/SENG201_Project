@@ -1,11 +1,8 @@
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 
@@ -40,9 +37,6 @@ public class ShopDirection {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		int ItemListSize = manager.getPlayer().getFoodList().size();
-		ArrayList<Item> ItemList = manager.getPlayer().getFoodList();
-		
 		frmShop = new JFrame();
 		frmShop.setTitle("Shop");
 		frmShop.setBounds(100, 100, 253, 356);

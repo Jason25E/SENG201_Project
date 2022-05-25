@@ -1,5 +1,4 @@
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -329,7 +328,6 @@ public class SaleEquipmentScreen {
 					 * else, sent a message to label say "Please select an Equipment to sale"
 					 */
 					if (selectedEquipment != null) {
-						int SalePrice = selectedEquipment.getSellingPrice();
 						manager.getPlayer().soldEquipment(selectedEquipment);
 						manager.launchSaleEquipmentScreen();
 						closeWindow();
