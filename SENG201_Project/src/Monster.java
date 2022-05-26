@@ -169,7 +169,8 @@ public class Monster {
 	 * The variable when run
 	 * add one to level
 	 * add five to attack
-	 * add 5 to defence
+	 * add five to defence
+	 * add five to maxHealthPoint and currentHealthPoint
 	 */
 	public void levelUp() {
 		level += 1;
