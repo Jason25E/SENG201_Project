@@ -36,6 +36,7 @@ public class SetupScreen {
 	public SetupScreen(GameManager manager) {
 		this.manager = manager;
 		initialize();
+		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 	}
 	

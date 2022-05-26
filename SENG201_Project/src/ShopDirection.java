@@ -26,6 +26,7 @@ public class ShopDirection {
 	public ShopDirection(GameManager manager) {
 		this.manager = manager;
 		initialize();
+		frmShop.setLocationRelativeTo(null);
 		frmShop.setVisible(true);
 	}
 	

@@ -53,6 +53,7 @@ public class ShopItemScreen {
 	public ShopItemScreen(GameManager manager) {
 		this.manager = manager;
 		initialize();
+		frmShopItem.setLocationRelativeTo(null);
 		frmShopItem.setVisible(true);
 	}
 	

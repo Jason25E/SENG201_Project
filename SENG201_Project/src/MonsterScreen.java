@@ -32,6 +32,7 @@ public class MonsterScreen {
 	public MonsterScreen(GameManager manager) {
 		this.manager = manager;
 		initialize();
+		frmMyMonsters.setLocationRelativeTo(null);
 		frmMyMonsters.setVisible(true);
 	}
 	

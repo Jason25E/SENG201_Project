@@ -36,6 +36,7 @@ public class ChooseStarterScreen {
 	public ChooseStarterScreen(GameManager manager) {
 		this.manager = manager;
 		initialize();
+		frmChooseAStarter.setLocationRelativeTo(null);
 		frmChooseAStarter.setVisible(true);
 	}
 	

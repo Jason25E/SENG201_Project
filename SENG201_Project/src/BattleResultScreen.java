@@ -35,6 +35,7 @@ public class BattleResultScreen {
 		this.manager = manager;
 		this.enemy = enemy;
 		initialize();
+		frmBattleResult.setLocationRelativeTo(null);
 		frmBattleResult.setVisible(true);
 	}
 	

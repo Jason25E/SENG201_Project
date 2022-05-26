@@ -35,6 +35,7 @@ public class ItemScreen {
 	public ItemScreen(GameManager manager) {
 		this.manager = manager;
 		initialize();
+		frmMyItems.setLocationRelativeTo(null);
 		frmMyItems.setVisible(true);
 	}
 	

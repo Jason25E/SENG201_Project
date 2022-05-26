@@ -34,6 +34,7 @@ public class EquipmentScreen {
 	public EquipmentScreen(GameManager manager) {
 		this.manager = manager;
 		initialize();
+		frmMyEquipment.setLocationRelativeTo(null);
 		frmMyEquipment.setVisible(true);
 	}
 	

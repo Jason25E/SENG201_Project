@@ -36,6 +36,7 @@ public class SelectBattleScreen {
 	public SelectBattleScreen(GameManager manager) {
 		this.manager = manager;
 		initialize();
+		frmSelectBattle.setLocationRelativeTo(null);
 		frmSelectBattle.setVisible(true);
 	}
 	

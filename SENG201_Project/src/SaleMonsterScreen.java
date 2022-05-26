@@ -36,6 +36,7 @@ public class SaleMonsterScreen {
 	public SaleMonsterScreen(GameManager manager) {
 		this.manager = manager;
 		initialize();
+		frmSaleMonster.setLocationRelativeTo(null);
 		frmSaleMonster.setVisible(true);
 	}
 	

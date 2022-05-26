@@ -57,6 +57,7 @@ public class ShopMonsterScreen {
 	public ShopMonsterScreen(GameManager manager) {
 		this.manager = manager;
 		initialize();
+		frmShopMonsters.setLocationRelativeTo(null);
 		frmShopMonsters.setVisible(true);
 	}
 	

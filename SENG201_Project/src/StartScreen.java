@@ -52,6 +52,7 @@ public class StartScreen {
 	public StartScreen(GameManager manager) {
 		this.manager = manager;
 		initialize();
+		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 	}
 	
