@@ -175,6 +175,8 @@ public class Monster {
 		level += 1;
 		attack += 5;
 		defence += 5;
+		maxHealthPoint += 5;
+		currentHealthPoint += 5;
 	}
 	
 	/**
